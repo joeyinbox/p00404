@@ -1,6 +1,7 @@
 $(function(){
 	
-	var dualGate = new DualInputGate();
-	dualGate.foo();
+	var test = new AndGate();
+	//test.foo();
+	test.bar('test');
 	
 });

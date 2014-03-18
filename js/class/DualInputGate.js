@@ -1,12 +1,13 @@
-DualInputGate.prototype = new LogicGate();
-DualInputGate.prototype.constructor = DualInputGate;
-DualInputGate.prototype.parent = LogicGate.prototype;
-
 function DualInputGate() {
 	// Sub class constructor
 }
+DualInputGate.prototype = new LogicGate();
 
-LogicGate.prototype.foo = function() {
-	this.parent.foo.call(this);	// call the parent constructor
+
+DualInputGate.prototype.foo = function() {
 	console.log('Dual Input Gate foo!');
+}
+
+DualInputGate.prototype.bar = function(parameter) {
+	console.log('dual gate baaaaaar: '+parameter);
 }
