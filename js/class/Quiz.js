@@ -1,0 +1,3 @@
+function Quiz() {
+	// class constructor
+}

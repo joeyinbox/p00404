@@ -1,0 +1,3 @@
+function Wire() {
+	// class constructor
+}
