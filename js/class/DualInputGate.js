@@ -8,5 +8,5 @@ function DualInputGate() {
 
 LogicGate.prototype.foo = function() {
 	this.parent.foo.call(this);	// call the parent constructor
-	console.log('Dual Input Gate foo');
+	console.log('Dual Input Gate foo!');
 }

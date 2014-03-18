@@ -7,7 +7,11 @@ module.exports = function(grunt) {
 		uglify: {
 			js: {
 				files: {
-					'js/classes.min.js': ['js/class/Function.js', 'js/class/*.js']
+					'js/build/classes.min.js': ['js/build/classes.min.js'],
+					'js/build/index.min.js': ['js/build/index.min.js'],
+					'js/build/build-your-own.min.js': ['js/build/build-your-own.min.js'],
+					'js/build/math-to-graphical.min.js': ['js/build/math-to-graphical.min.js'],
+					'js/build/quiz.min.js': ['js/build/quiz.min.js']
 				}
 			}
 		},
@@ -15,7 +19,11 @@ module.exports = function(grunt) {
 		concat: {   
 			js: {
 				files: {
-					'js/classes.min.js': ['js/classes.min.js']
+					'js/build/classes.min.js': ['js/class/Function.js', 'js/class/*.js'],
+					'js/build/index.min.js': ['js/build/classes.min.js', 'js/index.js'],
+					'js/build/build-your-own.min.js': ['js/build/classes.min.js', 'js/build-your-own.js'],
+					'js/build/math-to-graphical.min.js': ['js/build/classes.min.js', 'js/math-to-graphical.js'],
+					'js/build/quiz.min.js': ['js/build/classes.min.js', 'js/quiz.js']
 				}
 			}
 		},
