@@ -9,9 +9,13 @@
 	<div id="qunit"></div>
 	<div id="qunit-fixture"></div>
 	<script src="../js/qunit-1.14.0.js"></script>
+	<script src="../js/class/UserInterface.js"></script>
 	<script>
-		test("hello test", function() {
-			ok(1 == "1", "Passed!");
+		var ui = new UserInterface();
+		
+		test("User Interface foo", function() {
+			var x = 3;
+			equal(ui.foo(x), x*2);
 		});
 	</script>
 </body>
