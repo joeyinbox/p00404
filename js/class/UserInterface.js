@@ -12,22 +12,26 @@
 function UserInterface() {
 	this.gateList = [];
 	this.optionId = [];
-	this.resources = [];
+	this.resource = [];
 	this.resourceLoadedCount = 0;
 	this.gateType = [];
 	this.error = false;
 	
 	// Declare all gate types by their class name
 	this.gateType.push(AndGate);
-	this.gateType.push(NandGate);
+	this.gateType.push(AndGate);
+	/*this.gateType.push(NandGate);
 	this.gateType.push(OrGate);
 	this.gateType.push(NorGate);
 	this.gateType.push(XorGate);
 	this.gateType.push(XnorGate);
-	this.gateType.push(NotGate);
+	this.gateType.push(NotGate);*/
 	
 	// Load resources into memory
 	this.loadResources();
+	
+	console.log(this.gateType[0].getResource());
+	console.log(this.resource);
 }
 
 
@@ -46,7 +50,7 @@ UserInterface.prototype.loadResources = function() {
 	this.resourceToLoad = this.gateType.length;
 	
 	for (var i=0; i<this.gateType.length; i++) {
-		this.resource[i] = preloadImage(this.gateType[i].getResource());
+		this.resource[i] = this.preloadImage(this.gateType[i].getResource());
 	}
 };
 
@@ -64,16 +68,34 @@ UserInterface.prototype.loadResources = function() {
 UserInterface.prototype.preloadImage = function(url) {
 	try {
 		var img = new Image();
-		img.onload = resourceLoaded();
+		img.onload = this.resourceLoaded.bind(this);
+		img.onerror = this.loadingError.bind(this);
 		img.src = url;
 		
 		// The image has been successfully loaded
 		return img;
 	} catch (e) {
-		error = true;
-		// Need to display an error message
+		this.loadingError();
 		
 		return null;
+	}
+};
+
+
+/**
+ * Handle an error during resource loading
+ * 
+ * @param	none
+ * @return	void
+ *
+ * Modification history
+ * Version	Modifier	Date		Change			Reason
+ * 0.1		Joey		03-19-2014	First release	Requirements
+ */
+UserInterface.prototype.loadingError = function() {
+	if(!this.error) {
+		this.error = true;
+		alert('error during loading');
 	}
 };
 
@@ -89,9 +111,10 @@ UserInterface.prototype.preloadImage = function(url) {
  * 0.1		Joey		03-19-2014	First release	Requirements
  */
 UserInterface.prototype.resourceLoaded = function() {
-	if(++this.resourceLoadedCount==this.resourceToLoad) {
+	if(++this.resourceLoadedCount===this.resourceToLoad) {
 		// Everything has been loaded
 		// Reveal interface
+		console.log('reveal interface');
 	}
 };
 
@@ -110,7 +133,7 @@ UserInterface.prototype.addGate = function(type) {
 	// Check if the type is known
 	if(this.gateType[type]!==undefined) {
 		// Create a new Gate of this particular type
-		this.gateList.push(new this.gateType[type]());
+		this.gateList.push(new this.gateType[type](this, type, 0, 0));
 	}
 };
 
@@ -162,3 +185,22 @@ UserInterface.prototype.refresh = function() {
 		this.gateList[i].drawGate();
 	}
 }
+
+
+/**
+ * Return the Image object size stored
+ * 
+ * @param	type(string)	Type of the gate
+ * @return	(Image)		Image object of the gate
+ *
+ * Modification history
+ * Version	Modifier	Date		Change			Reason
+ * 0.1		Joey		03-19-2014	First release	Requirements
+ */
+UserInterface.prototype.getResource = function(type) {
+	// Check if the type is known
+	if(this.gateType[type]!==undefined && this.resource[type]!==undefined) {
+		// Create a new Gate of this particular type
+		return this.resource[type];
+	}
+};

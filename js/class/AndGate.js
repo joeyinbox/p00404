@@ -25,5 +25,5 @@ AndGate.prototype = new DualInputGate();
  * 0.1		Name		mm-dd-yyyy	First release	Requirements
  */
 AndGate.getResource = function() {
-	return "/img/gate/and.svg";
+	return "img/gate/and.svg";
 }
