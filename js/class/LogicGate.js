@@ -24,7 +24,7 @@ function LogicGate(ui, type, x, y) {
 
 
 /**
- * Draws the core of the gate
+ * test
  * 
  * @param	none
  * @return	void
@@ -35,13 +35,8 @@ function LogicGate(ui, type, x, y) {
  */
 LogicGate.prototype.drawGate = function() {
 	this.ui.context.drawImage(this.ui.getResource(this.gateType),this.position.x,this.position.y, this.width, this.height);
+
 }
-
-
-
-
-
-
 
 /**
  * Draws the core of the gate
@@ -58,20 +53,15 @@ LogicGate.prototype.setPosition = function(x, y) {
 	this.y = y;
 }
 
-
-
-
-
-
 /**
- * Returns the position coordinates of a gate
+ * Draws the core of the gate
  * 
  * @param	none
- * @return	{x,y}(object)	Coordinates of the gate
+ * @return	void
  *
  * Modification history
  * Version	Modifier	Date		Change			Reason
- * 0.1		Name		mm-dd-yyyy	First release	Requirements
+ * 0.1		Chris		19-03-2014	First release	Requirements
  */
 LogicGate.prototype.getPosition = function() {
 	
