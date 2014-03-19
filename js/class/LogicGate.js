@@ -1,10 +1,10 @@
 /**
  * Creates a Logic Gate Object used as a basis for sub classes
  * 
- * @param	UI(object)
- * @param	type(object)
- * @param	x(int)
- * @param	y(int) 
+ * @param	UI(object)	UserInterface instance
+ * @param	type(object)	LogicGate type
+ * @param	x(int)	coordinate
+ * @param	y(int)	coordinate 
  * @return	void
  *
  * Modification history
@@ -44,8 +44,8 @@ LogicGate.prototype.drawGate = function() {
 /**
  * Sets the position of the gate
  * 
- * @param 	x(int)
- * @param 	y(int)
+ * @param 	x(int)	coordinate
+ * @param 	y(int)	coordinate
  * @return	void
  *
  * Modification history
@@ -61,7 +61,7 @@ LogicGate.prototype.setPosition = function(x, y) {
  * Gets the position of the gate
  * 
  * @param	none
- * @return	{x, y}(object)
+ * @return	{x, y}(object)	position
  *
  * Modification history
  * Version	Modifier	Date		Change			Reason
