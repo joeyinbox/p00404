@@ -1,23 +1,52 @@
-function UserInterface() {
-	
-}
-
 /**
- * Loads all resources to get ready for revealing the interface
+ * Constructor of the UserInterface class
+ * Declare all variables and launch resource loading
  * 
  * @param	none
  * @return	void
  *
  * Modification history
  * Version	Modifier	Date		Change			Reason
- * 0.1		Name		mm-dd-yyyy	First release	Requirements
+ * 0.1		Joey		03-19-2014	First release	Requirements
+ */
+function UserInterface() {
+	this.gateList = [];
+	this.optionId = [];
+	this.resources = [];
+	this.resourceLoadedCount = 0;
+	this.gateType = [];
+	this.error = false;
+	
+	// Declare all gate types by their class name
+	this.gateType.push(AndGate);
+	this.gateType.push(NandGate);
+	this.gateType.push(OrGate);
+	this.gateType.push(NorGate);
+	this.gateType.push(XorGate);
+	this.gateType.push(XnorGate);
+	this.gateType.push(NotGate);
+	
+	// Load resources into memory
+	this.loadResources();
+}
+
+
+/**
+ * Loads all resources to get ready to reveal the interface
+ * 
+ * @param	none
+ * @return	void
+ *
+ * Modification history
+ * Version	Modifier	Date		Change			Reason
+ * 0.1		Joey		03-19-2014	First release	Requirements
  */
 UserInterface.prototype.loadResources = function() {
 	// Get the Logic gates resources through their static method getResource and add them to the resource array
-	resourceToLoad = gateType.length;
+	this.resourceToLoad = this.gateType.length;
 	
-	for (var i=0; i<gateType.length; i++) {
-		resource[i] = preloadImage(gateType[i].getResource());
+	for (var i=0; i<this.gateType.length; i++) {
+		this.resource[i] = preloadImage(this.gateType[i].getResource());
 	}
 };
 
@@ -30,7 +59,7 @@ UserInterface.prototype.loadResources = function() {
  *
  * Modification history
  * Version	Modifier	Date		Change			Reason
- * 0.1		Name		mm-dd-yyyy	First release	Requirements
+ * 0.1		Joey		03-19-2014	First release	Requirements
  */
 UserInterface.prototype.preloadImage = function(url) {
 	try {
@@ -57,16 +86,14 @@ UserInterface.prototype.preloadImage = function(url) {
  *
  * Modification history
  * Version	Modifier	Date		Change			Reason
- * 0.1		Name		mm-dd-yyyy	First release	Requirements
+ * 0.1		Joey		03-19-2014	First release	Requirements
  */
 UserInterface.prototype.resourceLoaded = function() {
-	if(++resourceLoadedCount==resourceToLoad) {
+	if(++this.resourceLoadedCount==this.resourceToLoad) {
 		// Everything has been loaded
 		// Reveal interface
 	}
 };
-
-
 
 
 /**
@@ -77,13 +104,13 @@ UserInterface.prototype.resourceLoaded = function() {
  *
  * Modification history
  * Version	Modifier	Date		Change			Reason
- * 0.1		Name		mm-dd-yyyy	First release	Requirements
+ * 0.1		Joey		03-19-2014	First release	Requirements
  */
 UserInterface.prototype.addGate = function(type) {
 	// Check if the type is known
-	if(gateType[type]!==undefined) {
+	if(this.gateType[type]!==undefined) {
 		// Create a new Gate of this particular type
-		gateList.push(new gateType[type]());
+		this.gateList.push(new this.gateType[type]());
 	}
 };
 
@@ -96,17 +123,17 @@ UserInterface.prototype.addGate = function(type) {
  *
  * Modification history
  * Version	Modifier	Date		Change			Reason
- * 0.1		Name		mm-dd-yyyy	First release	Requirements
+ * 0.1		Joey		03-19-2014	First release	Requirements
  */
 UserInterface.prototype.removeGate = function(gate) {
 	// Check if the gate is known
-	var index = gateList.indexOf(gate);
+	var index = this.gateList.indexOf(gate);
 	if(index!==-1) {
 		// Go through each of its inputs and outputs to unlink them
 		gate.unlinkAllWire();
 		
 		// Then remove the gate from the list
-		gateList.splice(index, 1);
+		this.gateList.splice(index, 1);
 	}
 };
 
@@ -119,7 +146,7 @@ UserInterface.prototype.removeGate = function(gate) {
  *
  * Modification history
  * Version	Modifier	Date		Change			Reason
- * 0.1		Name		mm-dd-yyyy	First release	Requirements
+ * 0.1		Joey		03-19-2014	First release	Requirements
  */
 UserInterface.prototype.refresh = function() {
 	// Clear the canvas

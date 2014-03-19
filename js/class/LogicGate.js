@@ -41,8 +41,3 @@ LogicGate.prototype.drawGate = function() {
 LogicGate.prototype.getPosition = function() {
 	
 }
-
-
-LogicGate.prototype.foo = function() {
-	console.log('LogicGate foo');
-}
