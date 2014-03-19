@@ -8,10 +8,11 @@
  * Version	Modifier	Date		Change			Reason
  * 0.1		Name		mm-dd-yyyy	First release	Requirements
  */
-function AndGate() {
-	// Sub class constructor
+function AndGate(ui, type, x, y) {
+	DualInputGate.apply(this, arguments);
 }
 AndGate.prototype = new DualInputGate();
+AndGate.prototype.constructor = AndGate;
 
 
 /**

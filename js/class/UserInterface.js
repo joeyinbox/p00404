@@ -16,9 +16,9 @@ function UserInterface() {
 	this.resourceLoadedCount = 0;
 	this.gateType = [];
 	this.error = false;
+	this.insertShift = 0;
 	
 	// Declare all gate types by their class name
-	this.gateType.push(AndGate);
 	this.gateType.push(AndGate);
 	/*this.gateType.push(NandGate);
 	this.gateType.push(OrGate);
@@ -29,9 +29,6 @@ function UserInterface() {
 	
 	// Load resources into memory
 	this.loadResources();
-	
-	console.log(this.gateType[0].getResource());
-	console.log(this.resource);
 }
 
 
@@ -133,7 +130,8 @@ UserInterface.prototype.addGate = function(type) {
 	// Check if the type is known
 	if(this.gateType[type]!==undefined) {
 		// Create a new Gate of this particular type
-		this.gateList.push(new this.gateType[type](this, type, 0, 0));
+		this.gateList.push(new this.gateType[type](this, type, this.insertShift*10, this.insertShift*10));
+		this.insertShift++;
 	}
 };
 

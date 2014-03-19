@@ -1,3 +1,3 @@
-function Wire() {
-	// class constructor
+function Wire(gate) {
+	this.belongsTo = gate;
 }

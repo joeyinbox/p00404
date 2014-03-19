@@ -9,17 +9,22 @@
  * 0.1		Chris		19-03-2014	First release	Requirements
  */
 function LogicGate(ui, type, x, y) {
+	if(ui===undefined) {
+		return 0;
+	}
+	
 	this.ui = ui;
-	this.gateType = type;	
-	var img = this.ui.getResource(this.gateType);
-	this.width = 80;
-	this.height = img.height*(this.width/img.width);
-	this.input = new InputWire(shift);
+	this.gateType = type;
+	
+	this.img = this.ui.getResource(this.gateType);
+	this.img.onload = (function() {
+		this.width = 80;
+		this.height = this.img.height*(this.width/this.img.width);
+	}).bind(this);
+	
 	this.output = new OutputWire();
-	this.position = {
-		"x": x;
-		"y": y;
-	};
+	this.x = x;
+	this.y = y;
 }
 
 
@@ -64,7 +69,5 @@ LogicGate.prototype.setPosition = function(x, y) {
  * 0.1		Chris		19-03-2014	First release	Requirements
  */
 LogicGate.prototype.getPosition = function() {
-	
-
-
+	return {'x':this.x, 'y':this.y};
 }
