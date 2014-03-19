@@ -1,10 +1,10 @@
 /**
  * Creates a Logic Gate Object used as a basis for sub classes
  * 
- * @param	UI (object)
- * @param	type (object)
- * @param	x (int)
- * @param	y (int) 
+ * @param	UI(object)
+ * @param	type(object)
+ * @param	x(int)
+ * @param	y(int) 
  * @return	void
  *
  * Modification history
@@ -44,8 +44,8 @@ LogicGate.prototype.drawGate = function() {
 /**
  * Sets the position of the gate
  * 
- * @param x (int)
- * @param y (int)
+ * @param 	x(int)
+ * @param 	y(int)
  * @return	void
  *
  * Modification history
