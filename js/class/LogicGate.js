@@ -1,7 +1,10 @@
 /**
  * Creates a Logic Gate Object used as a basis for sub classes
  * 
- * @param	UserInterface(object), logicGate(object), x coordinate(int), y coordinate(int) 
+ * @param	UI(object)	UserInterface instance
+ * @param	type(object)	LogicGate type
+ * @param	x(int)	coordinate
+ * @param	y(int)	coordinate 
  * @return	void
  *
  * Modification history
@@ -29,7 +32,7 @@ function LogicGate(ui, type, x, y) {
 
 
 /**
- * test
+ * Draws LogicGate on canvas element
  * 
  * @param	none
  * @return	void
@@ -40,13 +43,13 @@ function LogicGate(ui, type, x, y) {
  */
 LogicGate.prototype.drawGate = function() {
 	this.ui.context.drawImage(this.ui.getResource(this.gateType),this.position.x,this.position.y, this.width, this.height);
-
 }
 
 /**
- * Draws the core of the gate
+ * Sets the position of the gate
  * 
- * @param x coordinate, y coordinate
+ * @param 	x(int)	coordinate
+ * @param 	y(int)	coordinate
  * @return	void
  *
  * Modification history
@@ -59,15 +62,18 @@ LogicGate.prototype.setPosition = function(x, y) {
 }
 
 /**
- * Draws the core of the gate
+ * Gets the position of the gate
  * 
  * @param	none
- * @return	void
+ * @return	{x, y}(object)	position
  *
  * Modification history
  * Version	Modifier	Date		Change			Reason
  * 0.1		Chris		19-03-2014	First release	Requirements
  */
 LogicGate.prototype.getPosition = function() {
-	return {'x':this.x, 'y':this.y};
+	return {
+		'x':this.x, 
+		'y':this.y
+	};
 }
