@@ -93,7 +93,7 @@ module.exports = function(grunt) {
 		watch: {
 			js: {
 				files: ['js/class/*.js', 'js/*.js'],
-				tasks: ['concat', 'uglify'],
+				tasks: ['concat'],
 				options: {
 					livereload: true,
 				}
@@ -108,6 +108,6 @@ module.exports = function(grunt) {
 	grunt.loadNpmTasks('grunt-contrib-watch');
 
 	// Default task(s).
-	grunt.registerTask('default', ['concat', 'uglify']);
+	grunt.registerTask('default', ['concat']);
 
 };
