@@ -1,5 +1,6 @@
 $(function(){
 	
-	var test = new UserInterface();
+	var ui = new UserInterface();
+	ui.addGate(0);
 	
 });

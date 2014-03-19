@@ -49,7 +49,7 @@ UserInterface.prototype.loadResources = function() {
 	// Get the Logic gates resources through their static method getResource and add them to the resource array
 	this.resourceToLoad = this.gateType.length;
 	
-	for (var i=0; i<this.gateType.length; i++) {
+	for (var i=0; i<this.resourceToLoad; i++) {
 		this.resource[i] = this.preloadImage(this.gateType[i].getResource());
 	}
 };
