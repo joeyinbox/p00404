@@ -81,30 +81,24 @@ LogicGate.prototype.getPosition = function() {
 
 
 /**
- * Determine is the pointer is hover the actual gate
+ * Draws LogicGate on canvas element
  * 
  * @param	none
- * @return	true if the pointer is hovering it, otherwise false
+ * @return	void
  *
  * Modification history
  * Version	Modifier	Date		Change			Reason
  * 0.1		Joey		20-03-2014	First release	Requirements
  */
-LogicGate.prototype.isHovered = function() {
-	var left = this.x;
-	var right = this.x + this.width;
-	var top = this.y;
-	var bottom = this.y + this.height;
-	
-	var pointer = this.ui.pointer.getPosition();
-	
-	if(!drag) {
-		startX = pointer.x - this.x;
-		startY = pointer.y - this.y;
+LogicGate.prototype.update = function() {
+	if(this.ui.pointer.isBusyWith(this)) {
+		// The gate is currently handled by the pointer
+		var distance = this.ui.pointer.getDistance();
+		this.setPosition(this.x+distance.x, this.y+distance.y);
 	}
-	// Does the user click on the core to drag it?
-	if(pointer.x<right && pointer.x>left && pointer.y<bottom && pointer.y>top) {
-		return true;
+	else if(this.ui.pointer.isHovering(this) && this.ui.pointer.pressed===true && this.ui.pointer.dragging===false) {
+		// The gate is hovered
+		this.ui.pointer.dragging = true;
+		this.ui.pointer.setBusyWith(this);
 	}
-	return false;
 }

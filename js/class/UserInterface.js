@@ -186,6 +186,11 @@ UserInterface.prototype.removeGate = function(gate) {
  * 0.1		Joey		03-19-2014	First release	Requirements
  */
 UserInterface.prototype.refresh = function() {
+	// Update all components state
+	for(var i=this.gateList.length-1; i>=0; i--) {
+		this.gateList[i].update();
+	}
+	
 	// Clear the canvas
 	this.context.clearRect(0, 0, this.canvas.offsetWidth, this.canvas.offsetHeight);
 	
