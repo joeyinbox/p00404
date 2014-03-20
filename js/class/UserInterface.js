@@ -19,8 +19,8 @@ function UserInterface() {
 	this.error = false;
 	this.insertShift = 5;
 	
-	this.canvas = $("canvas");
-	this.context = this.canvas[0].getContext("2d");
+	this.canvas = document.getElementById('canvas');
+	this.context = this.canvas.getContext("2d");
 	
 	// Declare all gate types by their class name
 	this.gateType.push(AndGate);
@@ -39,6 +39,12 @@ function UserInterface() {
 	this.color['powered'] = '#02AE30';
 	this.color['linking'] = '#B42702';
 	// TODO: unknown and underpowered
+	
+	// Handle mouse events
+	this.pointer = new Pointer(this.canvas);
+	
+	// Set the refresh timer
+	this.loop = setInterval(this.refresh.bind(this), 30);
 }
 
 
@@ -181,6 +187,7 @@ UserInterface.prototype.removeGate = function(gate) {
  */
 UserInterface.prototype.refresh = function() {
 	// Clear the canvas
+	this.context.clearRect(0, 0, this.canvas.offsetWidth, this.canvas.offsetHeight);
 	
 	// Re-draw every link
 	for(var i=0; i<this.gateList.length; i++) {

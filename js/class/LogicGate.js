@@ -78,3 +78,33 @@ LogicGate.prototype.getPosition = function() {
 		'y':this.y
 	};
 }
+
+
+/**
+ * Determine is the pointer is hover the actual gate
+ * 
+ * @param	none
+ * @return	true if the pointer is hovering it, otherwise false
+ *
+ * Modification history
+ * Version	Modifier	Date		Change			Reason
+ * 0.1		Joey		20-03-2014	First release	Requirements
+ */
+LogicGate.prototype.isHovered = function() {
+	var left = this.x;
+	var right = this.x + this.width;
+	var top = this.y;
+	var bottom = this.y + this.height;
+	
+	var pointer = this.ui.pointer.getPosition();
+	
+	if(!drag) {
+		startX = pointer.x - this.x;
+		startY = pointer.y - this.y;
+	}
+	// Does the user click on the core to drag it?
+	if(pointer.x<right && pointer.x>left && pointer.y<bottom && pointer.y>top) {
+		return true;
+	}
+	return false;
+}
