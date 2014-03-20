@@ -19,16 +19,17 @@ function LogicGate(ui, type, x, y) {
 	this.ui = ui;
 	this.gateType = type;
 	
-	this.img = this.ui.getResource(this.gateType);
-	this.img.onload = (function() {
-		this.width = 80;
-		this.height = this.img.height*(this.width/this.img.width);
-	}).bind(this);
+	var size = this.ui.getResourceSize(this.gateType);
+	this.width = 80;
+	this.height = size.height*(this.width/size.width);
 	
-	this.output = new OutputWire();
+	this.img = this.ui.getResource(this.gateType);
+	this.output = new OutputWire(this.ui, this);
+	
 	this.x = x;
 	this.y = y;
 }
+
 
 
 /**
@@ -42,7 +43,7 @@ function LogicGate(ui, type, x, y) {
  * 0.1		Chris		19-03-2014	First release	Requirements
  */
 LogicGate.prototype.drawGate = function() {
-	this.ui.context.drawImage(this.ui.getResource(this.gateType),this.position.x,this.position.y, this.width, this.height);
+	this.ui.context.drawImage(this.ui.getResource(this.gateType), this.x, this.y, this.width, this.height);
 }
 
 /**

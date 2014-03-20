@@ -13,22 +13,32 @@ function UserInterface() {
 	this.gateList = [];
 	this.optionId = [];
 	this.resource = [];
+	this.resourceToLoad = 0;
 	this.resourceLoadedCount = 0;
 	this.gateType = [];
 	this.error = false;
-	this.insertShift = 0;
+	this.insertShift = 5;
+	
+	this.canvas = $("canvas");
+	this.context = this.canvas[0].getContext("2d");
 	
 	// Declare all gate types by their class name
 	this.gateType.push(AndGate);
-	/*this.gateType.push(NandGate);
+	this.gateType.push(NandGate);
 	this.gateType.push(OrGate);
 	this.gateType.push(NorGate);
 	this.gateType.push(XorGate);
 	this.gateType.push(XnorGate);
-	this.gateType.push(NotGate);*/
+	this.gateType.push(NotGate);
 	
 	// Load resources into memory
 	this.loadResources();
+	
+	this.color = [];
+	this.color['idle'] = '#000000';
+	this.color['powered'] = '#02AE30';
+	this.color['linking'] = '#B42702';
+	// TODO: unknown and underpowered
 }
 
 
@@ -186,7 +196,7 @@ UserInterface.prototype.refresh = function() {
 
 
 /**
- * Return the Image object size stored
+ * Return the Image object stored
  * 
  * @param	type(string)	Type of the gate
  * @return	(Image)		Image object of the gate
@@ -200,5 +210,24 @@ UserInterface.prototype.getResource = function(type) {
 	if(this.gateType[type]!==undefined && this.resource[type]!==undefined) {
 		// Create a new Gate of this particular type
 		return this.resource[type];
+	}
+};
+
+
+/**
+ * Return the Image object size stored
+ * 
+ * @param	type(string)	Type of the gate
+ * @return	{width,height}		Size of the gate
+ *
+ * Modification history
+ * Version	Modifier	Date		Change			Reason
+ * 0.1		Joey		03-19-2014	First release	Requirements
+ */
+UserInterface.prototype.getResourceSize = function(type) {
+	// Check if the type is known
+	if(this.gateType[type]!==undefined && this.resource[type]!==undefined) {
+		// Create a new Gate of this particular type
+		return {width:this.resource[type].width, height:this.resource[type].height};
 	}
 };
