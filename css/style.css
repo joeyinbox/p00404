@@ -1,0 +1,333 @@
+html {
+	font-family: inherit;
+	font-size: 100%;
+	width: 100%;
+	height: 100%;
+}
+body {
+	font-family: 'Helvetica Neue', Helvetica, Arial, 'Lucida Grande', sans-serif;
+	font-size: 100%;
+	color: #333;
+}
+a {
+	text-decoration: none;
+	color: inherit;
+}
+ul, li {
+	margin: 0;
+	padding: 0;
+}
+
+
+body.home {
+	width: 100%;
+	height: 100%;
+	background-image: url('../img/background.png');
+	-webkit-background-size: cover;
+	-moz-background-size: cover;
+	background-size: cover;
+	background-color: #222C31;
+	background-position: center center;
+	background-repeat: no-repeat;
+}
+body.home #content {
+	padding-bottom: 0;
+}
+
+body.home #intro {
+	display: table;
+	width: 100%;
+	height: 100%;
+}
+body.home #intro div {
+	display: table-cell;
+	height: 100%;
+	vertical-align: middle;
+	color: #fff;
+}
+body.home #intro hgroup {
+	width: 720px;
+}
+body.home #intro p, body.home #intro div {
+	width: 600px;
+	margin: 0 auto;
+}
+body.home #intro hgroup {
+	position: relative;
+	margin: 0 auto 30px;
+}
+body.home #intro h1, body.home #intro p {
+	-webkit-font-smoothing: antialiased;	
+	font-family: 'HelveticaNeue-Light', 'HelveticaNeue', arial;
+	font-weight: 400;
+	text-shadow: 0 2px 4px rgba(0, 0, 0, .2);
+	font-size: 36px;
+	text-align: center;
+	line-height: 1.2;
+}
+body.home #intro h1 {
+	font-size: 3em;
+	font-weight: bold;
+	margin-bottom: 20px;
+}
+
+body.home #intro p.learn {
+	position: absolute;
+	left: 0;
+	bottom: 25px;
+	width: 100%;
+	text-align: center;
+	padding-bottom: 6px;
+}
+body.home #intro p.learn a {
+	-webkit-font-smoothing: antialiased;
+	color: #fff;
+	font-size: 14px;
+	font-weight: 700;
+	opacity: .7;
+	background: url('../img/arrow.png') bottom center no-repeat;
+	padding-bottom: 20px;
+}
+body.home #intro p.learn a:hover {
+	opacity: 1;
+}
+
+body.home #gates {
+    -webkit-font-smoothing: antialiased;
+    background: #fff;
+    text-align: center;
+    padding: 45px 0;
+}
+body.home #gates section, #getting-started p {
+    margin: 0 0 64px;
+}
+body.home #gates section h1 {
+    -webkit-font-smoothing: antialiased;
+    font-family: 'HelveticaNeue-Light', 'HelveticaNeue', arial;
+    font-weight: lighter;
+    font-size: 36px;
+    margin: 0 auto 12px;
+}
+body.home #gates section {
+	padding-bottom: 64px;
+	border-bottom: solid rgba(0, 0, 0, .1) 1px;
+}
+body.home #gates section:last-child {
+	border-bottom: none;
+	padding-bottom: 0;
+}
+body.home #gates section p, #getting-started p {
+    width: 640px;
+    margin: 0 auto;
+    padding: 0 0 64px;
+}
+
+.home>#content>footer.main {
+    position: static;
+}
+
+
+header nav.main {
+    position: absolute;
+    z-index: 12;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 65px;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    padding-top: 25px;
+}
+header nav.main ul {
+    display: block;
+    text-align: center;
+}
+header nav.main ul li {
+    display: inline-block;
+    margin-left: 30px;
+}
+header nav.main ul li:first-child {
+    margin-left: 0;
+}
+header nav.main ul li a {
+    -webkit-font-smoothing: antialiased;
+    opacity: .7;
+    color: #fff;
+    font-size: 11px;
+    font-weight: 700;
+    text-transform: uppercase;
+    text-decoration: none;
+    letter-spacing: 2px;
+    padding: 10px;
+}
+header nav.main ul li.selected a, header nav.main ul li a:hover {
+    opacity: 1;
+    -ms-filter: none;
+    filter: none;
+}
+
+
+#content {
+    zoom: 1;
+    width: 100%;
+    height: 100%;
+    padding-bottom: 50px;
+}
+#content>footer.main {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    height: 50px;
+    overflow: hidden;
+    background: #222C31;
+}
+#content>footer.main p {
+    text-align: center;
+}
+#content>footer.main a, #content>footer.main span {
+    color: #fff;
+    -webkit-font-smoothing: antialiased;
+    font-size: 11px;
+    text-decoration: none;
+}
+
+
+#getting-started {
+	background-color: #222C31;
+	width: 100%;
+}
+.sticked {
+	padding-top: 425px;
+}
+.sticked #gate-menu {
+	position: fixed;
+	top: 0;
+	left: 0;
+	max-height: 385px;
+	overflow-y: hidden;
+}
+#getting-started p {
+	padding-top: 20px;
+	color: #fff;
+	-webkit-font-smoothing: antialiased;
+	font-family: 'HelveticaNeue-Light', 'HelveticaNeue', arial;
+	font-weight: lighter;
+	font-size: 1.2em;
+}
+#gate-menu {
+	background-color: #17171A;
+	width: 100%;
+	text-align: center;
+}
+#gate-menu a {
+	color: #fff;
+}
+#gate-menu li {
+	display: inline-block;
+	margin: 0 20px;
+	margin-top: 30px;
+}
+#gate-menu li a {
+	background-repeat: no-repeat;
+	background-size: 50px;
+	background-position: top center;
+	display: block;
+	width: 80px;
+	height: 50px;
+	padding-top: 100px;
+	-webkit-font-smoothing: antialiased;
+	font-family: 'HelveticaNeue-Light', 'HelveticaNeue', arial;
+	font-size: 1.2em;
+}
+#gate-menu li:nth-child(1) a {
+	background-image: url('../img/gate/not.svg');
+}
+#gate-menu li:nth-child(2) a {
+	background-image: url('../img/gate/and.svg');
+}
+#gate-menu li:nth-child(3) a {
+	background-image: url('../img/gate/nand.svg');
+}
+#gate-menu li:nth-child(4) a {
+	background-image: url('../img/gate/or.svg');
+}
+#gate-menu li:nth-child(5) a {
+	background-image: url('../img/gate/nor.svg');
+}
+#gate-menu li:nth-child(6) a {
+	background-image: url('../img/gate/xor.svg');
+}
+#gate-menu li:nth-child(7) a {
+	background-image: url('../img/gate/xnor.svg');
+}
+#gate-menu h2 {
+	color: #fff;
+	font-size: 3em;
+	margin-top: 100px;
+	padding-bottom: 50px;
+	-webkit-font-smoothing: antialiased;
+	font-family: 'HelveticaNeue-Light', 'HelveticaNeue', arial;
+	font-weight: lighter;
+}
+
+
+table {
+	border-collapse: collapse;
+}
+th, td {
+	border: 1px #333 solid;
+	padding: 5px 10px;
+	text-align: center;
+}
+th {
+	background-color: #222C31;
+	color: #fff;
+}
+tr.current {
+	background-color: #D3D5D6;
+}
+
+
+#gates h1 {
+	padding-top: 80px;
+}
+#gates h2 {
+	font-size: 1.5em;
+}
+#gates section div {
+	width: 600px;
+	margin: 0 auto;
+	text-align: left;
+}
+#gates canvas {
+	width: 210px;
+	height: 250px;
+	background-color: red;
+}
+#gates table {
+	float: right;
+}
+
+
+
+
+#experiment {
+	padding: 64px 0 150px 0;
+	color: #fff;
+	text-align: center;
+	-webkit-font-smoothing: antialiased;
+}
+#experiment p {
+	width: 600px;
+	margin: 0 auto;
+}
+#experiment h2 {
+	font-size: 3em;
+	margin-top: 100px;
+	padding-bottom: 20px;
+	-webkit-font-smoothing: antialiased;
+	font-family: 'HelveticaNeue-Light', 'HelveticaNeue', arial;
+	font-weight: lighter;
+}
