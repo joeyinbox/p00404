@@ -15,8 +15,9 @@ function Pointer(canvas) {
 	
 	// Add event listener for touch events
 	this.canvas.addEventListener('touchmove', this.onMove.bind(this), false);
-	this.canvas.addEventListener('ontouchstart', this.onStart.bind(this), false);
-	this.canvas.addEventListener('ontouchend', this.onEnd.bind(this), false);
+	this.canvas.addEventListener('touchstart', this.onStart.bind(this), false);
+	this.canvas.addEventListener('touchend', this.onEnd.bind(this), false);
+	this.canvas.addEventListener('touchcancel', this.onEnd.bind(this), false);
 }
 
 Pointer.prototype.onStart = function(e) {
@@ -29,28 +30,32 @@ Pointer.prototype.onStart = function(e) {
 Pointer.prototype.onMove = function(e) {
 	e.preventDefault();
 	
+	var x = (e.hasOwnProperty('offsetX')?e.offsetX:(e.hasOwnProperty('pageX')?e.pageX:0));
+	var y = (e.hasOwnProperty('offsetY')?e.offsetY:(e.hasOwnProperty('pageY')?e.pageY:0));
+	
 	if(this.dragging) {
-		this.distance.x += e.offsetX-this.x;
-		this.distance.y += e.offsetY-this.y;
+		this.distance.x += x-this.x;
+		this.distance.y += y-this.y;
 	}
 	
-	this.x = e.offsetX;
-	this.y = e.offsetY;
-	
-	// If the user is currently pressing on the canvas, then he is dragging
-	//this.dragging = this.pressed;
+	this.x = x;
+	this.y = y;
 	
 	return false;
 }
 
 Pointer.prototype.onEnd = function(e) {
+	
 	e.preventDefault();
+	
 	this.pressed = false;
 	this.dragging = false;
 	this.busy = null;
 	
 	this.distance.x = 0;
 	this.distance.y = 0;
+	this.x = 0;
+	this.y = 0;
 	
 	return false;
 }
