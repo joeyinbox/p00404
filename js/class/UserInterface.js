@@ -22,14 +22,21 @@ function UserInterface() {
 	this.canvas = document.getElementById('canvas');
 	this.context = this.canvas.getContext("2d");
 	
+	// Adapt the canvas size to the viewport
+	var that = this;
+	$(window).resize(function() {
+		that.adaptCanvas();
+	});
+	this.adaptCanvas();
+	
 	// Declare all gate types by their class name
+	this.gateType.push(NotGate);
 	this.gateType.push(AndGate);
 	this.gateType.push(NandGate);
 	this.gateType.push(OrGate);
 	this.gateType.push(NorGate);
 	this.gateType.push(XorGate);
 	this.gateType.push(XnorGate);
-	this.gateType.push(NotGate);
 	
 	// Load resources into memory
 	this.loadResources();
@@ -242,4 +249,21 @@ UserInterface.prototype.getResourceSize = function(type) {
 		// Create a new Gate of this particular type
 		return {width:this.resource[type].width, height:this.resource[type].height};
 	}
+};
+
+
+/**
+ * Adapt the size of the canvas to the viewport
+ * 
+ * @param	none
+ * @return	void
+ *
+ * Modification history
+ * Version	Modifier	Date		Change			Reason
+ * 0.1		Joey		03-22-2014	First release	Requirements
+ */
+UserInterface.prototype.adaptCanvas = function(type) {
+	this.canvas.width = window.innerWidth-parseInt($('#menu').outerWidth());
+    this.canvas.height = window.innerHeight-parseInt($('header.nav').outerHeight());
+	$('#menu').css('height', this.canvas.height);
 };
