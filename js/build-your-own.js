@@ -2,13 +2,14 @@ $(function(){
 	
 	var ui = new UserInterface();
 	
-	$('#button').on('click', function() {
-		ui.addGate(Math.round(Math.random()*1000)%7);
+	$('#gates a').on('click', function() {
+		ui.addGate($(this).data('type'));
 	});
 	
-	$('#button2').on('click', function() {
-		ui.removeGate(ui.gateList[Math.round(Math.random()*10000)%ui.gateList.length]);
-	});
+	
+	
+	
+	
 	
 	
 	
