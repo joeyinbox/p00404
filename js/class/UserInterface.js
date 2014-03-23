@@ -53,14 +53,21 @@ function UserInterface() {
 	this.optionId.push('unlink');
 	this.optionId.push('remove');
 	this.optionId.push('toggleState');
+	this.optionId.push('cancel');
+	this.optionId.push('none');
+	
+	this.currentAction = this.optionId.indexOf('select');
+	this.currentActionOrigin = null;
+	
+	// Stack to trace the bubbling effect when toggling wire states to detect unknown state
+	this.stacktrace = [];
+	this.flaggedStacktrace = [];
 	
 	this.color = [];
-	this.color.push('#000000');
-	this.color.push('#02AE30');
-	this.color.push('#B42702');
-	this.color.push('#000000');
-	this.color.push('#000000');
-	// TODO: unknown and underpowered
+	this.color.push('#000000'); // idle
+	this.color.push('#02AE30'); // powered
+	this.color.push('#4D71F2'); // unknown
+	this.color.push('#B42702'); // underpowered
 	
 	// Handle mouse events
 	this.pointer = new Pointer(this.canvas);
@@ -345,11 +352,35 @@ UserInterface.prototype.selectOption = function(option) {
 			}
 			break;
 		case 'link':
-			console.log('link please');
+			if(this.currentAction===this.optionId.indexOf('link') && this.currentActionOrigin!==null) {
+				if(this.currentActionOrigin.link(this.pointer.contextualMenuSource)) {
+					this.currentAction = this.optionId.indexOf('select');
+					this.currentActionOrigin = null;
+				}
+			}
+			else {
+				this.currentAction = this.optionId.indexOf('link');
+				this.currentActionOrigin = this.pointer.contextualMenuSource;
+			}
 			break;
 		case 'unlink':
-			console.log('unlink please');
+			if(this.currentAction===this.optionId.indexOf('unlink') && this.currentActionOrigin!==null) {
+				if(this.currentActionOrigin.unlink(this.pointer.contextualMenuSource)) {
+					this.currentAction = this.optionId.indexOf('select');
+					this.currentActionOrigin = null;
+				}
+			}
+			else {
+				this.currentAction = this.optionId.indexOf('unlink');
+				this.currentActionOrigin = this.pointer.contextualMenuSource;
+			}
 			break;
+		case 'none':
+			// do nothing
+			break;
+		default:
+			this.currentAction = this.optionId.indexOf('select');
+			this.currentActionOrigin = null;
 	}
 	
 	this.hideMenu();

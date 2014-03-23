@@ -22,6 +22,9 @@ InputWire.prototype.link = function(output) {
 	if(this.linkedTo===null && output.constructor.name==="OutputWire" && this.belongsTo!==output.belongsTo) {
 		this.linkedTo = output;
 		this.state = output.state;
+		output.link(this);
+		
+		this.belongsTo.updateOutputState();
 		
 		return true;
 	}
@@ -97,8 +100,6 @@ InputWire.prototype.setState = function(state) {
  * 0.1		Joey		03-22-2014	First release	Requirements
  */
 InputWire.prototype.pointerInteraction = function() {
-	this.ui.pointer.setContextualMenuSource(this);
-	
 	// Get available options for this wire
 	var options = [];
 	
@@ -107,17 +108,81 @@ InputWire.prototype.pointerInteraction = function() {
 			id: this.ui.optionId.indexOf('toggleState'),
 			text: 'Toggle the state'
 		});
-		options.push({
-			id: this.ui.optionId.indexOf('link'),
-			text: 'Link this wire'
-		});
 	}
-	else {
+	
+	switch(this.ui.currentAction) {
+		case this.ui.optionId.indexOf('select'):
+			if(this.linkedTo===null) {
+				options.push({
+					id: this.ui.optionId.indexOf('link'),
+					text: 'Link this wire'
+				});
+			}
+			else {
+				options.push({
+					id: this.ui.optionId.indexOf('unlink'),
+					text: 'Unlink this wire'
+				});
+			}
+			break;
+		case this.ui.optionId.indexOf('link'):
+			if(this.ui.currentActionOrigin!==null) {
+				if(this.ui.currentActionOrigin===this) {
+					options.push({
+						id: this.ui.optionId.indexOf('cancel'),
+						text: 'Cancel linking'
+					});
+				}
+				else if(this.ui.currentActionOrigin.belongsTo!=this.belongsTo && this.ui.currentActionOrigin.constructor.name==='OutputWire' && this.linkedTo===null) {
+					options.push({
+						id: this.ui.optionId.indexOf('link'),
+						text: 'Link to this wire'
+					});
+				}
+			}
+			
+			if(this.linkedTo!==null) {
+				options.push({
+					id: this.ui.optionId.indexOf('unlink'),
+					text: 'Unlink this wire'
+				});
+			}
+			break
+		case this.ui.optionId.indexOf('unlink'):
+			if(this.linkedTo===null) {
+				options.push({
+					id: this.ui.optionId.indexOf('link'),
+					text: 'Link this wire'
+				});
+			}
+			else if(this.ui.currentActionOrigin!==null) {
+				if(this.ui.currentActionOrigin===this) {
+					options.push({
+						id: this.ui.optionId.indexOf('cancel'),
+						text: 'Cancel unlinking'
+					});
+				}
+				else if(this.ui.currentActionOrigin.belongsTo!=this.belongsTo && this.ui.currentActionOrigin.constructor.name==='OutputWire' && this.ui.currentActionOrigin.linkedTo.indexOf(this)!==-1) {
+					options.push({
+						id: this.ui.optionId.indexOf('link'),
+						text: 'Unlink from this wire'
+					});
+				}
+			}
+			break;
+	}
+	
+	if(options.length===0) {
 		options.push({
-			id: this.ui.optionId.indexOf('unlink'),
-			text: 'Unlink this wire'
+			id: this.ui.optionId.indexOf('disabled'),
+			text: 'No action available'
 		});
 	}
 	
+	if(this.ui.currentActionOrigin===null) {
+		this.ui.currentActionOrigin = this;
+	}
+	
+	this.ui.pointer.setContextualMenuSource(this);
 	this.ui.displayMenu(options);
 };
