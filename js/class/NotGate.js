@@ -43,8 +43,13 @@ NotGate.getResource = function() {
 NotGate.prototype.updateOutputState = function() {
 	// Assert if the state of the output has changed
 	if(this.input.state===this.input.wireStateId.indexOf('powered')) {
-		if(this.output.state!==this.output.wireStateId.indexOf('idle')){
+		if(this.output.state!==this.output.wireStateId.indexOf('idle')) {
 			this.output.setState('idle');
+		}
+	}
+	else if(this.input.state===this.input.wireStateId.indexOf('unknown')) {
+		if(this.output.state!==this.output.wireStateId.indexOf('unknown')) {
+			this.output.setState('unknown');
 		}
 	}
 	else if(this.output.state!==this.output.wireStateId.indexOf('powered')) {

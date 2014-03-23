@@ -47,6 +47,18 @@ OrGate.prototype.updateOutputState = function() {
 			this.output.setState('powered');
 		}
 	}
+	// If both input are unknown or at least one is sure to be false, the output is unknown
+	else if((this.input.state===this.input.wireStateId.indexOf('unknown') 
+			&& (this.input2.state===this.input2.wireStateId.indexOf('unknown') 
+				|| this.input2.state===this.input2.wireStateId.indexOf('idle') 
+				|| this.input2.state===this.input2.wireStateId.indexOf('underpowered'))) 
+		|| ((this.input.state===this.input.wireStateId.indexOf('idle') 
+			|| this.input.state===this.input.wireStateId.indexOf('underpowered')) 
+				&& this.input2.state===this.input2.wireStateId.indexOf('unknown'))) {
+		if(this.output.state!==this.output.wireStateId.indexOf('unknown')) {
+			this.output.setState('unknown');
+		}
+	}
 	else if(this.output.state!==this.output.wireStateId.indexOf('idle')) {
 		this.output.setState('idle');
 	}

@@ -42,7 +42,15 @@ XorGate.getResource = function() {
  */
 XorGate.prototype.updateOutputState = function() {
 	// Assert if the state of the output has changed
-	if(this.input.state!==this.input2.state) {
+	// If at least one of the inputs is unknown, so do the output
+	if(this.input.state===this.input.wireStateId.indexOf('unknown') || this.input2.state===this.input2.wireStateId.indexOf('unknown')) {
+		if(this.output.state!==this.output.wireStateId.indexOf('unknown')) {
+			this.output.setState('unknown');
+		}
+	}
+	// If one input is sure to be true and the other one is either idle or underpowered
+	else if(((this.input.state===this.input.wireStateId.indexOf('idle') || this.input.state===this.input.wireStateId.indexOf('underpowered')) && this.input2.state===this.input2.wireStateId.indexOf('powered')) 
+		|| (this.input.state===this.input.wireStateId.indexOf('powered') && (this.input2.state===this.input2.wireStateId.indexOf('idle') || this.input2.state===this.input2.wireStateId.indexOf('underpowered')))) {
 		if(this.output.state!==this.output.wireStateId.indexOf('powered')) {
 			this.output.setState('powered');
 		}

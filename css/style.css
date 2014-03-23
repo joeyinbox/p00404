@@ -410,11 +410,14 @@ li.link a {
 li.unlink a {
 	background: url('../img/tool/link-remove.svg') no-repeat;
 }
-li.remove a {
+li.remove a, li.cancel a {
 	background: url('../img/tool/remove.svg') no-repeat;
 }
 li.toggleState a {
 	background: url('../img/tool/toggle-state.svg') no-repeat;
+}
+li.none a {
+	background: url('../img/tool/none.svg') no-repeat;
 }
 
 .build-your-own #canvas {
@@ -469,6 +472,12 @@ li.toggleState a {
 	color: #fff;
 }
 
+#contextualMenu li.none a, #contextualMenu li.none:hover a {
+	color: #ccc;
+}
+#contextualMenu li.none:hover {
+	background-color: #fff;
+}
 
 
 

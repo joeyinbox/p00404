@@ -41,8 +41,16 @@ XnorGate.getResource = function() {
  * 0.1		Joey		23-03-2014	First release	Requirements
  */
 XnorGate.prototype.updateOutputState = function() {
-	// Assert if the state of the output has changed
-	if(this.input.state===this.input2.state) {
+	// If at least one of the inputs is unknown, so do the output
+	if(this.input.state===this.input.wireStateId.indexOf('unknown') || this.input2.state===this.input2.wireStateId.indexOf('unknown')) {
+		if(this.output.state!==this.output.wireStateId.indexOf('unknown')) {
+			this.output.setState('unknown');
+		}
+	}
+	// If both inputs are either idle or underpowered; or if both inputs are true
+	else if(((this.input.state===this.input.wireStateId.indexOf('idle') || this.input.state===this.input.wireStateId.indexOf('underpowered')) 
+			&& (this.input2.state===this.input2.wireStateId.indexOf('idle') || this.input2.state===this.input2.wireStateId.indexOf('underpowered')))
+		|| (this.input.state===this.input.wireStateId.indexOf('powered') && this.input2.state===this.input2.wireStateId.indexOf('powered'))) {
 		if(this.output.state!==this.output.wireStateId.indexOf('powered')) {
 			this.output.setState('powered');
 		}

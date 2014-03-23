@@ -42,9 +42,18 @@ NandGate.getResource = function() {
  */
 NandGate.prototype.updateOutputState = function() {
 	// Assert if the state of the output has changed
-	if(this.input.state===this.input.wireStateId.indexOf('idle') || this.input2.state===this.input2.wireStateId.indexOf('idle')) {
+	if(this.input.state===this.input.wireStateId.indexOf('idle') || this.input.state===this.input.wireStateId.indexOf('underpowered') 
+	|| this.input2.state===this.input2.wireStateId.indexOf('idle') || this.input2.state===this.input.wireStateId.indexOf('underpowered')) {
 		if(this.output.state!==this.output.wireStateId.indexOf('powered')) {
 			this.output.setState('powered');
+		}
+	}
+	// If both input are unknown or at least one is sure to be true, the output is unknown
+	else if((this.input.state===this.input.wireStateId.indexOf('unknown') && this.input2.state===this.input2.wireStateId.indexOf('unknown'))
+		 || (this.input.state===this.input.wireStateId.indexOf('unknown') && this.input2.state===this.input2.wireStateId.indexOf('powered')) 
+		 || (this.input.state===this.input.wireStateId.indexOf('powered') && this.input2.state===this.input2.wireStateId.indexOf('unknown'))) {
+		if(this.output.state!==this.output.wireStateId.indexOf('unknown')) {
+			this.output.setState('unknown');
 		}
 	}
 	else if(this.output.state!==this.output.wireStateId.indexOf('idle')) {
