@@ -78,16 +78,17 @@ body.home #intro div {
 	vertical-align: middle;
 	color: #fff;
 }
-body.home #intro hgroup {
+body.home #intro .overlay div {
+	position: absolute;
 	width: 720px;
+	margin-left: -360px;
+	margin-top: -80px;
+	max-height: 200px;
+	left: 50%;
 }
 body.home #intro p, body.home #intro div {
 	width: 600px;
 	margin: 0 auto;
-}
-body.home #intro hgroup {
-	position: relative;
-	margin: 0 auto 30px;
 }
 body.home #intro h1, body.home #intro p {
 	-webkit-font-smoothing: antialiased;	
@@ -196,13 +197,10 @@ body.home header nav.main ul li a {
 }
 body.home header nav.main ul li.selected a, header nav.main ul li a:hover {
     opacity: 1;
-    -ms-filter: none;
-    filter: none;
 }
 
 
 body.home #content {
-    zoom: 1;
     width: 100%;
     height: 100%;
     padding-bottom: 50px;
