@@ -164,7 +164,7 @@ InputWire.prototype.pointerInteraction = function() {
 				}
 				else if(this.ui.currentActionOrigin.belongsTo!=this.belongsTo && this.ui.currentActionOrigin.constructor.name==='OutputWire' && this.ui.currentActionOrigin.linkedTo.indexOf(this)!==-1) {
 					options.push({
-						id: this.ui.optionId.indexOf('link'),
+						id: this.ui.optionId.indexOf('unlink'),
 						text: 'Unlink from this wire'
 					});
 				}

@@ -218,7 +218,7 @@ OutputWire.prototype.pointerInteraction = function() {
 				// If the wire which originated the current action is an external input linked to this wire
 				else if(this.ui.currentActionOrigin.belongsTo!=this.belongsTo && this.ui.currentActionOrigin.constructor.name==='InputWire' && this.linkedTo.indexOf(this.ui.currentActionOrigin)!==-1) {
 					options.push({
-						id: this.ui.optionId.indexOf('link'),
+						id: this.ui.optionId.indexOf('unlink'),
 						text: 'Unlink from this wire'
 					});
 				}
