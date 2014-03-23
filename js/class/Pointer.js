@@ -6,6 +6,7 @@ function Pointer(canvas) {
 	this.pressed = false;
 	this.dragging = false;
 	this.busy = null;
+	this.contextualMenu = false;
 	
 	// Add event listener for regular mouse events
 	this.canvas.addEventListener('mousemove', this.onMove.bind(this), false);
@@ -45,7 +46,6 @@ Pointer.prototype.onMove = function(e) {
 }
 
 Pointer.prototype.onEnd = function(e) {
-	
 	e.preventDefault();
 	
 	this.pressed = false;
@@ -102,4 +102,8 @@ Pointer.prototype.setBusyWith = function(object) {
 
 Pointer.prototype.isBusyWith = function(object) {
 	return (object===this.busy);
+}
+
+Pointer.prototype.isBusy = function() {
+	return (this.busy!==null);
 }

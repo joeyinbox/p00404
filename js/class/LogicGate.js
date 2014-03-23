@@ -81,7 +81,7 @@ LogicGate.prototype.getPosition = function() {
 
 
 /**
- * Draws LogicGate on canvas element
+ * Update the status of the current gate
  * 
  * @param	none
  * @return	void
@@ -91,14 +91,22 @@ LogicGate.prototype.getPosition = function() {
  * 0.1		Joey		20-03-2014	First release	Requirements
  */
 LogicGate.prototype.update = function() {
+	// Assert if the pointer is interacting with the current gate
 	if(this.ui.pointer.isBusyWith(this)) {
 		// The gate is currently handled by the pointer
 		var distance = this.ui.pointer.getDistance();
 		this.setPosition(this.x+distance.x, this.y+distance.y);
 	}
-	else if(this.ui.pointer.isHovering(this) && this.ui.pointer.pressed===true && this.ui.pointer.dragging===false) {
-		// The gate is hovered
+	else if(!this.ui.pointer.isBusy() && this.ui.pointer.isHovering(this) && this.ui.pointer.pressed===true && this.ui.pointer.dragging===false) {
+		// The gate is hovered while clicking
 		this.ui.pointer.dragging = true;
 		this.ui.pointer.setBusyWith(this);
+	}
+	
+	// Assert if the pointer is interacting with the output wire
+	if(!this.ui.pointer.isBusy()) {
+		if(this.ui.pointer.isHovering(this.output) && this.ui.pointer.pressed===true && this.ui.pointer.dragging===false) {
+			this.output.pointerInteraction();
+		}
 	}
 }

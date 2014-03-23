@@ -68,3 +68,40 @@ InputWire.prototype.unlink = function() {
 		this.linkedTo = null;
 	}
 };
+
+
+/**
+ * Handle the interaction with the pointer
+ * 
+ * @param	none
+ * @return	void
+ *
+ * Modification history
+ * Version	Modifier	Date		Change			Reason
+ * 0.1		Joey		03-22-2014	First release	Requirements
+ */
+InputWire.prototype.pointerInteraction = function() {
+	this.ui.pointer.setBusyWith(this);
+	
+	// Get available options for this wire
+	var options = [];
+	
+	if(this.linkedTo===null) {
+		options.push({
+			id: this.ui.optionId.indexOf('toggleState'),
+			text: 'Toggle the state'
+		});
+		options.push({
+			id: this.ui.optionId.indexOf('link'),
+			text: 'Link this wire'
+		});
+	}
+	else {
+		options.push({
+			id: this.ui.optionId.indexOf('unlink'),
+			text: 'Unlink this wire'
+		});
+	}
+	
+	this.ui.displayMenu(options);
+};

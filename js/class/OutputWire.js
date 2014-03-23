@@ -130,7 +130,7 @@ OutputWire.prototype.unlink = function(input) {
  * Version	Modifier	Date		Change			Reason
  * 0.1		Name		mm-dd-yyyy	First release	Requirements
  */
-Wire.prototype.setState = function(state) {
+OutputWire.prototype.setState = function(state) {
 	if(wireStateId.indexOf(state)!==-1) {
 		this.state = state;
 		
@@ -139,4 +139,35 @@ Wire.prototype.setState = function(state) {
 			this.linkedTo[i].state = state;
 		}
 	}
+};
+
+
+/**
+ * Handle the interaction with the pointer
+ * 
+ * @param	none
+ * @return	void
+ *
+ * Modification history
+ * Version	Modifier	Date		Change			Reason
+ * 0.1		Joey		03-22-2014	First release	Requirements
+ */
+OutputWire.prototype.pointerInteraction = function() {
+	this.ui.pointer.setBusyWith(this);
+	
+	// Get available options
+	var options = [];
+	options.push({
+		id: this.ui.optionId.indexOf('link'),
+		text: 'Link this wire'
+	});
+	
+	if(this.linkedTo.length>0) {
+		options.push({
+			id: this.ui.optionId.indexOf('unlink'),
+			text: 'Unlink this wire'
+		});
+	}
+	
+	this.ui.displayMenu(options);
 };

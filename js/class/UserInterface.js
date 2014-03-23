@@ -29,6 +29,12 @@ function UserInterface() {
 	});
 	this.adaptCanvas();
 	
+	// Initialize an eventual contextual menu
+	$('#contextualMenu').on('mouseleave', this.hideMenu.bind(this));
+	$('#contextualMenu').on('click', 'a', function() {
+		that.selectOption($(this).data('type'));
+	});
+	
 	// Declare all gate types by their class name
 	this.gateType.push(NotGate);
 	this.gateType.push(AndGate);
@@ -40,6 +46,13 @@ function UserInterface() {
 	
 	// Load resources into memory
 	this.loadResources();
+	
+	// Declare all options
+	this.optionId.push('select');
+	this.optionId.push('link');
+	this.optionId.push('unlink');
+	this.optionId.push('remove');
+	this.optionId.push('toggleState');
 	
 	this.color = [];
 	this.color['idle'] = '#000000';
@@ -266,4 +279,59 @@ UserInterface.prototype.adaptCanvas = function(type) {
 	this.canvas.width = window.innerWidth-parseInt($('#menu').outerWidth());
     this.canvas.height = window.innerHeight-parseInt($('header.nav').outerHeight());
 	$('#menu').css('height', this.canvas.height);
+};
+
+
+/**
+ * Display a contextual menu to interact with a component
+ * 
+ * @param	options(array[int])	Identifier of options from the optionId array
+ * @return	void
+ *
+ * Modification history
+ * Version	Modifier	Date		Change			Reason
+ * 0.1		Joey		03-22-2014	First release	Requirements
+ */
+UserInterface.prototype.displayMenu = function(options) {
+	var content = '';
+	for(var i=0; i<options.length; i++) {
+		content += '<li class="'+this.optionId[options[i].id]+'"><a data-type="'+options[i].id+'" href="#">'+options[i].text+'</li>';
+	}
+	
+	var position = this.pointer.getPosition();
+	$('#contextualMenu').html(content).css({'top': position.y, 'left': position.x+parseInt($('#menu').outerWidth())}).fadeIn(200);
+	
+	this.pointer.contextualMenu = true;
+};
+
+
+/**
+ * Hide the contextual menu to interact with a component
+ * 
+ * @param	none
+ * @return	void
+ *
+ * Modification history
+ * Version	Modifier	Date		Change			Reason
+ * 0.1		Joey		03-22-2014	First release	Requirements
+ */
+UserInterface.prototype.hideMenu = function() {
+	$('#contextualMenu').fadeOut(200);
+	this.pointer.contextualMenu = false;
+};
+
+
+/**
+ * Select an option in the contextual menu
+ * 
+ * @param	option(int)
+ * @return	void
+ *
+ * Modification history
+ * Version	Modifier	Date		Change			Reason
+ * 0.1		Joey		03-22-2014	First release	Requirements
+ */
+UserInterface.prototype.selectOption = function(option) {
+	console.log(option);
+	this.hideMenu();
 };

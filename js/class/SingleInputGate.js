@@ -4,6 +4,7 @@ function SingleInputGate(ui, type, x, y) {
 	this.input = new InputWire(ui, this, 1);
 }
 SingleInputGate.prototype = new LogicGate();
+SingleInputGate.prototype.parent = LogicGate.prototype;
 SingleInputGate.prototype.constructor = SingleInputGate;
 
 
@@ -37,3 +38,24 @@ SingleInputGate.prototype.drawWires = function() {
 	this.input.drawWire();
 	this.output.drawWire();
 };
+
+
+/**
+ * Update the status of the current gate
+ * 
+ * @param	none
+ * @return	void
+ *
+ * Modification history
+ * Version	Modifier	Date		Change			Reason
+ * 0.1		Joey		20-03-2014	First release	Requirements
+ */
+SingleInputGate.prototype.update = function() {
+	// Assert if the pointer is interacting with the current gate
+	this.parent.update.call(this);
+	
+	// Assert if the pointer is interacting with the wires
+	if(!this.ui.pointer.isBusy() && this.ui.pointer.isHovering(this.input) && this.ui.pointer.pressed===true && this.ui.pointer.dragging===false) {
+		this.input.pointerInteraction();
+	}
+}
