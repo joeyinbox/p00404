@@ -3,6 +3,8 @@ function InputWire(ui, gate, shift) {
 	
 	this.linkedTo = null;
 	this.shift = shift;
+	
+	this.updateCount = 0;
 }
 InputWire.prototype = new Wire();
 InputWire.prototype.constructor = InputWire;
@@ -84,8 +86,22 @@ InputWire.prototype.unlink = function() {
  * 0.1		Name		mm-dd-yyyy	First release	Requirements
  */
 InputWire.prototype.setState = function(state) {
-	this.state = this.wireStateId.indexOf(state) || this.wireStateId.indexOf('idle');
-	this.belongsTo.updateOutputState();
+	// Count how many times this wire has been changed in the current action
+	if(this.wireStateId.indexOf(state)!==this.state && ++this.updateCount>4) {
+		// Future calls will fall into the previous statement but will fail the following one, preventing therefore the bubbling effect to continue
+		if(this.state!==this.wireStateId.indexOf('unknown')) {
+			this.state = this.wireStateId.indexOf('unknown');
+			this.belongsTo.updateOutputState();
+		}
+	}
+	// The treshold has not been triggered yet
+	else {
+		this.state = this.wireStateId.indexOf(state) || this.wireStateId.indexOf('idle');
+		this.belongsTo.updateOutputState();
+	}
+	
+	// This method is recursive. As a result, the following statement will be called only after all update bubbling is finished
+	this.updateCount = 0;
 };
 
 

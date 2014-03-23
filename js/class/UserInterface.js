@@ -59,10 +59,6 @@ function UserInterface() {
 	this.currentAction = this.optionId.indexOf('select');
 	this.currentActionOrigin = null;
 	
-	// Stack to trace the bubbling effect when toggling wire states to detect unknown state
-	this.stacktrace = [];
-	this.flaggedStacktrace = [];
-	
 	this.color = [];
 	this.color.push('#000000'); // idle
 	this.color.push('#02AE30'); // powered
