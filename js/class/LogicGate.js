@@ -28,6 +28,8 @@ function LogicGate(ui, type, x, y) {
 	
 	this.x = x;
 	this.y = y;
+	
+	this.updateOutputState();
 }
 
 

@@ -131,12 +131,12 @@ OutputWire.prototype.unlink = function(input) {
  * 0.1		Name		mm-dd-yyyy	First release	Requirements
  */
 OutputWire.prototype.setState = function(state) {
-	if(wireStateId.indexOf(state)!==-1) {
-		this.state = state;
+	if(this.wireStateId.indexOf(state)!==-1) {
+		this.state = this.wireStateId.indexOf(state);
 		
 		// Change eventually any connected input
 		for(var i=0; i<this.linkedTo.length; i++) {
-			this.linkedTo[i].state = state;
+			this.linkedTo[i].state = this.state;
 		}
 	}
 };
@@ -153,7 +153,7 @@ OutputWire.prototype.setState = function(state) {
  * 0.1		Joey		03-22-2014	First release	Requirements
  */
 OutputWire.prototype.pointerInteraction = function() {
-	this.ui.pointer.setBusyWith(this);
+	this.ui.pointer.setContextualMenuSource(this);
 	
 	// Get available options
 	var options = [];

@@ -71,6 +71,22 @@ InputWire.prototype.unlink = function() {
 
 
 /**
+ * Set the state of the wire
+ * 
+ * @param	state(int)	Identifier of the state that will be set to the current wire
+ * @return	void
+ *
+ * Modification history
+ * Version	Modifier	Date		Change			Reason
+ * 0.1		Name		mm-dd-yyyy	First release	Requirements
+ */
+InputWire.prototype.setState = function(state) {
+	this.state = this.wireStateId.indexOf(state) || this.wireStateId.indexOf('idle');
+	this.belongsTo.updateOutputState();
+};
+
+
+/**
  * Handle the interaction with the pointer
  * 
  * @param	none
@@ -81,7 +97,7 @@ InputWire.prototype.unlink = function() {
  * 0.1		Joey		03-22-2014	First release	Requirements
  */
 InputWire.prototype.pointerInteraction = function() {
-	this.ui.pointer.setBusyWith(this);
+	this.ui.pointer.setContextualMenuSource(this);
 	
 	// Get available options for this wire
 	var options = [];

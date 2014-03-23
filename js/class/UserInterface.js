@@ -55,9 +55,11 @@ function UserInterface() {
 	this.optionId.push('toggleState');
 	
 	this.color = [];
-	this.color['idle'] = '#000000';
-	this.color['powered'] = '#02AE30';
-	this.color['linking'] = '#B42702';
+	this.color.push('#000000');
+	this.color.push('#02AE30');
+	this.color.push('#B42702');
+	this.color.push('#000000');
+	this.color.push('#000000');
 	// TODO: unknown and underpowered
 	
 	// Handle mouse events
@@ -293,6 +295,8 @@ UserInterface.prototype.adaptCanvas = function(type) {
  * 0.1		Joey		03-22-2014	First release	Requirements
  */
 UserInterface.prototype.displayMenu = function(options) {
+	this.pointer.contextualMenu = true;
+	
 	var content = '';
 	for(var i=0; i<options.length; i++) {
 		content += '<li class="'+this.optionId[options[i].id]+'"><a data-type="'+options[i].id+'" href="#">'+options[i].text+'</li>';
@@ -300,8 +304,6 @@ UserInterface.prototype.displayMenu = function(options) {
 	
 	var position = this.pointer.getPosition();
 	$('#contextualMenu').html(content).css({'top': position.y, 'left': position.x+parseInt($('#menu').outerWidth())}).fadeIn(200);
-	
-	this.pointer.contextualMenu = true;
 };
 
 
@@ -332,6 +334,23 @@ UserInterface.prototype.hideMenu = function() {
  * 0.1		Joey		03-22-2014	First release	Requirements
  */
 UserInterface.prototype.selectOption = function(option) {
-	console.log(option);
+	switch(this.optionId[option]) {
+		case 'toggleState':
+			// If the wire was not powered
+			if(this.pointer.contextualMenuSource.wireStateId.indexOf('idle')===this.pointer.contextualMenuSource.state) {
+				this.pointer.contextualMenuSource.setState('powered');
+			}
+			else {
+				this.pointer.contextualMenuSource.setState('idle');
+			}
+			break;
+		case 'link':
+			console.log('link please');
+			break;
+		case 'unlink':
+			console.log('unlink please');
+			break;
+	}
+	
 	this.hideMenu();
 };
