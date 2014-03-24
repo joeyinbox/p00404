@@ -1,13 +1,30 @@
+/**
+ * Constructor of the DualInputGate class which inherits from the LogicGate class
+ * 
+ * @param	ui(UserInterface)	Instance of the current user interface which coordinates everything
+ * @param	type(int)			General identifier of the type of the current gate
+ * @param	x(int)				X position of the gate within the graphical interface
+ * @param	y(int)				Y position of the gate within the graphical interface
+ * @return	void
+ *
+ * Modification history
+ * Version	Modifier	Date		Change							Reason
+ * 0.1.0	Joey		03-19-2014	First release					Requirements
+ * 0.2.0	Chris		03-20-2014	Add inputs creation				Requirements
+ * 0.2.3	Joey		03-21-2014	Add the shifted position		UX refinement
+ */
 function DualInputGate(ui, type, x, y) {
+	// Call the parent class constructor
 	LogicGate.apply(this, arguments);
 	
 	this.input = new InputWire(ui, this, 0);
 	this.input2 = new InputWire(ui, this, 2);
 }
-
+// Declare the inheritence-like pattern and override the constructor method
 DualInputGate.prototype = new LogicGate();
 DualInputGate.prototype.parent = LogicGate.prototype;
 DualInputGate.prototype.constructor = DualInputGate;
+
 
 /**
  * Remove all links made between the wires of this gate and the other ones
@@ -16,10 +33,12 @@ DualInputGate.prototype.constructor = DualInputGate;
  * @return	void
  *
  * Modification history
- * Version	Modifier	Date		Change			Reason
- * 0.1		Name		mm-dd-yyyy	First release	Requirements
+ * Version	Modifier	Date		Change					Reason
+ * 0.1.2	Usman		03-19-2014	First release			To include in the gate removing process
+ * 0.5.2	Chris		03-23-2014	Actual implementation	Requirements
  */
 DualInputGate.prototype.unlinkAllWire = function() {
+	// Forwards the action to both inputs and the output
 	this.input.unlink();
 	this.input2.unlink();
 	this.output.unlinkAll();
@@ -34,26 +53,10 @@ DualInputGate.prototype.unlinkAllWire = function() {
  *
  * Modification history
  * Version	Modifier	Date		Change			Reason
- * 0.1		Name		mm-dd-yyyy	First release	Requirements
+ * 0.2.0	Joey		03-20-2014	First release	Requirements
  */
 DualInputGate.prototype.drawWires = function() {
-	this.input.drawWire();
-	this.input2.drawWire();
-	this.output.drawWire();
-};
-
-
-/**
- * Draw wires of this gate
- * 
- * @param	none
- * @return	void
- *
- * Modification history
- * Version	Modifier	Date		Change			Reason
- * 0.1		Name		mm-dd-yyyy	First release	Requirements
- */
-DualInputGate.prototype.drawWires = function() {
+	// Forwards the action to both inputs and the output
 	this.input.drawWire();
 	this.input2.drawWire();
 	this.output.drawWire();
@@ -67,14 +70,15 @@ DualInputGate.prototype.drawWires = function() {
  * @return	void
  *
  * Modification history
- * Version	Modifier	Date		Change			Reason
- * 0.1		Joey		20-03-2014	First release	Requirements
+ * Version	Modifier	Date		Change				Reason
+ * 0.3.2	Joey		03-21-2014	First release		Requirements
+ * 0.4.0	Usman		03-23-2014	Call parent update	Requirements
  */
 DualInputGate.prototype.update = function() {
 	// Assert if the pointer is interacting with the current gate
 	this.parent.update.call(this);
 	
-	// Assert if the pointer is interacting with the wires
+	// Assert if the pointer is interacting with the input wires
 	if(!this.ui.pointer.isBusy()) {
 		if(this.ui.pointer.isHovering(this.input) && this.ui.pointer.pressed===true && this.ui.pointer.dragging===false) {
 			this.input.pointerInteraction();

@@ -1,15 +1,15 @@
 /**
  * Creates a Logic Gate Object used as a basis for sub classes
  * 
- * @param	UI(object)	UserInterface instance
- * @param	type(object)	LogicGate type
- * @param	x(int)	coordinate
- * @param	y(int)	coordinate 
+ * @param	ui(UserInterface)	Instance of the current user interface which coordinates everything
+ * @param	type(int)			General identifier of the type of the current gate
+ * @param	x(int)				X position of the gate within the graphical interface
+ * @param	y(int)				Y position of the gate within the graphical interface
  * @return	void
  *
  * Modification history
  * Version	Modifier	Date		Change			Reason
- * 0.1		Chris		19-03-2014	First release	Requirements
+ * 0.1.0	Chris		19-03-2014	First release	Requirements
  */
 function LogicGate(ui, type, x, y) {
 	if(ui===undefined) {
@@ -33,7 +33,6 @@ function LogicGate(ui, type, x, y) {
 }
 
 
-
 /**
  * Draws LogicGate on canvas element
  * 
@@ -42,11 +41,12 @@ function LogicGate(ui, type, x, y) {
  *
  * Modification history
  * Version	Modifier	Date		Change			Reason
- * 0.1		Chris		19-03-2014	First release	Requirements
+ * 0.1.0	Chris		19-03-2014	First release	Requirements
  */
 LogicGate.prototype.drawGate = function() {
 	this.ui.context.drawImage(this.ui.getResource(this.gateType), this.x, this.y, this.width, this.height);
 }
+
 
 /**
  * Sets the position of the gate
@@ -57,12 +57,13 @@ LogicGate.prototype.drawGate = function() {
  *
  * Modification history
  * Version	Modifier	Date		Change			Reason
- * 0.1		Chris		19-03-2014	First release	Requirements
+ * 0.1.0	Chris		19-03-2014	First release	Requirements
  */
 LogicGate.prototype.setPosition = function(x, y) {
 	this.x = x;
 	this.y = y;
 }
+
 
 /**
  * Gets the position of the gate
@@ -72,7 +73,7 @@ LogicGate.prototype.setPosition = function(x, y) {
  *
  * Modification history
  * Version	Modifier	Date		Change			Reason
- * 0.1		Chris		19-03-2014	First release	Requirements
+ * 0.1.0	Chris		19-03-2014	First release	Requirements
  */
 LogicGate.prototype.getPosition = function() {
 	return {
@@ -90,7 +91,7 @@ LogicGate.prototype.getPosition = function() {
  *
  * Modification history
  * Version	Modifier	Date		Change			Reason
- * 0.1		Joey		20-03-2014	First release	Requirements
+ * 0.1.0	Joey		20-03-2014	First release	Requirements
  */
 LogicGate.prototype.update = function() {
 	// Assert if the pointer is interacting with the current gate

@@ -1,8 +1,22 @@
+/**
+ * Constructor of the OutputWire class which inherits from the Wire class
+ * 
+ * @param	ui(UserInterface)	Instance of the current user interface which coordinates everything
+ * @param	gate(Wire)			Instance of the wire to whom belongs this input wire
+ * @return	void
+ *
+ * Modification history
+ * Version	Modifier	Date		Change										Reason
+ * 0.2.0	Joey		03-20-2014	First release								Requirements
+ * 0.3		Joey		03-23-2014	Add updateCount to detect unknown state		Issue #1 raised
+ */
 function OutputWire(ui, gate) {
+	// Call the parent class constructor
 	Wire.apply(this, arguments);
 	
 	this.linkedTo = [];
 }
+// Declare the inheritence-like pattern and override the constructor method
 OutputWire.prototype = new Wire();
 OutputWire.prototype.constructor = OutputWire;
 
@@ -14,8 +28,9 @@ OutputWire.prototype.constructor = OutputWire;
  * @return	boolean		To assert if the operation went well to get rid of the global linking flag
  *
  * Modification history
- * Version	Modifier	Date		Change			Reason
- * 0.1		Name		mm-dd-yyyy	First release	Requirements
+ * Version	Modifier	Date		Change					Reason
+ * 0.5.0	Usman		03-23-2014	First release			Requirements
+ * 0.5.4	Joey		03-23-2014	Check power limit		Requirements
  */
 OutputWire.prototype.link = function(input) {
 	if(input.constructor.name==="InputWire" && this.linkedTo.indexOf(input)===-1 && this.belongsTo!==input.belongsTo) {
@@ -39,7 +54,7 @@ OutputWire.prototype.link = function(input) {
  *
  * Modification history
  * Version	Modifier	Date		Change			Reason
- * 0.1		Name		mm-dd-yyyy	First release	Requirements
+ * 0.5.0	Joey		03-23-2014	First release	Requirements
  */
 OutputWire.prototype.drawLinks = function() {
 	for(var i=0; i<this.linkedTo.length; i++) {
@@ -68,11 +83,11 @@ OutputWire.prototype.drawLinks = function() {
  *
  * Modification history
  * Version	Modifier	Date		Change			Reason
- * 0.1		Name		mm-dd-yyyy	First release	Requirements
+ * 0.2.0	Joey		03-20-2014	First release	Requirements
  */
 OutputWire.prototype.getPosition = function() {
-	
 	var parentPosition = this.belongsTo.getPosition();
+	// Extra values added to the actual position correct the joint between the two lines to make it continuous
 	
 	return {
 		"x": parentPosition.x+(this.belongsTo.width/2),
@@ -89,7 +104,7 @@ OutputWire.prototype.getPosition = function() {
  *
  * Modification history
  * Version	Modifier	Date		Change			Reason
- * 0.1		Name		mm-dd-yyyy	First release	Requirements
+ * 0.5.2	Chris		03-23-2014	First release	Requirements
  */
 OutputWire.prototype.unlinkAll = function() {
 	for(var i=0; i<this.linkedTo.length; i++) {
@@ -109,7 +124,7 @@ OutputWire.prototype.unlinkAll = function() {
  *
  * Modification history
  * Version	Modifier	Date		Change			Reason
- * 0.1		Name		mm-dd-yyyy	First release	Requirements
+ * 0.5.2	Chris		03-23-2014	First release	Requirements
  */
 OutputWire.prototype.unlink = function(input) {
 	var index = this.linkedTo.indexOf(input);
@@ -131,8 +146,9 @@ OutputWire.prototype.unlink = function(input) {
  * @return	void
  *
  * Modification history
- * Version	Modifier	Date		Change			Reason
- * 0.1		Name		mm-dd-yyyy	First release	Requirements
+ * Version	Modifier	Date		Change							Reason
+ * 0.4.0	Joey		03-22-2014	First release					Requirements
+ * 0.5.4	Joey		03-23-2014	Handle underpowered state		Issue #1 raised
  */
 OutputWire.prototype.setState = function(state) {
 	if(this.wireStateId.indexOf(state)!==-1) {
@@ -158,8 +174,11 @@ OutputWire.prototype.setState = function(state) {
  * @return	void
  *
  * Modification history
- * Version	Modifier	Date		Change			Reason
- * 0.1		Joey		03-22-2014	First release	Requirements
+ * Version	Modifier	Date		Change												Reason
+ * 0.3.0	Joey		03-21-2014	First release										Requirements
+ * 0.3.1	Joey		03-21-2014	Call menu display method							Requirements
+ * 0.3.2	Joey		03-21-2014	Use ui action origin instead of pointer's one		Requirements
+ * 0.5.3	Chris		03-23-2014	Correct improper index								Bugfix #3
  */
 OutputWire.prototype.pointerInteraction = function() {
 	// Get available options
@@ -250,7 +269,7 @@ OutputWire.prototype.pointerInteraction = function() {
  *
  * Modification history
  * Version	Modifier	Date		Change			Reason
- * 0.1		Name		mm-dd-yyyy	First release	Requirements
+ * 0.5.4	Joey		03-23-2014	First release	Requirements
  */
 OutputWire.prototype.underPowered = function(input) {
 	if(this.linkedTo.length>=5) {

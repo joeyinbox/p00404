@@ -1,3 +1,15 @@
+/**
+ * Constructor of the Wire class
+ * 
+ * @param	ui(UserInterface)	Instance of the current user interface which coordinates everything
+ * @param	gate(Wire)			Instance of the wire to whom belongs this input wire
+ * @return	void
+ *
+ * Modification history
+ * Version	Modifier	Date		Change					Reason
+ * 0.2.0	Joey		03-20-2014	First release			Requirements
+ * 0.2.5	Joey		03-22-2014	Add unknown state		Issue #1 raised
+ */
 function Wire(ui, gate) {
 	this.wireStateId = [];
 	this.wireStateId.push('idle');
@@ -14,14 +26,14 @@ function Wire(ui, gate) {
 
 
 /**
- * Draw this wire
+ * Draw this wire on the ui canvas
  * 
  * @param	none
  * @return	void
  *
  * Modification history
  * Version	Modifier	Date		Change			Reason
- * 0.1		Name		mm-dd-yyyy	First release	Requirements
+ * 0.2.1	Joey		03-20-2014	First release	Requirements
  */
 Wire.prototype.drawWire = function() {
 	var from = this.getPosition();

@@ -1,16 +1,21 @@
 /**
- * Constructor of the AndGate class
+ * Constructor of the AndGate class which inherits from the DualInputGate class
  * 
- * @param	none
+ * @param	ui(UserInterface)	Instance of the current user interface which coordinates everything
+ * @param	type(int)			General identifier of the type of the current gate
+ * @param	x(int)				X position of the gate within the graphical interface
+ * @param	y(int)				Y position of the gate within the graphical interface
  * @return	void
  *
  * Modification history
- * Version	Modifier	Date		Change			Reason
- * 0.1		Name		mm-dd-yyyy	First release	Requirements
+ * Version	Modifier	Date		Change				Reason
+ * 0.1.0	Joey		03-19-2014	First release		Requirements
  */
 function AndGate(ui, type, x, y) {
+	// Call the parent class constructor
 	DualInputGate.apply(this, arguments);
 }
+// Declare the inheritence-like pattern and override the constructor method
 AndGate.prototype = new DualInputGate();
 AndGate.prototype.constructor = AndGate;
 
@@ -22,8 +27,8 @@ AndGate.prototype.constructor = AndGate;
  * @return	(string)	The resource path
  *
  * Modification history
- * Version	Modifier	Date		Change			Reason
- * 0.1		Name		mm-dd-yyyy	First release	Requirements
+ * Version	Modifier	Date		Change				Reason
+ * 0.1.1	Joey		03-19-2014	First release		Requirements
  */
 AndGate.getResource = function() {
 	return "img/gate/and.svg";
@@ -38,19 +43,21 @@ AndGate.getResource = function() {
  *
  * Modification history
  * Version	Modifier	Date		Change			Reason
- * 0.1		Joey		23-03-2014	First release	Requirements
+ * 0.4.1	Joey		03-22-2014	First release	Requirements
  */
 AndGate.prototype.updateOutputState = function() {
-	// Assert if the state of the output has changed
+	// Both inputs needs to be true to have a true output
 	if(this.input.state===this.input.wireStateId.indexOf('powered') && this.input2.state===this.input2.wireStateId.indexOf('powered')) {
+		// Update the state only if it change to prevent unnecessary bubbling
 		if(this.output.state!==this.output.wireStateId.indexOf('powered')) {
 			this.output.setState('powered');
 		}
 	}
-	// If both input are unknown or at least one is sure to be true, the output is unknown
+	// If both inputs are unknown or at least one is sure to be true, the output is unknown
 	else if((this.input.state===this.input.wireStateId.indexOf('unknown') && this.input2.state===this.input2.wireStateId.indexOf('unknown'))
 		 || (this.input.state===this.input.wireStateId.indexOf('unknown') && this.input2.state===this.input2.wireStateId.indexOf('powered')) 
 		 || (this.input.state===this.input.wireStateId.indexOf('powered') && this.input2.state===this.input2.wireStateId.indexOf('unknown'))) {
+		// Update the state only if it change to prevent unnecessary bubbling
 		if(this.output.state!==this.output.wireStateId.indexOf('unknown')) {
 			this.output.setState('unknown');
 		}
