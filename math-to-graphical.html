@@ -9,10 +9,54 @@
 	<link rel="apple-touch-icon-precomposed" href="apple-touch-icon-precomposed.png"/>
 	<link rel="stylesheet" href="css/normalize.3.0.0.css">
 	<link rel="stylesheet" href="css/style.css">
-	<script src="js/prefixfree.min.js"></script>
+	<script src="js/lib/prefixfree.min.js"></script>
 </head>
-<body>
-	<script src="js/jquery-1.11.0.min.js"></script>
+<body class="math-to-graphical ui">
+	<div id="wrapper">
+		<header class="nav">
+			<nav>
+				<ul>
+					<li><a href="./">Home</a></li>
+					<li><a href="build-your-own.html">Build your own</a></li>
+					<li><a href="quiz.html">Quiz</a></li>
+				</ul>
+			</nav>
+		</header>
+		<div id="content">
+			<section id="menu">
+				<ul id="gates">
+					<li class="not"><a data-type="0" href="#" title="add a NOT gate">Add a NOT gate</a></li>
+					<li class="and"><a data-type="1" href="#" title="add an AND gate">Add an AND gate</a></li>
+					<li class="nand"><a data-type="2" href="#" title="add a NAND gate">Add a NAND gate</a></li>
+					<li class="or"><a data-type="3" href="#" title="add an OR gate">Add an OR gate</a></li>
+					<li class="nor"><a data-type="4" href="#" title="add a NOR gate">Add a NOR gate</a></li>
+					<li class="xor"><a data-type="5" href="#" title="add a XOR gate">Add a XOR gate</a></li>
+					<li class="xnor"><a data-type="6" href="#" title="add a XNOR gate">Add a XNOR gate</a></li>
+				</ul>
+			</section>
+		
+			<section id="informations">
+				<h1>About this section</h1>
+				<p>A serie of mathematical expressions will be displayed and you have to represent them using graphical logic gates.<br />
+					When you think you have the correct answer, select the Validation button that will be displayed on the bottom right corner.
+				</p>
+				<a href="#" class="button next">Start the test!</a>
+			</section>
+		
+			<section id="validation">
+				<a href="#" class="button cancel">Cancel</a> <a href="#" class="button validate">Validate</a>
+			</section>
+		
+			<section id="board">
+				<canvas id="canvas" width="1600" height=1200></canvas>
+				<ul id="contextualMenu"></ul>
+			</section>
+			<footer class="ui">
+				<p><span>Oxford Brookes - Software Production Project - Team 2</span></p>
+			</footer>
+		</div>
+	</div>
+	<script src="js/lib/jquery-1.11.0.min.js"></script>
 	<script src="js/build/math-to-graphical.min.js"></script>
 </body>
 </html>

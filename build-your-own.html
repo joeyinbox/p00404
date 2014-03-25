@@ -9,63 +9,67 @@
 	<link rel="apple-touch-icon-precomposed" href="apple-touch-icon-precomposed.png"/>
 	<link rel="stylesheet" href="css/normalize.3.0.0.css">
 	<link rel="stylesheet" href="css/style.css">
-	<script src="js/prefixfree.min.js"></script>
+	<script src="js/lib/prefixfree.min.js"></script>
 </head>
-<body class="build-your-own">
-	<header class="nav">
-		<nav>
-			<ul>
-				<li><a href="./">Home</a></li>
-				<li><a href="math-to-graphical.html">Math to graphical</a></li>
-				<li><a href="quiz.html">Quiz</a></li>
-			</ul>
-		</nav>
-	</header>
-	<div id="content">
-		<section id="menu">
-			<ul id="gates">
-				<li class="not"><a data-type="0" href="#" title="add a NOT gate">Add a NOT gate</a></li>
-				<li class="and"><a data-type="1" href="#" title="add an AND gate">Add an AND gate</a></li>
-				<li class="nand"><a data-type="2" href="#" title="add a NAND gate">Add a NAND gate</a></li>
-				<li class="or"><a data-type="3" href="#" title="add an OR gate">Add an OR gate</a></li>
-				<li class="nor"><a data-type="4" href="#" title="add a NOR gate">Add a NOR gate</a></li>
-				<li class="xor"><a data-type="5" href="#" title="add a XOR gate">Add a XOR gate</a></li>
-				<li class="xnor"><a data-type="6" href="#" title="add a XNOR gate">Add a XNOR gate</a></li>
-			</ul>
-		</section>
+<body class="build-your-own ui">
+	<div id="wrapper">
+		<header class="nav">
+			<nav>
+				<ul>
+					<li><a href="./">Home</a></li>
+					<li><a href="math-to-graphical.html">Math to graphical</a></li>
+					<li><a href="quiz.html">Quiz</a></li>
+				</ul>
+			</nav>
+		</header>
+		<div id="content">
+			<section id="menu">
+				<ul id="gates">
+					<li class="not"><a data-type="0" href="#" title="add a NOT gate">Add a NOT gate</a></li>
+					<li class="and"><a data-type="1" href="#" title="add an AND gate">Add an AND gate</a></li>
+					<li class="nand"><a data-type="2" href="#" title="add a NAND gate">Add a NAND gate</a></li>
+					<li class="or"><a data-type="3" href="#" title="add an OR gate">Add an OR gate</a></li>
+					<li class="nor"><a data-type="4" href="#" title="add a NOR gate">Add a NOR gate</a></li>
+					<li class="xor"><a data-type="5" href="#" title="add a XOR gate">Add a XOR gate</a></li>
+					<li class="xnor"><a data-type="6" href="#" title="add a XNOR gate">Add a XNOR gate</a></li>
+				</ul>
+			</section>
 		
-		<section id="informations">
-			<h1>How to use it</h1>
-			<ul>
-				<li>Select gates from the left pane to add it to the board.</li>
-				<li>Drag gates to move them around the board.</li>
-				<li>Click on gates' wires to toggle their power status, link or unlink them.</li>
-			</ul>
-			<div id="results">
-				<table>
-					<tr>
-						<th>Input</th>
-						<th>Output</th>
-					</tr>
-					<tr class="current">
-						<td>1</td>
-						<td>0</td>
-					</tr>
-					<tr>
-						<td>0</td>
-						<td>1</td>
-					</tr>
-				</table>
-			</div>
-		</section>
+			<section id="informations">
+				<h1>How to use it</h1>
+				<ul>
+					<li>Select gates from the left pane to add it to the board.</li>
+					<li>Drag gates to move them around the board.</li>
+					<li>Click on gates' wires to toggle their power status, link or unlink them.</li>
+				</ul>
+				<div id="results">
+					<table>
+						<tr>
+							<th>Input</th>
+							<th>Output</th>
+						</tr>
+						<tr class="current">
+							<td>1</td>
+							<td>0</td>
+						</tr>
+						<tr>
+							<td>0</td>
+							<td>1</td>
+						</tr>
+					</table>
+				</div>
+			</section>
 		
-		<section id="board">
-			<canvas id="canvas" width="1600" height=1200></canvas>
-			<ul id="contextualMenu"></ul>
-		</section>
+			<section id="board">
+				<canvas id="canvas" width="1600" height=1200></canvas>
+				<ul id="contextualMenu"></ul>
+			</section>
+			<footer class="ui">
+				<p><span>Oxford Brookes - Software Production Project - Team 2</span></p>
+			</footer>
+		</div>
 	</div>
-	
-	<script src="js/jquery-1.11.0.min.js"></script>
+	<script src="js/lib/jquery-1.11.0.min.js"></script>
 	<script src="js/build/build-your-own.min.js"></script>
 </body>
 </html>
