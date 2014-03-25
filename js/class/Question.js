@@ -42,6 +42,7 @@ Question.prototype.addAnswer = function(text) {
  * 0.6.0	Joey		03-24-2014	First release		Requirements
  */
 Question.prototype.setCorrectAnswer = function(text) {
+	this.addAnswer(text);
 	this.answer = this.answerList.indexOf(text);
 }
 
