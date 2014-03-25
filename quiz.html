@@ -9,10 +9,57 @@
 	<link rel="apple-touch-icon-precomposed" href="apple-touch-icon-precomposed.png"/>
 	<link rel="stylesheet" href="css/normalize.3.0.0.css">
 	<link rel="stylesheet" href="css/style.css">
-	<script src="js/prefixfree.min.js"></script>
+	<script src="js/lib/prefixfree.min.js"></script>
 </head>
-<body>
-	<script src="js/jquery-1.11.0.min.js"></script>
+<body class="quiz">
+	<div id="result"></div>
+	<div id="wrapper">
+		<header class="nav">
+			<nav>
+				<ul>
+					<li><a href="./">Home</a></li>
+					<li><a href="build-your-own.html">Build your own</a></li>
+					<li><a href="math-to-graphical.html">Math to graphical</a></li>
+				</ul>
+			</nav>
+		</header>
+		<div id="content">
+			<div id="pre">
+				<h1>Ready to start a new quiz?</h1>
+				<p>You will need to choose the right answers among <span id="maxQuestion">X</span> random questions about logic gates and boolean algebra.</p>
+				<p>Each question worth 1 point.</p>
+				<p class="start">
+					<a class="button validate" href="#">Start now !</a>
+				</p>
+			</div>
+			
+			<div id="during">
+				<div id="state">
+					<p id="score">0 <span>points</span></p>
+					<p id="remaining"></p>
+				</div>
+				<h1></h1>
+				<ul></ul>
+				<section id="validation">
+					<a href="#" class="button cancel">Abort</a> <a href="#" class="button validate">Validate</a>
+				</section>
+			</div>
+			
+			<div id="post">
+				<h1>Congrats?</h1>
+				<p>You got <span>42</span> points.</p>
+				<p>That is quite impressive</p>
+				<p class="restart">
+					<a class="button validate" href="#">Restart a new quiz !</a>
+				</p>
+			</div>
+		
+			<footer class="quiz">
+				<p><span>Oxford Brookes - Software Production Project - Team 2</span></p>
+			</footer>
+		</div>
+	</div>
+	<script src="js/lib/jquery-1.11.0.min.js"></script>
 	<script src="js/build/quiz.min.js"></script>
 </body>
 </html>

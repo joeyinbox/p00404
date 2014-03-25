@@ -1,5 +1,5 @@
 $(function(){
 	
-	// Code here
+	var quiz = new Quiz();
 	
 });

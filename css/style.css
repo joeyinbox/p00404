@@ -12,6 +12,7 @@ body {
 	font-family: 'Helvetica Neue', Helvetica, Arial, 'Lucida Grande', sans-serif;
 	font-size: 100%;
 	color: #333;
+	height: 100%;
 }
 a {
 	text-decoration: none;
@@ -45,6 +46,46 @@ tr.current {
 	background-color: #D3D5D6;
 }
 
+
+
+#wrapper {
+	min-height: 100%;
+	position: relative;
+	height: auto !important;
+	height: 100%;
+}
+
+
+#content>footer {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    height: 50px;
+    overflow: hidden;
+    background: #222C31;
+}
+#content>footer.main p, #content>footer.quiz p {
+    text-align: center;
+}
+#content>footer.main a, #content>footer span {
+    color: #fff;
+    -webkit-font-smoothing: antialiased;
+    font-size: 11px;
+    text-decoration: none;
+}
+#content>footer.ui, #content>footer.quiz {
+	background: transparent;
+	bottom: 20px;
+	z-index: -1;
+}
+#content>footer.ui span, #content>footer.quiz span {
+	color: #333;
+}
+#content>footer.ui p {
+    text-align: right;
+	margin-right: 20px;
+}
 
 
 /********
@@ -156,7 +197,7 @@ body.home #gates section p, #getting-started p {
     padding: 0 0 64px;
 }
 
-body.home >#content>footer.main {
+body.home>#content>footer.main {
     position: static;
 }
 
@@ -205,25 +246,6 @@ body.home #content {
     height: 100%;
     padding-bottom: 50px;
 }
-#content>footer.main {
-    position: absolute;
-    left: 0;
-    bottom: 0;
-    width: 100%;
-    height: 50px;
-    overflow: hidden;
-    background: #222C31;
-}
-#content>footer.main p {
-    text-align: center;
-}
-#content>footer.main a, #content>footer.main span {
-    color: #fff;
-    -webkit-font-smoothing: antialiased;
-    font-size: 11px;
-    text-decoration: none;
-}
-
 
 body.home #getting-started {
 	background-color: #222C31;
@@ -347,9 +369,10 @@ body.home #experiment h2 {
 
 
 
-/******************
- * Build your own *
- ******************/
+/***************
+ * Other pages *
+ ***************/
+
 
 header.nav li {
 	display: inline-block;
@@ -369,26 +392,33 @@ header.nav nav {
 	font-size: 1.2em;
 }
 
-body.build-your-own {
+
+
+/******************
+ * Build your own *
+ ******************/
+
+
+body.ui {
 	overflow: hidden;
 }
 
-body.build-your-own #content {
+body.ui #content {
 	position: relative;
 }
 
-.build-your-own #menu {
+.ui #menu {
 	background-color: #222C31;
-	width: 250px;
+	width: 220px;
 	padding-left: 20px;
 	color: #fff;
 	min-height: 100%;
 	float: left;
 }
-.build-your-own #menu li {
+.ui #menu li {
 	margin: 5px 0;
 }
-.build-your-own #menu li a {
+.ui #menu li a {
 	background-repeat: no-repeat;
 	background-size: 30px;
 	background-position: left;
@@ -418,7 +448,7 @@ li.none a {
 	background: url('../img/tool/none.svg') no-repeat;
 }
 
-.build-your-own #canvas {
+.ui #canvas {
 	background-color: #fff;
 }
 
@@ -478,8 +508,130 @@ li.none a {
 }
 
 
+/*********************
+ * Math to graphical *
+ *********************/
+
+a.button {
+	display: inline-block;
+	padding: 10px 20px;
+	background-color: #fff;
+	color: #222C31;
+	border-radius: 10px;
+	font-weight: bold;
+	font-size: 1.2em;
+	margin: 20px 20px 0 0;
+}
+a.button:hover {
+	color: #17171A;
+}
+a.button.validate {
+	background-color: #222C31;
+	color: #fff;
+}
+a.button.validate:hover {
+	background-color: #17171A;
+	color: #fff;
+}
+
+#validation {
+	position: absolute;
+	bottom: 50px;
+	right: 20px;
+}
 
 
+
+/********
+ * Quiz *
+ ********/
+
+
+.quiz #content #pre p, .quiz #content #post p {
+	font-size: 2em;
+	text-align: center;
+	margin: 20px 20px;
+}
+.quiz #content h1 {
+	text-align: center;
+	font-size: 3em;
+	margin: 100px 0;
+}
+
+.quiz #content ul {
+	margin: 0 auto;
+	font-size: 2em;
+	width: 55%;
+}
+.quiz #content li {
+	margin: 30px 0;
+	text-align: left;
+	padding-left: 50px;
+}
+.quiz #content li.success {
+	background: url('../img/bullet-success.svg') left center no-repeat;
+	background-size: 30px;
+}
+.quiz #content li.error {
+	background: url('../img/bullet-error.svg') left center no-repeat;
+	background-size: 30px;
+}
+.quiz #content ul.unanswered li:hover {
+	background: url('../img/bullet-unselected.svg') left center no-repeat;
+	background-size: 30px;
+}
+.quiz #content ul.unanswered li.selected {
+	background: url('../img/bullet-selected.svg') left center no-repeat;
+	background-size: 30px;
+}
+
+
+
+.quiz #result {
+	display: none;
+	position: absolute;
+	z-index: 1337;
+	width: 100%;
+	height: 100%;
+	text-align: center;
+}
+.quiz #result.success {
+	background: rgba(0,0,0, 0.85) url('../img/success.svg') center no-repeat;
+	background-size: 80%;
+}
+.quiz #result.error {
+	background: rgba(0,0,0, 0.85) url('../img/error.svg') center no-repeat;
+	background-size: 80%;
+}
+
+
+.quiz #during, .quiz #post {
+	display: none;
+}
+.quiz #pre .start, .quiz #post .restart {
+	text-align: center;
+	margin-top: 100px;
+	font-size: 1em;
+}
+
+
+
+.quiz #state {
+	position: absolute;
+	top: 90px;
+	left: 20px;
+	text-align: left;
+	font-size: 1.5em;
+}
+.quiz #state p {
+	margin: 0;
+}
+.quiz #state #score span {
+	font-size: 0.6em;
+}
+.quiz #state #remaining {
+	font-size: 0.8em;
+}
 
 
 
