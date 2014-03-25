@@ -1,3 +1,13 @@
+/**
+ * Constructor of the Question class
+ * 
+ * @param	none
+ * @return	void
+ *
+ * Modification history
+ * Version	Modifier	Date		Change				Reason
+ * 0.6.0	Joey		03-24-2014	First release		Requirements
+ */
 function Question() {
 	this.title = '';
 	
@@ -5,14 +15,47 @@ function Question() {
 	this.answer = null;
 }
 
+
+/**
+ * Add an eventual answer to the list
+ * 
+ * @param	none
+ * @return	void
+ *
+ * Modification history
+ * Version	Modifier	Date		Change				Reason
+ * 0.6.0	Joey		03-24-2014	First release		Requirements
+ */
 Question.prototype.addAnswer = function(text) {
 	this.answerList.push(text);
 }
 
+
+/**
+ * Indicate which answer is the good one
+ * 
+ * @param	none
+ * @return	void
+ *
+ * Modification history
+ * Version	Modifier	Date		Change				Reason
+ * 0.6.0	Joey		03-24-2014	First release		Requirements
+ */
 Question.prototype.setCorrectAnswer = function(text) {
 	this.answer = this.answerList.indexOf(text);
 }
 
+
+/**
+ * Return a pool of answers including the good one and limited to a maximum number
+ * 
+ * @param	none
+ * @return	void
+ *
+ * Modification history
+ * Version	Modifier	Date		Change				Reason
+ * 0.6.0	Joey		03-24-2014	First release		Requirements
+ */
 Question.prototype.getAnswerPool = function(limit) {
 	if(this.answer===null) {
 		return [];
@@ -42,17 +85,23 @@ Question.prototype.getAnswerPool = function(limit) {
 }
 
 
-// Implementation of the Fisher-Yates algorithm
+/**
+ * Shuffles the answers with an implementation of the Fisher-Yates algorithm
+ * 
+ * @param	none
+ * @return	void
+ *
+ * Modification history
+ * Version	Modifier	Date		Change								Reason
+ * 0.6.0	Joey		03-24-2014	First release						Requirements
+ * 0.6.5	Joey		03-24-2014	Keep index j in proper boundaries	Bugfix Issue #6
+ */
 Question.prototype.shuffleAnswers = function(array) {
-	var i = array.length;
 	var j;
 	var tmp;
 	
-	if(i===0) {
-		return array;
-	}
-	
-	while(--i) {
+	// The following loop will swap random pairs of value
+	for(var i=0; i<array.length; i++) {
 		j = Math.round(Math.random()*(i+1))%array.length;
 		tmp = array[i];
 		array[i] = array[j];
