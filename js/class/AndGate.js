@@ -44,6 +44,7 @@ AndGate.getResource = function() {
  * Modification history
  * Version	Modifier	Date		Change			Reason
  * 0.4.1	Joey		03-22-2014	First release	Requirements
+ * 0.4.2    Chris		26-03-2014  First release   Requirements
  */
 AndGate.prototype.updateOutputState = function() {
 	// Both inputs needs to be true to have a true output
@@ -51,6 +52,12 @@ AndGate.prototype.updateOutputState = function() {
 		// Update the state only if it change to prevent unnecessary bubbling
 		if(this.output.state!==this.output.wireStateId.indexOf('powered')) {
 			this.output.setState('powered');
+
+			//First attempt at changing output table data in build-your-own.html (not tested)
+			var x=document.getElementById("current");
+			x.childNodes[0].innerHTML="1";
+			x.childNodes[3].innerHTML="1";
+
 		}
 	}
 	// If both inputs are unknown or at least one is sure to be true, the output is unknown
