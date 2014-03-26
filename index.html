@@ -50,15 +50,20 @@
 				</ul>
 				<h2>What is a Logic Gate?</h2>
 			</div>
-			<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+			<p>Logic gates are fundamental building block of digital circuit which control the flow of electricity through circuits. 
+			They are based on Boolean algebra logic. The computer systems have thousands of these logic gates constructed together which help them to processes different tasks logically. 
+			The data is converted to binary form (1s and 0s) in computers which is then process logically according to the logic gates arrangement.
+			The logic gates make use of Boolean algebra operations such as AND, OR and NOT to control the flow of electricity through circuits. 
+			There are basic seven types of logic gates:</p>
 		</div>
 
 		<div id="gates">
 			<section id="not-gate">
 				<h1>NOT Gate</h1>
-				<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-				<h2>Algebric notation</h2>
-				<p>(A.B)</p>
+				<p>NOT gate make use of NOT (negation) operator of Boolean algebra. It takes single true or false value and the result is always the opposite of the
+				input according to Boolean logic of NOT. So it basically inverts the input value. The symbol for NOT gate is normally given as below.  It is written as ~A..</p>
+				<h2>Algebraic notation</h2>
+				<p>(~A)</p>
 				<div>
 					<table>
 						<tr>
@@ -74,15 +79,16 @@
 							<td>1</td>
 						</tr>
 					</table>
-					<canvas></canvas>
+					<canvas id="not-gate-canvas"></canvas>
 				</div>
 			</section>
 			
 			<section id="and-gate">
 				<h1>AND Gate</h1>
-				<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-				<h2>Algebric notation</h2>
-				<p>(A.B)</p>
+				<p>AND gate make use of AND (Conjunction) operator of Boolean algebra. It can take two inputs true or false values and output the correspondence result based on the Boolean logic. 
+				The symbol for AND gate is usually as below. It is written as A & B.</p>
+				<h2>Algebraic notation</h2>
+				<p>(A & B)</p>
 				<div>
 					<table>
 						<tr>
@@ -111,14 +117,15 @@
 							<td>1</td>
 						</tr>
 					</table>
-					<canvas></canvas>
+					<canvas id="and-gate-canvas"></canvas>
 				</div>
 			</section>
 			<section id="nand-gate">
 				<h1>NAND Gate</h1>
-				<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-				<h2>Algebric notation</h2>
-				<p>(A.B)</p>
+				<p>NAND gate is the inverse of AND gate. It can tak two input 0 or 1 value and out the correspondence result based on the logic which is normally 
+				the opposite of the AND gate. It is written as A|B. The symbol is normally as below. The little circle in the output represent that it is inverse of AND..</p>
+				<h2>Algebraic notation</h2>
+				<p>(A | B)</p>
 				<div>
 					<table>
 						<tr>
@@ -147,14 +154,15 @@
 							<td>0</td>
 						</tr>
 					</table>
-					<canvas></canvas>
+					<canvas id="nand-gate-canvas"></canvas>
 				</div>
 			</section>
 			<section id="or-gate">
 				<h1>OR Gate</h1>
-				<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-				<h2>Algebric notation</h2>
-				<p>(A.B)</p>
+				<p>OR gate make use of OR (disjunction) operator of Boolean algebra. It can also take two inputs true or false values as (1s and 0s) and output
+				the correspondence result based on the Boolean logic. The symbol for OR gate is normally given as below. It is written as A+B.</p>
+				<h2>Algebraic notation</h2>
+				<p>(A + B)</p>
 				<div>
 					<table>
 						<tr>
@@ -183,14 +191,15 @@
 							<td>1</td>
 						</tr>
 					</table>
-					<canvas></canvas>
+					<canvas id="or-gate-canvas"></canvas>
 				</div>
 			</section>
 			<section id="nor-gate">
 				<h1>NOR Gate</h1>
-				<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-				<h2>Algebric notation</h2>
-				<p>(A.B)</p>
+				<p>Similarly NOR gate is the inverse of OR gate. It can take two input values as  0s and 1s and the result is always the opposite than the OR gate.
+				It is written as A-B. the symbol is normally as below..</p>
+				<h2>Algebraic notation</h2>
+				<p>(A - B)</p>
 				<div>
 					<table>
 						<tr>
@@ -219,14 +228,15 @@
 							<td>0</td>
 						</tr>
 					</table>
-					<canvas></canvas>
+					<canvas id="nor-gate-canvas"></canvas>
 				</div>
 			</section>
 			<section id="xor-gate">
 				<h1>XOR Gate</h1>
-				<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-				<h2>Algebric notation</h2>
-				<p>(A.B)</p>
+				<p>The XOR gate called exclusive OR is like an OR gate but only gives a true output if either a or b has true input. If both have true input
+				the result c will be false. If both have false input the result again will be false. It is written as A(+)B. The symbol is normally as given below..</p>
+				<h2>Algebraic notation</h2>
+				<p>A (+) B</p>
 				<div>
 					<table>
 						<tr>
@@ -255,14 +265,15 @@
 							<td>0</td>
 						</tr>
 					</table>
-					<canvas></canvas>
+					<canvas id="xor-gate-canvas"></canvas>
 				</div>
 			</section>
 			<section id="xnor-gate">
 				<h1>XNOR Gate</h1>
-				<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-				<h2>Algebric notation</h2>
-				<p>(A.B)</p>
+				<p>XNOR gate is inverter of XOR gate as it has a circle in the symbol.  It can take two inputs and the result is always the opposite of XOR gate.
+				It is written as A(.)B. the symbol is normally as given below..</p>
+				<h2>Algebraic notation</h2>
+				<p>A (.) B</p>
 				<div>
 					<table>
 						<tr>
@@ -291,12 +302,12 @@
 							<td>1</td>
 						</tr>
 					</table>
-					<canvas></canvas>
+					<canvas id="xnor-gate-canvas"></canvas>
 				</div>
 			</section>
 		</div>
 		<div id="experiment">
-			<h2><a href="build-your-own.html">Build your own schema</a></h2>
+			<h2><a href="build-your-own.html">Build your own circuit</a></h2>
 			<p>Now that you have learned the theory, let's move on to the practice where you will be able to plug several gates and see what is happening.</p>
 		</div>
 

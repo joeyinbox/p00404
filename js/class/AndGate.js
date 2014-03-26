@@ -46,30 +46,59 @@ AndGate.getResource = function() {
  * 0.4.1	Joey		03-22-2014	First release	Requirements
  * 0.4.2    Chris		26-03-2014  First release   Requirements
  */
+AndGate.prototype.truthTable = function() {
+	var table = '<table>';
+	// ...
+	table += '<td>1</td> <td>1</td> <td>'+this.getOutput(true, true)+'</td>';
+	// ..
+	table += '</table>';
+	
+	// insert table into dom div element
+}
+
+
+/**
+ * Update the status of the current gate's output wire
+ * 
+ * @param	none
+ * @return	void
+ *
+ * Modification history
+ * Version	Modifier	Date		Change									Reason
+ * 0.4.1	Joey		03-22-2014	First release							Requirements
+ * 0.7.0    Chris		03-26-2014  Split the logic into a smaller module   Requirements
+ */
 AndGate.prototype.updateOutputState = function() {
+	var state = this.getOutput(this.input.state, this.input2.state);
+	
+	if(this.output.state!==this.output.wireStateId.indexOf(state)) {
+		this.output.setState(state);
+	}
+}
+
+
+/**
+ * Get the potential output state given two inputs
+ * 
+ * @param	input1(int)		State of the first input
+ * @param	input2(int)		State of the second input
+ * @return	void
+ *
+ * Modification history
+ * Version	Modifier	Date		Change									Reason
+ * 0.4.1	Joey		03-22-2014	First release							Requirements
+ * 0.7.0    Chris		03-26-2014  Split the logic into a smaller module   Requirements
+ */
+AndGate.prototype.getOutput = function(input1, input2) {
 	// Both inputs needs to be true to have a true output
-	if(this.input.state===this.input.wireStateId.indexOf('powered') && this.input2.state===this.input2.wireStateId.indexOf('powered')) {
-		// Update the state only if it change to prevent unnecessary bubbling
-		if(this.output.state!==this.output.wireStateId.indexOf('powered')) {
-			this.output.setState('powered');
-
-			//First attempt at changing output table data in build-your-own.html (not tested)
-			var x=document.getElementsByClassName("current");
-			x.childNodes[0].innerHTML="1";
-			x.childNodes[3].innerHTML="1";
-
-		}
+	if(input1===this.input.wireStateId.indexOf('powered') && input2===this.input2.wireStateId.indexOf('powered')) {
+		return 'powered';
 	}
 	// If both inputs are unknown or at least one is sure to be true, the output is unknown
-	else if((this.input.state===this.input.wireStateId.indexOf('unknown') && this.input2.state===this.input2.wireStateId.indexOf('unknown'))
-		 || (this.input.state===this.input.wireStateId.indexOf('unknown') && this.input2.state===this.input2.wireStateId.indexOf('powered')) 
-		 || (this.input.state===this.input.wireStateId.indexOf('powered') && this.input2.state===this.input2.wireStateId.indexOf('unknown'))) {
-		// Update the state only if it change to prevent unnecessary bubbling
-		if(this.output.state!==this.output.wireStateId.indexOf('unknown')) {
-			this.output.setState('unknown');
-		}
+	else if((input1.state===this.input.wireStateId.indexOf('unknown') && input2.state===this.input2.wireStateId.indexOf('unknown'))
+		 || (input1.state===this.input.wireStateId.indexOf('unknown') && input2.state===this.input2.wireStateId.indexOf('powered')) 
+		 || (input1.state===this.input.wireStateId.indexOf('powered') && input2.state===this.input2.wireStateId.indexOf('unknown'))) {
+		return 'unknown';
 	}
-	else if(this.output.state!==this.output.wireStateId.indexOf('idle')) {
-		this.output.setState('idle');
-	}
+	return 'idle';
 }
