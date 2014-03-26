@@ -123,8 +123,9 @@ OutputWire.prototype.unlinkAll = function() {
  * @return	void
  *
  * Modification history
- * Version	Modifier	Date		Change			Reason
- * 0.5.2	Chris		03-23-2014	First release	Requirements
+ * Version	Modifier	Date		Change										Reason
+ * 0.5.2	Chris		03-23-2014	First release								Requirements
+ * 0.6.6	Joey		03-25-2014	Notify linked gate to update its output		Bugfix #6
  */
 OutputWire.prototype.unlink = function(input) {
 	var index = this.linkedTo.indexOf(input);
@@ -132,7 +133,11 @@ OutputWire.prototype.unlink = function(input) {
 		// The target wire is an input
 		this.linkedTo[index].linkedTo = null;
 		this.linkedTo[index].state = this.wireStateId.idle;
+		this.linkedTo[index].belongsTo.updateOutputState();
 		this.linkedTo.splice(index, 1);
+		
+		// Notify the gate to eventually update its state
+		this.belongsTo.updateOutputState();
 		
 		return true;
 	}

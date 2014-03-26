@@ -89,15 +89,22 @@ InputWire.prototype.getPosition = function() {
  * @return	void
  *
  * Modification history
- * Version	Modifier	Date		Change			Reason
- * 0.5.2	Usman		03-23-2014	First release	Requirements
+ * Version	Modifier	Date		Change										Reason
+ * 0.5.2	Usman		03-23-2014	First release								Requirements
+ * 0.6.6	Joey		03-25-2014	Notify linked gate to update its output		Bugfix #6
  */
 InputWire.prototype.unlink = function() {
 	if(this.linkedTo!==null) {
 		// The target wire is an output that hold its links in an array
 		var index = this.linkedTo.linkedTo.indexOf(this);
-		this.linkedTo.linkedTo.splice(index, 1);
+		this.linkedTo.unlink(this);
 		this.linkedTo = null;
+		
+		// Notify the gate to eventually update its state
+		this.belongsTo.updateOutputState();
+		
+		// Set back to idle
+		this.state = this.wireStateId.indexOf('idle');
 	}
 };
 
