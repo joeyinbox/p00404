@@ -88,3 +88,51 @@ DualInputGate.prototype.update = function() {
 		}
 	}
 }
+
+/**
+ * Generates corresponding truth table in the DOM based on LogicGate state
+ * 
+ * @param	none
+ * @return	void
+ *
+ * Modification history
+ * Version	Modifier	Date		Change					Reason
+ * 0.7.0	Joey		26-20-2014	First release			Requirements
+ * 0.7.0 	Chris		26-20-2014	Underpowered comparison Requirements
+ */
+
+
+DualInputGate.prototype.truthTable = function() {
+	var table = '<table>';
+	
+	if(this.input.state===this.input.wireStateId.indexOf('unknown') || this.input2.state===this.input.wireStateId.indexOf('unknown')) {
+		table += '<tr'+((this.input.state===this.input.wireStateId.indexOf('unknown') && (this.input2.state===this.input.wireStateId.indexOf('idle') || this.input2.state===this.input.wireStateId.indexOf('underpowered')))?' class="current"':'')+'>';
+		table += '<td>X</td> <td>0</td> <td>'+this.getOutput(this.input.wireStateId.indexOf('unknown'), this.input.wireStateId.indexOf('idle'))+'</td></tr>';
+		
+		table += '<tr'+((this.input.state===this.input.wireStateId.indexOf('idle') && (this.input2.state===this.input.wireStateId.indexOf('unknown') || this.input2.state===this.input.wireStateId.indexOf('underpowered')))?' class="current"':'')+'>';
+		table += '<td>0</td> <td>X</td> <td>'+this.getOutput(this.input.wireStateId.indexOf('idle'), this.input.wireStateId.indexOf('unknown'))+'</td></tr>';
+		
+		table += '<tr'+((this.input.state===this.input.wireStateId.indexOf('unknown') && (this.input2.state===this.input.wireStateId.indexOf('powered') || this.input2.state===this.input.wireStateId.indexOf('underpowered')))?' class="current"':'')+'>';
+		table += '<td>X</td> <td>1</td> <td>'+this.getOutput(this.input.wireStateId.indexOf('unknown'), this.input.wireStateId.indexOf('powered'))+'</td></tr>';
+		
+		table += '<tr'+((this.input.state===this.input.wireStateId.indexOf('powered') && (this.input2.state===this.input.wireStateId.indexOf('unknown') || this.input2.state===this.input.wireStateId.indexOf('underpowered')))?' class="current"':'')+'>';
+		table += '<td>1</td> <td>X</td> <td>'+this.getOutput(this.input.wireStateId.indexOf('powered'), this.input.wireStateId.indexOf('unknown'))+'</td></tr>';
+		
+		table += '<tr'+((this.input.state===this.input.wireStateId.indexOf('unknown') && (this.input2.state===this.input.wireStateId.indexOf('unknown') || this.input2.state===this.input.wireStateId.indexOf('underpowered')))?' class="current"':'')+'>';
+		table += '<td>X</td> <td>X</td> <td>'+this.getOutput(this.input.wireStateId.indexOf('unknown'), this.input.wireStateId.indexOf('unknown'))+'</td></tr>';
+	}
+	else {
+		table += '<tr'+((this.input.state===this.input.wireStateId.indexOf('idle') && this.input2.state===this.input.wireStateId.indexOf('idle'))?' class="current"':'')+'>';
+		table += '<td>0</td> <td>0</td> <td>'+this.getOutput(this.input.wireStateId.indexOf('idle'), this.input.wireStateId.indexOf('idle'))+'</td></tr>';
+		
+		table += '<tr'+((this.input.state===this.input.wireStateId.indexOf('powered') && this.input2.state===this.input.wireStateId.indexOf('idle'))?' class="current"':'')+'>';
+		table += '<td>1</td> <td>0</td> <td>'+this.getOutput(this.input.wireStateId.indexOf('powered'), this.input.wireStateId.indexOf('idle'))+'</td></tr>';
+		
+		table += '<tr'+((this.input.state===this.input.wireStateId.indexOf('idle') && this.input2.state===this.input.wireStateId.indexOf('powered'))?' class="current"':'')+'>';
+		table += '<td>0</td> <td>1</td> <td>'+this.getOutput(this.input.wireStateId.indexOf('idle'), this.input.wireStateId.indexOf('powered'))+'</td></tr>';
+		
+		table += '<tr'+((this.input.state===this.input.wireStateId.indexOf('powered') && this.input2.state===this.input.wireStateId.indexOf('powered'))?' class="current"':'')+'>';
+		table += '<td>1</td> <td>1</td> <td>'+this.getOutput(this.input.wireStateId.indexOf('powered'), this.input.wireStateId.indexOf('powered'))+'</td></tr>';
+	}
+	
+	table += '</table>';
