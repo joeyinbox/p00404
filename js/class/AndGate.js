@@ -56,7 +56,7 @@ AndGate.prototype.updateOutputState = function() {
 			//First attempt at changing output table data in build-your-own.html (not tested)
 			var x=document.getElementsByClassName("current");
 			x.childNodes[0].innerHTML="1";
-			x.childNodes[3].innerHTML="1";
+			x.childNodes[2].innerHTML="1";
 
 		}
 	}
@@ -67,9 +67,21 @@ AndGate.prototype.updateOutputState = function() {
 		// Update the state only if it change to prevent unnecessary bubbling
 		if(this.output.state!==this.output.wireStateId.indexOf('unknown')) {
 			this.output.setState('unknown');
+
+			//Dom representation in table 
+			var x=document.getElementsByClassName("current");
+			x.childNodes[0].innerHTML="x";
+			x.childNodes[2].innerHTML="x";
+
 		}
 	}
 	else if(this.output.state!==this.output.wireStateId.indexOf('idle')) {
 		this.output.setState('idle');
+
+		//Dom representation in table 
+			var x=document.getElementsByClassName("current");
+			x.childNodes[0].innerHTML="0";
+			x.childNodes[2].innerHTML="0";
+
 	}
 }
