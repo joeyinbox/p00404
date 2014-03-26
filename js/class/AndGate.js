@@ -48,9 +48,37 @@ AndGate.getResource = function() {
  */
 AndGate.prototype.truthTable = function() {
 	var table = '<table>';
-	// ...
-	table += '<td>1</td> <td>1</td> <td>'+this.getOutput(true, true)+'</td>';
-	// ..
+	
+	if(this.input.state===this.wireStateId.indexOf('unknown') || this.input2.state===this.wireStateId.indexOf('unknown')) {
+		table += '<tr'+((this.input.state===this.wireStateId.indexOf('unknown') && this.input2.state===this.wireStateId.indexOf('idle'))?' class="current"':'')+'>';
+		table += '<td>X</td> <td>0</td> <td>'+this.getOutput(this.wireStateId.indexOf('unknown'), this.wireStateId.indexOf('idle'))+'</td></tr>';
+		
+		table += '<tr'+((this.input.state===this.wireStateId.indexOf('idle') && this.input2.state===this.wireStateId.indexOf('unknown'))?' class="current"':'')+'>';
+		table += '<td>0</td> <td>X</td> <td>'+this.getOutput(this.wireStateId.indexOf('idle'), this.wireStateId.indexOf('unknown'))+'</td></tr>';
+		
+		table += '<tr'+((this.input.state===this.wireStateId.indexOf('unknown') && this.input2.state===this.wireStateId.indexOf('powered'))?' class="current"':'')+'>';
+		table += '<td>X</td> <td>1</td> <td>'+this.getOutput(this.wireStateId.indexOf('unknown'), this.wireStateId.indexOf('powered'))+'</td></tr>';
+		
+		table += '<tr'+((this.input.state===this.wireStateId.indexOf('powered') && this.input2.state===this.wireStateId.indexOf('unknown'))?' class="current"':'')+'>';
+		table += '<td>1</td> <td>X</td> <td>'+this.getOutput(this.wireStateId.indexOf('powered'), this.wireStateId.indexOf('unknown'))+'</td></tr>';
+		
+		table += '<tr'+((this.input.state===this.wireStateId.indexOf('unknown') && this.input2.state===this.wireStateId.indexOf('unknown'))?' class="current"':'')+'>';
+		table += '<td>X</td> <td>X</td> <td>'+this.getOutput(this.wireStateId.indexOf('unknown'), this.wireStateId.indexOf('unknown'))+'</td></tr>';
+	}
+	else {
+		table += '<tr'+((this.input.state===this.wireStateId.indexOf('idle') && this.input2.state===this.wireStateId.indexOf('idle'))?' class="current"':'')+'>';
+		table += '<td>0</td> <td>0</td> <td>'+this.getOutput(this.wireStateId.indexOf('idle'), this.wireStateId.indexOf('idle'))+'</td></tr>';
+		
+		table += '<tr'+((this.input.state===this.wireStateId.indexOf('powered') && this.input2.state===this.wireStateId.indexOf('idle'))?' class="current"':'')+'>';
+		table += '<td>1</td> <td>0</td> <td>'+this.getOutput(this.wireStateId.indexOf('powered'), this.wireStateId.indexOf('idle'))+'</td></tr>';
+		
+		table += '<tr'+((this.input.state===this.wireStateId.indexOf('idle') && this.input2.state===this.wireStateId.indexOf('powered'))?' class="current"':'')+'>';
+		table += '<td>0</td> <td>1</td> <td>'+this.getOutput(this.wireStateId.indexOf('idle'), this.wireStateId.indexOf('powered'))+'</td></tr>';
+		
+		table += '<tr'+((this.input.state===this.wireStateId.indexOf('powered') && this.input2.state===this.wireStateId.indexOf('powered'))?' class="current"':'')+'>';
+		table += '<td>1</td> <td>1</td> <td>'+this.getOutput(this.wireStateId.indexOf('powered'), this.wireStateId.indexOf('powered'))+'</td></tr>';
+	}
+	
 	table += '</table>';
 	
 	// insert table into dom div element

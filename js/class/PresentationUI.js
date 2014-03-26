@@ -7,7 +7,7 @@
  *
  * Modification history
  * Version	Modifier	Date		Change									Reason
- * 0.1.0	Joey		03-19-2014	First release							Requirements
+ * 0.7.0	Joey		03-19-2014	First release							Requirements
  * 0.1.1	Joey		03-19-2014	GateType and Load all resources			Requirements
  * 0.1.2	Usman		03-19-2014	Add the gateList to store gates			Requirements
  * 0.1.3	Chris		03-19-2014	Refresh ui timer						Requirements
@@ -20,73 +20,23 @@
  * 0.3.2	Chris		03-21-2014	Add currentAction related attributes	Requirements
  * 0.3.3	Usman		03-22-2014	Add unknown and underpowered colors		Ethnological refinement
  */
-function UserInterface() {
-	this.gateList = [];
-	this.optionId = [];
-	this.resource = [];
-	this.resourceToLoad = 0;
-	this.resourceLoadedCount = 0;
-	this.gateType = [];
-	this.error = false;
+function PresentationUI(gate, canvasId) {
+	// Call the parent class constructor
+	UserInterface.apply(this, arguments);
 	
 	// This value allows to shift the addition of gates on the board to prevent them from being visually stacked over each others
-	this.insertShift = 5;
+	this.insertShift = 0;
 	
 	// Get a reference to the DOM canvas where everything will be drawn on
 	this.canvas = document.getElementById(this.canvasId);
 	this.context = this.canvas.getContext("2d");
 	
-	// Adapt the canvas size to the viewport and attach a listener to re-adapt it when the user resize its browser
-	var that = this;
-	$(window).resize(function() {
-		that.adaptCanvas();
-	});
-	this.adaptCanvas();
-	
-	// Initialize an eventual contextual menu and attach a listener when the user will use it
-	$('#contextualMenu').on('mouseleave', this.hideMenu.bind(this));
-	$('#contextualMenu').on('click', 'a', function() {
-		that.selectOption($(this).data('type'));
-	});
-	
-	// Declare all gate types by their class name
-	this.gateType.push(NotGate);
-	this.gateType.push(AndGate);
-	this.gateType.push(NandGate);
-	this.gateType.push(OrGate);
-	this.gateType.push(NorGate);
-	this.gateType.push(XorGate);
-	this.gateType.push(XnorGate);
-	
-	// Load resources into memory
-	this.loadResources();
-	
-	// Declare all options
-	this.optionId.push('select');
-	this.optionId.push('link');
-	this.optionId.push('unlink');
-	this.optionId.push('remove');
-	this.optionId.push('toggleState');
-	this.optionId.push('cancel');
-	this.optionId.push('none');
-	
-	// Initialise the current action performed by the user
-	this.currentAction = this.optionId.indexOf('select');
-	this.currentActionOrigin = null;
-	
-	// The following colors will be used to visual represent different wire states
-	this.color = [];
-	this.color.push('#000000'); // idle
-	this.color.push('#02AE30'); // powered
-	this.color.push('#4D71F2'); // unknown
-	this.color.push('#B42702'); // underpowered
-	
 	// Handle mouse events
 	this.pointer = new Pointer(this.canvas);
-	
-	// Set the refresh timer
-	this.loop = setInterval(this.refresh.bind(this), 30);
 }
+// Declare the inheritence-like pattern and override the constructor method
+PresentationUI.prototype = new UserInterface();
+PresentationUI.prototype.constructor = PresentationUI;
 
 
 /**
