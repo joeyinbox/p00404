@@ -54,7 +54,7 @@ AndGate.prototype.updateOutputState = function() {
 			this.output.setState('powered');
 
 			//First attempt at changing output table data in build-your-own.html (not tested)
-			var x=document.getElementById("current");
+			var x=document.getElementsByClassName("current");
 			x.childNodes[0].innerHTML="1";
 			x.childNodes[3].innerHTML="1";
 
