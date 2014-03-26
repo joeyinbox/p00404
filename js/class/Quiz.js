@@ -106,24 +106,26 @@ function Quiz() {
 Quiz.prototype.createQuestions = function() {
 	var question = new Question();
 	question.title = 'Lorem ipsum dolor sit amet?';
-	question.setCorrectAnswer('Excepteur sint occaecat cupidatat non proident, sunt in');
 	question.addAnswer('Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris lorem');
 	question.addAnswer('Duis aute irure dolor in reprehenderit in voluptate');
+	question.addAnswer('Excepteur sint occaecat cupidatat non proident, sunt in');
 	question.addAnswer('Culpa qui officia deserunt mollit anim id est laborum');
 	question.addAnswer('Melit esse cillum dolore eu fugiat');
 	question.addAnswer('Edeserunt mollit anim');
 	question.addAnswer('Creprehenderit nostrud mollit irure');
+	question.setCorrectAnswer('Excepteur sint occaecat cupidatat non proident, sunt in');
 	this.questionList.push(question);
 	
 	var question = new Question();
 	question.title = 'How are you?';
-	question.setCorrectAnswer('I am not sure');
+	question.addAnswer('I am not sure');
 	question.addAnswer('Maybe');
 	question.addAnswer('Yes');
 	question.addAnswer('No');
 	question.addAnswer('Why not');
 	question.addAnswer('Hell yeah');
 	question.addAnswer('Probably');
+	question.setCorrectAnswer('I am not sure');
 	this.questionList.push(question);
 };
 
