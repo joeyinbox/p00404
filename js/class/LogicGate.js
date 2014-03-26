@@ -90,8 +90,9 @@ LogicGate.prototype.getPosition = function() {
  * @return	void
  *
  * Modification history
- * Version	Modifier	Date		Change			Reason
- * 0.1.0	Joey		20-03-2014	First release	Requirements
+ * Version	Modifier	Date		Change						Reason
+ * 0.1.0	Joey		20-03-2014	First release				Requirements
+ * 0.7.0	Chris		26-03-2014	Truth table function call	Requirements
  */
 LogicGate.prototype.update = function() {
 	// Assert if the pointer is interacting with the current gate
@@ -104,6 +105,7 @@ LogicGate.prototype.update = function() {
 		// The gate is hovered while clicking
 		this.ui.pointer.dragging = true;
 		this.ui.pointer.setBusyWith(this);
+		this.truthTable();
 	}
 	
 	// Assert if the pointer is interacting with the output wire
@@ -112,4 +114,7 @@ LogicGate.prototype.update = function() {
 			this.output.pointerInteraction();
 		}
 	}
+
+	
+
 }
