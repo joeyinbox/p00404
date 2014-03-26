@@ -54,6 +54,7 @@ AndGate.prototype.truthTable = function() {
 	table += '</table>';
 	
 	// insert table into dom div element
+	$('#results').html(table);
 }
 
 
@@ -99,6 +100,9 @@ AndGate.prototype.getOutput = function(input1, input2) {
 		 || (input1.state===this.input.wireStateId.indexOf('unknown') && input2.state===this.input2.wireStateId.indexOf('powered')) 
 		 || (input1.state===this.input.wireStateId.indexOf('powered') && input2.state===this.input2.wireStateId.indexOf('unknown'))) {
 		return 'unknown';
+	}
+	else if(this.output.state!==this.output.wireStateId.indexOf('idle')) {
+		this.output.setState('idle');
 	}
 	return 'idle';
 }
