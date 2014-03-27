@@ -102,30 +102,167 @@ function Quiz() {
  * Version	Modifier	Date		Change				Reason
  * 0.6.2	Joey		03-24-2014	First release		Requirements
  * 0.6.4	Joey		03-24-2014	Add more questions	Requirements
+ * 0.7.x	Usman		03-27-2014	Add more questions	Requirements
  */
 Quiz.prototype.createQuestions = function() {
 	var question = new Question();
-	question.title = 'Lorem ipsum dolor sit amet?';
-	question.addAnswer('Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris lorem');
-	question.addAnswer('Duis aute irure dolor in reprehenderit in voluptate');
-	question.addAnswer('Excepteur sint occaecat cupidatat non proident, sunt in');
-	question.addAnswer('Culpa qui officia deserunt mollit anim id est laborum');
-	question.addAnswer('Melit esse cillum dolore eu fugiat');
-	question.addAnswer('Edeserunt mollit anim');
-	question.addAnswer('Creprehenderit nostrud mollit irure');
-	question.setCorrectAnswer('Excepteur sint occaecat cupidatat non proident, sunt in');
+	question.title = 'What is the equivalent of (x∧(y∨z)) =? In distributivity of ∧ over ∨';
+	question.addAnswer('(x∧y) ∧ (x∧z)');
+	question.addAnswer('(x∨y)∨(x∧z)');
+	question.addAnswer('(x∧y)∨(xvz)');
+	question.setCorrectAnswer('(x∧y)∨(x∧z)');
 	this.questionList.push(question);
 	
 	var question = new Question();
-	question.title = 'How are you?';
-	question.addAnswer('I am not sure');
-	question.addAnswer('Maybe');
-	question.addAnswer('Yes');
-	question.addAnswer('No');
-	question.addAnswer('Why not');
-	question.addAnswer('Hell yeah');
-	question.addAnswer('Probably');
-	question.setCorrectAnswer('I am not sure');
+	question.title = 'What is the equivalent of (x∨(y∧z)) in distributivity of ∨ over ∧';
+	question.addAnswer('(x∧y)∨(xvz)');
+	question.addAnswer('(x∧y) ∧ (x∧z)');
+	question.addAnswer('(x∧y)∨(x∧z)');
+	question.setCorrectAnswer('(x∨y)∧(x∨z)');
+	this.questionList.push(question);
+	
+	var question = new Question();
+	question.title = 'What is the equivalent of (x∨(y∨z)) = ? in associativity of ∨';
+	question.addAnswer('(x∧y)∨z');
+	question.addAnswer('(x∨y) ∧z');
+	question.addAnswer('(x∨y)∨x');
+	question.setCorrectAnswer('(x∨y)∨z');
+	this.questionList.push(question);
+	
+	var question = new Question();
+	question.title = 'What is equivalent of (x∧(y∧z)) = ? in associativity of ∧';
+	question.addAnswer('(x∧y)∨z');
+	question.addAnswer('(x∨y)∨x');
+	question.addAnswer('(x∨y)∨z');
+	question.setCorrectAnswer('(x∧y)∧z');
+	this.questionList.push(question);
+	
+	var question = new Question();
+	question.title = 'What is equivalent of (x∨y) = ? in Commutativity of ∨';
+	question.addAnswer('x∨y');
+	question.addAnswer('x∨x');
+	question.addAnswer('y∨y');
+	question.setCorrectAnswer('y∨x');
+	this.questionList.push(question);
+	
+	var question = new Question();
+	question.title = 'What is equivalent of (x∧y) = ? in Commutativity of ∧';
+	question.addAnswer('x∧y');
+	question.addAnswer('x∧x');
+	question.addAnswer('x∨y');
+	question.setCorrectAnswer('y∧x');
+	this.questionList.push(question);
+	
+	var question = new Question();
+	question.title = 'What is equivalent of (x∨0 ) = ? in Identity for ∨';
+	question.addAnswer('y');
+	question.addAnswer('x∧y');
+	question.addAnswer('x∨y');
+	question.setCorrectAnswer('x');
+	this.questionList.push(question);
+	
+	var question = new Question();
+	question.title = 'What is equivalent of (x∧1 ) = ? in identity for ∧';
+	question.addAnswer('y');
+	question.addAnswer('x∧0');
+	question.addAnswer('x∨0');
+	question.setCorrectAnswer('x');
+	this.questionList.push(question);
+	
+	var question = new Question();
+	question.title = 'What is Complementation of (x∧¬x) equivalent to?';
+	question.addAnswer('5');
+	question.addAnswer('1');
+	question.addAnswer('-2');
+	question.setCorrectAnswer('0');
+	this.questionList.push(question);
+	
+	var question = new Question();
+	question.title = 'What is Complementation of (x∨¬x) equivalent to?';
+	question.addAnswer('0');
+	question.addAnswer('-1');
+	question.addAnswer('3');
+	question.setCorrectAnswer('1');
+	this.questionList.push(question);
+	
+	var question = new Question();
+	question.title = 'Which one of the following is true for AND gate in respect to its truth table?';
+	question.addAnswer('0 0 =1');
+	question.addAnswer('1 0 = 1');
+	question.addAnswer('1 1 = 0');
+	question.setCorrectAnswer('0 1 = 0');
+	this.questionList.push(question);
+	
+	var question = new Question();
+	question.title = 'Which one of the following is true for OR gate in respect to its truth table?';
+	question.addAnswer('0 0 = 1');
+	question.addAnswer('0 1 = 0');
+	question.addAnswer('1 1 = 0');
+	question.setCorrectAnswer('1 0 = 1');
+	this.questionList.push(question);
+	
+	var question = new Question();
+	question.title = 'Which one of the following is true for NOT gate in respect to its truth table?';
+	question.addAnswer('0 = 0');
+	question.addAnswer('1 = 1');
+	question.addAnswer('0 1 = 1');
+	question.setCorrectAnswer('0 = 1');
+	this.questionList.push(question);
+	
+	var question = new Question();
+	question.title = 'Which of the following is the symbol of NAND gate?';
+	question.addAnswer('(A - B)');
+	question.addAnswer('A (+) B');
+	question.addAnswer('A (.) B');
+	question.setCorrectAnswer('(A | B)');
+	this.questionList.push(question);
+	
+	var question = new Question();
+	question.title = 'Which of the following is the symbol of NOR gate?';
+	question.addAnswer('(A | B)');
+	question.addAnswer('A (+) B');
+	question.addAnswer('A (.) B');
+	question.setCorrectAnswer('(A - B)');
+	this.questionList.push(question);
+	
+	var question = new Question();
+	question.title = 'Which of the following is the symbol of XNOR gate?';
+	question.addAnswer('(A | B)');
+	question.addAnswer('(A - B)');
+	question.addAnswer('A (+) B');
+	question.setCorrectAnswer('A (.) B');
+	this.questionList.push(question);
+	
+	var question = new Question();
+	question.title = 'Which of the following is not the operation of Boolean algebra?';
+	question.addAnswer('Conjunction');
+	question.addAnswer('Disjunction');
+	question.addAnswer('Negation');
+	question.setCorrectAnswer('Addition');
+	this.questionList.push(question);
+	
+	var question = new Question();
+	question.title = 'Who introduced the Boolean algebra in 1854?';
+	question.addAnswer('Philip George');
+	question.addAnswer('Boole Philip');
+	question.addAnswer('Isaac Newton');
+	question.setCorrectAnswer('George Boole');
+	this.questionList.push(question);
+	
+	var question = new Question();
+	question.title = 'What values type is used in Boolean algebra?';
+	question.addAnswer('Natural numbers');
+	question.addAnswer('Whole numbers');
+	question.addAnswer('Real numbers');
+	question.setCorrectAnswer('True & False');
+	this.questionList.push(question);
+	
+	var question = new Question();
+	question.title = 'How true and false values are represented in logic gates?';
+	question.addAnswer('1 for true and 2 for false');
+	question.addAnswer('2 for true and 1 for false');
+	question.addAnswer('0 for true and 1 for false');
+	question.setCorrectAnswer('1 for true and 0 for false');
 	this.questionList.push(question);
 };
 
