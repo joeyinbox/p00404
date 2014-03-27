@@ -67,9 +67,10 @@ SingleInputGate.prototype.drawWires = function() {
  * @return	void
  *
  * Modification history
- * Version	Modifier	Date		Change				Reason
- * 0.3.2	Joey		03-21-2014	First release		Requirements
- * 0.4.0	Usman		03-23-2014	Call parent update	Requirements
+ * Version	Modifier	Date		Change							Reason
+ * 0.3.2	Joey		03-21-2014	First release					Requirements
+ * 0.4.0	Usman		03-23-2014	Call parent update				Requirements
+ * 0.7.x	Joey		03-27-2014	Add presentation mode support	Requirements
  */
 SingleInputGate.prototype.update = function() {
 	// Assert if the pointer is interacting with the current gate
@@ -77,6 +78,35 @@ SingleInputGate.prototype.update = function() {
 	
 	// Assert if the pointer is interacting with the input wire
 	if(!this.ui.pointer.isBusy() && this.ui.pointer.isHovering(this.input) && this.ui.pointer.pressed===true && this.ui.pointer.dragging===false) {
-		this.input.pointerInteraction();
+		if(!this.presentationMode) {
+			this.input.pointerInteraction();
+		}
+		else {
+			this.input.pointerPresentationInteraction();
+		}
 	}
+}
+
+
+/**
+ * Change the parameters for presentation mode
+ * 
+ * @param	none
+ * @return	void
+ *
+ * Modification history
+ * Version	Modifier	Date		Change			Reason
+ * 0.7.x	Joey		03-27-2014	First release	Requirements
+ */
+SingleInputGate.prototype.switchToPresentationMode = function() {
+	// Change the size of the gate
+	this.width = 140;
+	this.height = this.width*this.ratio;
+	
+	// Change the size of the wires
+	this.input.setSize(40, 10, 6.5);
+	this.output.setSize(40, 10, -6.5);
+	
+	// Set the presentation flag
+	this.presentationMode = true;
 }

@@ -251,3 +251,51 @@ InputWire.prototype.pointerInteraction = function() {
 	this.ui.pointer.setContextualMenuSource(this);
 	this.ui.displayMenu(options);
 };
+
+
+/**
+ * Handle the interaction with the pointer
+ * 
+ * @param	none
+ * @return	void
+ *
+ * Modification history
+ * Version	Modifier	Date		Change				Reason
+ * 0.7;x	Joey		03-27-2014	First release		Requirements
+ */
+InputWire.prototype.pointerPresentationInteraction = function() {
+	// Get available options for this wire
+	var options = [];
+	
+	if(this.state!==this.wireStateId.indexOf('idle')) {
+		options.push({
+			id: this.wireStateId.indexOf('idle'),
+			text: 'Set to idle'
+		});
+	}
+	
+	if(this.state!==this.wireStateId.indexOf('powered')) {
+		options.push({
+			id: this.wireStateId.indexOf('powered'),
+			text: 'Set to powered'
+		});
+	}
+	
+	if(this.state!==this.wireStateId.indexOf('unknown')) {
+		options.push({
+			id: this.wireStateId.indexOf('unknown'),
+			text: 'Set to unknown'
+		});
+	}
+	
+	if(this.state!==this.wireStateId.indexOf('underpowered')) {
+		options.push({
+			id: this.wireStateId.indexOf('underpowered'),
+			text: 'Set to underpowered'
+		});
+	}
+	
+	// In order to display the contextual menu at the right position, this holds the current wire as a source of this interaction
+	this.ui.pointer.setContextualMenuSource(this);
+	this.ui.displayMenu(options);
+};

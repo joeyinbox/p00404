@@ -20,8 +20,10 @@ function LogicGate(ui, type, x, y) {
 	this.gateType = type;
 	
 	var size = this.ui.getResourceSize(this.gateType);
+	this.ratio = size.height/size.width;
+	
 	this.width = 80;
-	this.height = size.height*(this.width/size.width);
+	this.height = this.width*this.ratio;
 	
 	this.img = this.ui.getResource(this.gateType);
 	this.output = new OutputWire(this.ui, this);

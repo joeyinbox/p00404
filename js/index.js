@@ -68,4 +68,14 @@ $(function(){
 	    return false;
 	});
 	
+	
+	
+	var notUI = new PresentationUI('not-gate-canvas', 0);
+	var andUI = new PresentationUI('and-gate-canvas', 1);
+	var nandUI = new PresentationUI('nand-gate-canvas', 2);
+	var orUI = new PresentationUI('or-gate-canvas', 3);
+	var norUI = new PresentationUI('nor-gate-canvas', 4);
+	var xorUI = new PresentationUI('xor-gate-canvas', 5);
+	var xnorUI = new PresentationUI('xnor-gate-canvas', 6);
+	
 });

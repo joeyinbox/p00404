@@ -260,6 +260,7 @@ body.home .sticked #gate-menu {
 	left: 0;
 	max-height: 385px;
 	overflow-y: hidden;
+	z-index: 0;
 }
 body.home #getting-started p {
 	padding-top: 20px;
@@ -339,9 +340,8 @@ body.home #gates section div {
 	text-align: left;
 }
 body.home #gates canvas {
-	width: 210px;
-	height: 250px;
-	background-color: red;
+	width: 140px;
+	height: 300px;
 }
 body.home #gates table {
 	float: right;
@@ -441,11 +441,20 @@ li.unlink a {
 li.remove a, li.cancel a {
 	background: url('../img/tool/remove.svg') no-repeat;
 }
-li.toggleState a {
+li.toggleState a, li.powered a {
 	background: url('../img/tool/toggle-state.svg') no-repeat;
 }
 li.none a {
 	background: url('../img/tool/none.svg') no-repeat;
+}
+li.unknown a {
+	background: url('../img/tool/unknown.svg') no-repeat;
+}
+li.underpowered a {
+	background: url('../img/tool/underpowered.svg') no-repeat;
+}
+li.idle a {
+	background: url('../img/tool/idle.svg') no-repeat;
 }
 
 .ui #canvas {
@@ -484,6 +493,7 @@ li.none a {
 	border-radius: 5px;
 	display: none;
 	overflow: hidden;
+	text-align: left;
 }
 #contextualMenu li a {
 	color: #333;

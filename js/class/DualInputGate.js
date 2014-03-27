@@ -70,9 +70,10 @@ DualInputGate.prototype.drawWires = function() {
  * @return	void
  *
  * Modification history
- * Version	Modifier	Date		Change				Reason
- * 0.3.2	Joey		03-21-2014	First release		Requirements
- * 0.4.0	Usman		03-23-2014	Call parent update	Requirements
+ * Version	Modifier	Date		Change							Reason
+ * 0.3.2	Joey		03-21-2014	First release					Requirements
+ * 0.4.0	Usman		03-23-2014	Call parent update				Requirements
+ * 0.7.x	Joey		03-27-2014	Add presentation mode support	Requirements
  */
 DualInputGate.prototype.update = function() {
 	// Assert if the pointer is interacting with the current gate
@@ -81,10 +82,45 @@ DualInputGate.prototype.update = function() {
 	// Assert if the pointer is interacting with the input wires
 	if(!this.ui.pointer.isBusy()) {
 		if(this.ui.pointer.isHovering(this.input) && this.ui.pointer.pressed===true && this.ui.pointer.dragging===false) {
-			this.input.pointerInteraction();
+			if(!this.presentationMode) {
+				this.input.pointerInteraction();
+			}
+			else {
+				this.input.pointerPresentationInteraction();
+			}
 		}
 		else if(this.ui.pointer.isHovering(this.input2) && this.ui.pointer.pressed===true && this.ui.pointer.dragging===false) {
-			this.input2.pointerInteraction();
+			if(!this.presentationMode) {
+				this.input2.pointerInteraction();
+			}
+			else {
+				this.input2.pointerPresentationInteraction();
+			}
 		}
 	}
+}
+
+
+/**
+ * Change the parameters for presentation mode
+ * 
+ * @param	none
+ * @return	void
+ *
+ * Modification history
+ * Version	Modifier	Date		Change			Reason
+ * 0.7.x	Joey		03-27-2014	First release	Requirements
+ */
+DualInputGate.prototype.switchToPresentationMode = function() {
+	// Change the size of the gate
+	this.width = 140;
+	this.height = this.width*this.ratio;
+	
+	// Change the size of the wires
+	this.input.setSize(40, 10, 6.5);
+	this.input2.setSize(40, 10, 6.5);
+	this.output.setSize(40, 10, -6.5);
+	
+	// Set the presentation flag
+	this.presentationMode = true;
 }
