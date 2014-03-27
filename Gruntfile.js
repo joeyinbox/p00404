@@ -54,6 +54,7 @@ module.exports = function(grunt) {
 											  		   'js/build-your-own.js'],
 					'js/build/math-to-graphical.min.js': ['js/class/Pointer.js',
 													      'js/class/UserInterface.js',
+													   	  'js/class/InteractiveUI.js',
 											 			  'js/class/LogicGate.js', 
 											  			  'js/class/DualInputGate.js', 
 											  			  'js/class/AndGate.js', 
