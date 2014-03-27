@@ -89,6 +89,26 @@ SingleInputGate.prototype.update = function() {
 
 
 /**
+ * Update the status of the current gate's output wire
+ * 
+ * @param	none
+ * @return	void
+ *
+ * Modification history
+ * Version	Modifier	Date		Change									Reason
+ * 0.4.1	Joey		03-22-2014	First release							Requirements
+ * 0.7.0    Chris		03-26-2014  Split the logic into a smaller module   Requirements
+ */
+SingleInputGate.prototype.updateOutputState = function() {
+	var state = this.getOutput(this.input.state);
+	
+	if(this.output.state!==this.output.wireStateId.indexOf(state)) {
+		this.output.setState(state);
+	}
+}
+
+
+/**
  * Change the parameters for presentation mode
  * 
  * @param	none
@@ -123,26 +143,19 @@ SingleInputGate.prototype.switchToPresentationMode = function() {
  * 0.7.0	Chris		03-26-2014	First release		Requirements
  * 0.7.x	Chris		03-26-2014	Add table header	Requirements
  */
- SingleInputGate.prototype.truthTable = function() {
+SingleInputGate.prototype.truthTable = function() {
 	var table = '<table>';
 	
 	table += '<tr><th>Input 1</th><th>Output</th></tr>';
 	
-	if(this.input.state===this.input.wireStateId.indexOf('unknown')) {
-		table += '<tr class="current">';
-		table += '<td>X</td><td>'+this.getOutput(this.input.wireStateId.indexOf('unknown'))+'</td></tr>';		
-	}
-	else if(this.input.state===this.input.wireStateId.indexOf('idle') || this.input.state===this.input.wireStateId.indexOf('underpowered')) {
-		table += '<tr class="current">';
-		table += '<td>0</td><td>'+this.getOutput(this.input.wireStateId.indexOf('idle'))+'</td></tr>';		
-	}
-	else if(this.input.state===this.input.wireStateId.indexOf('powered')) {
-		table += '<tr class="current">';
-		table += '<td>1</td><td>'+this.getOutput(this.input.wireStateId.indexOf('powered'))+'</td></tr>';
-	} 
-	else {
-		table += '<tr></tr>';
-	}
+	table += '<tr'+((this.input.state===this.input.wireStateId.indexOf('idle') || this.input.state===this.input.wireStateId.indexOf('underpowered'))?' class="current"':'')+'>';
+	table += '<td>0</td><td>'+this.getOutput(this.input.wireStateId.indexOf('idle'))+'</td></tr>';
+	
+	table += '<tr'+((this.input.state===this.input.wireStateId.indexOf('powered'))?' class="current"':'')+'>';
+	table += '<td>1</td><td>'+this.getOutput(this.input.wireStateId.indexOf('powered'))+'</td></tr>';
+	
+	table += '<tr'+((this.input.state===this.input.wireStateId.indexOf('unknown'))?' class="current"':'')+'>';
+	table += '<td>unknown</td><td>'+this.getOutput(this.input.wireStateId.indexOf('unknown'))+'</td></tr>';
 	
 	table += '</table>';
 	

@@ -36,35 +36,28 @@ NandGate.getResource = function() {
 
 
 /**
- * Update the status of the current gate's output wire
+ * Get the potential output state given two inputs
  * 
- * @param	none
+ * @param	input1(int)		State of the first input
+ * @param	input2(int)		State of the second input
  * @return	void
  *
  * Modification history
- * Version	Modifier	Date		Change						Reason
- * 0.4.1	Joey		03-22-2014	First release				Requirements
- * 0.5.4	Joey		03-23-2014	Handle underpowered state	Ethnological refinement
+ * Version	Modifier	Date		Change									Reason
+ * 0.4.1	Joey		03-22-2014	First release							Requirements
+ * 0.7.0    Chris		03-26-2014  Split the logic into a smaller module   Requirements
  */
-NandGate.prototype.updateOutputState = function() {
+NandGate.prototype.getOutput = function(input1, input2) {
 	// If at least one input is false (idle or underpowered), the output is true
-	if(this.input.state===this.input.wireStateId.indexOf('idle') || this.input.state===this.input.wireStateId.indexOf('underpowered') 
-	|| this.input2.state===this.input2.wireStateId.indexOf('idle') || this.input2.state===this.input.wireStateId.indexOf('underpowered')) {
-		// Update the state only if it change to prevent unnecessary bubbling
-		if(this.output.state!==this.output.wireStateId.indexOf('powered')) {
-			this.output.setState('powered');
-		}
+	if(input1===this.input.wireStateId.indexOf('idle') || input1===this.input.wireStateId.indexOf('underpowered') 
+	|| input2===this.input2.wireStateId.indexOf('idle') || input2===this.input2.wireStateId.indexOf('underpowered')) {
+		return 'powered';
 	}
 	// If both inputs are unknown or at least one is sure to be true, the output is unknown
-	else if((this.input.state===this.input.wireStateId.indexOf('unknown') && this.input2.state===this.input2.wireStateId.indexOf('unknown'))
-		 || (this.input.state===this.input.wireStateId.indexOf('unknown') && this.input2.state===this.input2.wireStateId.indexOf('powered')) 
-		 || (this.input.state===this.input.wireStateId.indexOf('powered') && this.input2.state===this.input2.wireStateId.indexOf('unknown'))) {
-		// Update the state only if it change to prevent unnecessary bubbling
-		if(this.output.state!==this.output.wireStateId.indexOf('unknown')) {
-			this.output.setState('unknown');
-		}
+	else if((input1===this.input.wireStateId.indexOf('unknown') && input2===this.input2.wireStateId.indexOf('unknown'))
+		 || (input1===this.input.wireStateId.indexOf('unknown') && input2===this.input2.wireStateId.indexOf('powered')) 
+		 || (input1===this.input.wireStateId.indexOf('powered') && input2===this.input2.wireStateId.indexOf('unknown'))) {
+		return 'unknown';
 	}
-	else if(this.output.state!==this.output.wireStateId.indexOf('idle')) {
-		this.output.setState('idle');
-	}
+	return 'idle';
 }

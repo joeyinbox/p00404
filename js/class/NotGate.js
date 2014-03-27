@@ -36,31 +36,25 @@ NotGate.getResource = function() {
 
 
 /**
- * Update the status of the current gate's output wire
+ * Get the potential output state given two inputs
  * 
- * @param	none
+ * @param	input1(int)		State of the first input
+ * @param	input2(int)		State of the second input
  * @return	void
  *
  * Modification history
- * Version	Modifier	Date		Change			Reason
- * 0.4.1	Usman		03-22-2014	First release	Requirements
+ * Version	Modifier	Date		Change									Reason
+ * 0.4.1	Usman		03-22-2014	First release							Requirements
+ * 0.7.0    Chris		03-26-2014  Split the logic into a smaller module   Requirements
  */
-NotGate.prototype.updateOutputState = function() {
+NotGate.prototype.getOutput = function(input1) {
 	// This gate invert the state of its input. As a result, if the input is true, the output is false
-	if(this.input.state===this.input.wireStateId.indexOf('powered')) {
-		// Update the state only if it change to prevent unnecessary bubbling
-		if(this.output.state!==this.output.wireStateId.indexOf('idle')) {
-			this.output.setState('idle');
-		}
+	if(input1===this.input.wireStateId.indexOf('powered')) {
+		return 'idle';
 	}
 	// If the input is true and false (unknown), so do the output
-	else if(this.input.state===this.input.wireStateId.indexOf('unknown')) {
-		// Update the state only if it change to prevent unnecessary bubbling
-		if(this.output.state!==this.output.wireStateId.indexOf('unknown')) {
-			this.output.setState('unknown');
-		}
+	else if(input1===this.input.wireStateId.indexOf('unknown')) {
+		return 'unknown';
 	}
-	else if(this.output.state!==this.output.wireStateId.indexOf('powered')) {
-		this.output.setState('powered');
-	}
+	return 'powered';
 }
