@@ -42,57 +42,6 @@ AndGate.getResource = function() {
  * @return	void
  *
  * Modification history
- * Version	Modifier	Date		Change			Reason
- * 0.4.1	Joey		03-22-2014	First release	Requirements
- * 0.4.2    Chris		26-03-2014  First release   Requirements
- */
-AndGate.prototype.truthTable = function() {
-	var table = '<table>';
-	
-	if(this.input.state===this.wireStateId.indexOf('unknown') || this.input2.state===this.wireStateId.indexOf('unknown')) {
-		table += '<tr'+((this.input.state===this.wireStateId.indexOf('unknown') && this.input2.state===this.wireStateId.indexOf('idle'))?' class="current"':'')+'>';
-		table += '<td>X</td> <td>0</td> <td>'+this.getOutput(this.wireStateId.indexOf('unknown'), this.wireStateId.indexOf('idle'))+'</td></tr>';
-		
-		table += '<tr'+((this.input.state===this.wireStateId.indexOf('idle') && this.input2.state===this.wireStateId.indexOf('unknown'))?' class="current"':'')+'>';
-		table += '<td>0</td> <td>X</td> <td>'+this.getOutput(this.wireStateId.indexOf('idle'), this.wireStateId.indexOf('unknown'))+'</td></tr>';
-		
-		table += '<tr'+((this.input.state===this.wireStateId.indexOf('unknown') && this.input2.state===this.wireStateId.indexOf('powered'))?' class="current"':'')+'>';
-		table += '<td>X</td> <td>1</td> <td>'+this.getOutput(this.wireStateId.indexOf('unknown'), this.wireStateId.indexOf('powered'))+'</td></tr>';
-		
-		table += '<tr'+((this.input.state===this.wireStateId.indexOf('powered') && this.input2.state===this.wireStateId.indexOf('unknown'))?' class="current"':'')+'>';
-		table += '<td>1</td> <td>X</td> <td>'+this.getOutput(this.wireStateId.indexOf('powered'), this.wireStateId.indexOf('unknown'))+'</td></tr>';
-		
-		table += '<tr'+((this.input.state===this.wireStateId.indexOf('unknown') && this.input2.state===this.wireStateId.indexOf('unknown'))?' class="current"':'')+'>';
-		table += '<td>X</td> <td>X</td> <td>'+this.getOutput(this.wireStateId.indexOf('unknown'), this.wireStateId.indexOf('unknown'))+'</td></tr>';
-	}
-	else {
-		table += '<tr'+((this.input.state===this.wireStateId.indexOf('idle') && this.input2.state===this.wireStateId.indexOf('idle'))?' class="current"':'')+'>';
-		table += '<td>0</td> <td>0</td> <td>'+this.getOutput(this.wireStateId.indexOf('idle'), this.wireStateId.indexOf('idle'))+'</td></tr>';
-		
-		table += '<tr'+((this.input.state===this.wireStateId.indexOf('powered') && this.input2.state===this.wireStateId.indexOf('idle'))?' class="current"':'')+'>';
-		table += '<td>1</td> <td>0</td> <td>'+this.getOutput(this.wireStateId.indexOf('powered'), this.wireStateId.indexOf('idle'))+'</td></tr>';
-		
-		table += '<tr'+((this.input.state===this.wireStateId.indexOf('idle') && this.input2.state===this.wireStateId.indexOf('powered'))?' class="current"':'')+'>';
-		table += '<td>0</td> <td>1</td> <td>'+this.getOutput(this.wireStateId.indexOf('idle'), this.wireStateId.indexOf('powered'))+'</td></tr>';
-		
-		table += '<tr'+((this.input.state===this.wireStateId.indexOf('powered') && this.input2.state===this.wireStateId.indexOf('powered'))?' class="current"':'')+'>';
-		table += '<td>1</td> <td>1</td> <td>'+this.getOutput(this.wireStateId.indexOf('powered'), this.wireStateId.indexOf('powered'))+'</td></tr>';
-	}
-	
-	table += '</table>';
-	
-	// insert table into dom div element
-	$('#results').html(table);
-}
-
-
-/**
- * Update the status of the current gate's output wire
- * 
- * @param	none
- * @return	void
- *
- * Modification history
  * Version	Modifier	Date		Change									Reason
  * 0.4.1	Joey		03-22-2014	First release							Requirements
  * 0.7.0    Chris		03-26-2014  Split the logic into a smaller module   Requirements

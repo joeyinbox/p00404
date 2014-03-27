@@ -183,12 +183,13 @@ InteractiveUI.prototype.displayMenu = function(options) {
  * @return	void
  *
  * Modification history
- * Version	Modifier	Date		Change				Reason
- * 0.3.1	Chris		03-21-2014	First release		Requirements
- * 0.3.2	Usman		03-21-2014	Add none option		Requirements
- * 0.4.0	Name		03-23-2014	Add state toggling	Requirements
- * 0.5.0	Name		03-23-2014	Link link option	Requirements
- * 0.5.2	Name		03-23-2014	Link unlink option	Requirements
+ * Version	Modifier	Date		Change					Reason
+ * 0.3.1	Chris		03-21-2014	First release			Requirements
+ * 0.3.2	Usman		03-21-2014	Add none option			Requirements
+ * 0.4.0	Name		03-23-2014	Add state toggling		Requirements
+ * 0.5.0	Name		03-23-2014	Link link option		Requirements
+ * 0.5.2	Name		03-23-2014	Link unlink option		Requirements
+ * 0.7.x	Name		03-23-2014	Refresh truth table		Requirements
  */
 InteractiveUI.prototype.selectOption = function(option) {
 	switch(this.optionId[option]) {
@@ -200,6 +201,8 @@ InteractiveUI.prototype.selectOption = function(option) {
 			else {
 				this.pointer.contextualMenuSource.setState('idle');
 			}
+			// Refresh the corresponding truth table
+			this.pointer.contextualMenuSource.belongsTo.truthTable();
 			break;
 		case 'link':
 			// If the user started a link action with another wire
