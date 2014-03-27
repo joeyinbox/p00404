@@ -20,6 +20,7 @@ module.exports = function(grunt) {
 				files: {
 					'js/build/index.min.js': ['js/class/Pointer.js',
 											  'js/class/UserInterface.js',
+											  'js/class/PresentationUI.js',
 											  'js/class/LogicGate.js', 
 											  'js/class/DualInputGate.js', 
 											  'js/class/AndGate.js', 
@@ -36,6 +37,7 @@ module.exports = function(grunt) {
 											  'js/index.js'],
 					'js/build/build-your-own.min.js': ['js/class/Pointer.js',
 													   'js/class/UserInterface.js',
+													   'js/class/InteractiveUI.js',
 											 		   'js/class/LogicGate.js', 
 											  		   'js/class/DualInputGate.js', 
 											  		   'js/class/AndGate.js', 
