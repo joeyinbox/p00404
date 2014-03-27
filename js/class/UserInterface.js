@@ -117,7 +117,7 @@ UserInterface.prototype.preloadImage = function(url) {
 UserInterface.prototype.loadingError = function() {
 	if(!this.error) {
 		this.error = true;
-		alert('error during loading');
+		$('#loading').html('An error occured during loading...<br />Sorry');
 	}
 };
 
@@ -233,9 +233,12 @@ UserInterface.prototype.hideMenu = function() {
  * @return	void
  *
  * Modification history
- * Version	Modifier	Date		Change				Reason
- * 0.7.x	Joey		03-27-2014	First release		Requirements
+ * Version	Modifier	Date		Change					Reason
+ * 0.7.x	Joey		03-27-2014	First release			Requirements
+ * 0.7.x	Joey		03-27-2014	Add element effects		Design refinements
  */
 UserInterface.prototype.ready = function() {
-	console.log('interface ready');
+	$('#menu').animate({'margin-left': 0}, 500);
+	$('#informations').animate({'right': 0}, 500);
+	$('#loading').fadeOut(500);
 }

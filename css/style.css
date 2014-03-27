@@ -414,6 +414,7 @@ body.ui #content {
 	color: #fff;
 	min-height: 100%;
 	float: left;
+	margin-left: -240px;
 }
 .ui #menu li {
 	margin: 5px 0;
@@ -463,7 +464,7 @@ li.idle a {
 
 #informations {
 	position: absolute;
-	right: 0;
+	right: -25%;
 	top: 0;
 	width: 20%;
 	padding: 20px;
@@ -515,6 +516,19 @@ li.idle a {
 }
 #contextualMenu li.none:hover {
 	background-color: #fff;
+}
+
+
+#loading {
+	position: absolute;
+	height: 100px;
+	width: 100%;
+	line-height: 100px;
+	z-index: 42;
+	font-size: 5em;
+	text-align: center;
+	top: 50%;
+	margin-top: -50px;
 }
 
 
