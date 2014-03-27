@@ -166,7 +166,7 @@ DualInputGate.prototype.truthTable = function() {
 		table += '<tr'+((this.input.state===this.input.wireStateId.indexOf('unknown') && (this.input2.state===this.input2.wireStateId.indexOf('idle') || this.input2.state===this.input2.wireStateId.indexOf('underpowered')))?' class="current"':'')+'>';
 		table += '<td>X</td> <td>0</td> <td>'+this.getOutput(this.input.wireStateId.indexOf('unknown'), this.input.wireStateId.indexOf('idle'))+'</td></tr>';
 		
-		table += '<tr'+(((this.input2.state===this.input.wireStateId.indexOf('idle') || this.input.state===this.input.wireStateId.indexOf('underpowered')) && this.input2.state===this.input2.wireStateId.indexOf('unknown'))?' class="current"':'')+'>';
+		table += '<tr'+(((this.input.state===this.input.wireStateId.indexOf('idle') || this.input.state===this.input.wireStateId.indexOf('underpowered')) && this.input2.state===this.input2.wireStateId.indexOf('unknown'))?' class="current"':'')+'>';
 		table += '<td>0</td> <td>X</td> <td>'+this.getOutput(this.input.wireStateId.indexOf('idle'), this.input.wireStateId.indexOf('unknown'))+'</td></tr>';
 		
 		table += '<tr'+((this.input.state===this.input.wireStateId.indexOf('unknown') && this.input2.state===this.input.wireStateId.indexOf('powered'))?' class="current"':'')+'>';
@@ -195,5 +195,10 @@ DualInputGate.prototype.truthTable = function() {
 	table += '</table>';
 	
 	// insert table into dom div element
-	$('#results').html(table);
+	if(this.presentationMode) {
+		$('#'+this.ui.canvasId+'-results').html(table);
+	}
+	else {
+		$('#results').html(table);
+	}
 }

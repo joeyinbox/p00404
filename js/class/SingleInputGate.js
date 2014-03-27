@@ -159,5 +159,11 @@ SingleInputGate.prototype.truthTable = function() {
 	
 	table += '</table>';
 	
-	$('#results').html(table);
+	// insert table into dom div element
+	if(this.presentationMode) {
+		$('#'+this.ui.canvasId+'-results').html(table);
+	}
+	else {
+		$('#results').html(table);
+	}
 }

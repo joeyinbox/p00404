@@ -80,6 +80,7 @@ PresentationUI.prototype.addGate = function(type) {
 		// Create a new Gate of this particular type
 		this.gateList.push(new this.gateType[type](this, type, 0, 40));
 		this.gateList[this.gateList.length-1].switchToPresentationMode();
+		this.gateList[this.gateList.length-1].truthTable();
 	}
 };
 
@@ -156,6 +157,7 @@ PresentationUI.prototype.displayMenu = function(options) {
 PresentationUI.prototype.selectOption = function(option) {
 	if(this.pointer.contextualMenuSource!==null) {
 		this.pointer.contextualMenuSource.setState(this.pointer.contextualMenuSource.wireStateId[option]);
+		this.pointer.contextualMenuSource.belongsTo.truthTable();
 	}
 	
 	this.hideMenu();
