@@ -110,3 +110,38 @@ SingleInputGate.prototype.switchToPresentationMode = function() {
 	// Set the presentation flag
 	this.presentationMode = true;
 }
+
+
+/**
+ * Generates corresponding truth table in the DOM based on LogicGate state
+ * 
+ * @param	none
+ * @return	void
+ *
+ * Modification history
+ * Version	Modifier	Date		Change			Reason
+ * 0.7.0	Chris		26-20-2014	First release	Requirements
+ */
+ SingleInputGate.prototype.truthTable = function() {
+	var table = '<table>';
+	
+	if(this.input.state===this.input.wireStateId.indexOf('unknown')) {
+		table += '<tr class="current">';		
+		table += '<td>X</td><td>'+this.getOutput(this.input.wireStateId.indexOf('unknown')+'</td></tr>';		
+	}
+	else if (this.input.state===this.input.wireStateId.indexOf('idle')) {
+		table += '<tr class="current">';
+		table += '<td>0</td><td>'+this.getOutput(this.input.wireStateId.indexOf('idle')+'</td></tr>';		
+	}
+	else if (this.input.state===this.input.wireStateId.indexOf('powered')) {
+		table += '<tr class="current">';
+		table += '<td>1</td><td>'+this.getOutput(this.input.wireStateId.indexOf('powered')+'</td></tr>';
+	} 
+	else {
+		table += '<tr></tr>'
+	}
+	
+	table += '</table>';
+	
+	$('#results').html(table);
+}
