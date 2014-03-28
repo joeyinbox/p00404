@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>Unit testing</title>
+	<link rel="stylesheet" href="css/qunit-1.14.0.css">
+	<link rel="stylesheet" href="css/testing.css">
+</head>
+<body>
+	<div id="#getting-started"></div>
+	<div id="#gate-menu"></div>
+	<section id="board">
+		<canvas id="unit-canvas" width="1600" height=1200></canvas>
+		<ul id="contextualMenu"></ul>
+	</section>
+	
+	<div id="qunit"></div>
+	<div id="qunit-fixture"></div>
+	<script src="js/lib/jquery-1.11.0.min.js"></script>
+	<script src="js/lib/qunit-1.14.0.js"></script>
+	<script src="js/build/unit-testing.min.js"></script>
+	<script>
+		var ui = new PresentationUI('unit-canvas', 0);
+		var state = [];
+		
+		/*
+		NotGate
+		AndGate
+		NandGate
+		OrGate
+		NorGate
+		XorGate
+		XnorGate
+		*/
+		
+		
+		
+		
+		
+		test("User Interface addGate", function() {
+			state = ui.gateList[0].output.wireStateId;
+			equal(ui.gateList.length, 1);
+		});
+		
+		test("NOT gate output", function() {
+			equal(ui.gateList[0].getOutput(state.indexOf('idle')), 'powered', 'idle = powered');
+			equal(ui.gateList[0].getOutput(state.indexOf('powered')), 'idle', 'powered = idle');
+			equal(ui.gateList[0].getOutput(state.indexOf('unknown')), 'unknown', 'unknown = unknown');
+			equal(ui.gateList[0].getOutput(state.indexOf('underpowered')), 'powered', 'underpowered = powered');
+		});
+		
+		test("AND gate output", function() {
+			ui.addGate(1);
+			equal(ui.gateList[1].getOutput(state.indexOf('idle'), state.indexOf('idle')), 'idle', 'idle AND idle = idle');
+			equal(ui.gateList[1].getOutput(state.indexOf('idle'), state.indexOf('powered')), 'idle', 'idle AND powered = idle');
+			equal(ui.gateList[1].getOutput(state.indexOf('idle'), state.indexOf('unknown')), 'idle', 'idle AND unknown = idle');
+			equal(ui.gateList[1].getOutput(state.indexOf('idle'), state.indexOf('underpowered')), 'idle', 'idle AND underpowered = idle');
+			
+			equal(ui.gateList[1].getOutput(state.indexOf('powered'), state.indexOf('idle')), 'idle', 'powered AND idle = idle');
+			equal(ui.gateList[1].getOutput(state.indexOf('powered'), state.indexOf('powered')), 'powered', 'powered AND powered = powered');
+			equal(ui.gateList[1].getOutput(state.indexOf('powered'), state.indexOf('unknown')), 'unknown', 'powered AND unknown = unknown');
+			equal(ui.gateList[1].getOutput(state.indexOf('powered'), state.indexOf('underpowered')), 'idle', 'powered AND underpowered = idle');
+			
+			equal(ui.gateList[1].getOutput(state.indexOf('unknown'), state.indexOf('idle')), 'idle', 'unknown AND idle = idle');
+			equal(ui.gateList[1].getOutput(state.indexOf('unknown'), state.indexOf('powered')), 'unknown', 'unknown AND powered = unknown');
+			equal(ui.gateList[1].getOutput(state.indexOf('unknown'), state.indexOf('unknown')), 'unknown', 'unknown AND unknown = unknown');
+			equal(ui.gateList[1].getOutput(state.indexOf('unknown'), state.indexOf('underpowered')), 'idle', 'unknown AND underpowered = idle');
+			
+			equal(ui.gateList[1].getOutput(state.indexOf('underpowered'), state.indexOf('idle')), 'idle', 'underpowered AND idle = idle');
+			equal(ui.gateList[1].getOutput(state.indexOf('underpowered'), state.indexOf('powered')), 'idle', 'underpowered AND powered = idle');
+			equal(ui.gateList[1].getOutput(state.indexOf('underpowered'), state.indexOf('unknown')), 'idle', 'underpowered AND unknown = idle');
+			equal(ui.gateList[1].getOutput(state.indexOf('underpowered'), state.indexOf('underpowered')), 'idle', 'underpowered AND underpowered = idle');
+		});
+		
+		test("NAND gate output", function() {
+			ui.addGate(2);
+			equal(ui.gateList[2].getOutput(state.indexOf('idle'), state.indexOf('idle')), 'powered', 'idle NAND idle = powered');
+			equal(ui.gateList[2].getOutput(state.indexOf('idle'), state.indexOf('powered')), 'powered', 'idle NAND powered = powered');
+			equal(ui.gateList[2].getOutput(state.indexOf('idle'), state.indexOf('unknown')), 'powered', 'idle NAND unknown = powered');
+			equal(ui.gateList[2].getOutput(state.indexOf('idle'), state.indexOf('underpowered')), 'powered', 'idle NAND underpowered = powered');
+			                  
+			equal(ui.gateList[2].getOutput(state.indexOf('powered'), state.indexOf('idle')), 'powered', 'powered NAND idle = powered');
+			equal(ui.gateList[2].getOutput(state.indexOf('powered'), state.indexOf('powered')), 'idle', 'powered NAND powered = idle');
+			equal(ui.gateList[2].getOutput(state.indexOf('powered'), state.indexOf('unknown')), 'unknown', 'powered NAND unknown = unknown');
+			equal(ui.gateList[2].getOutput(state.indexOf('powered'), state.indexOf('underpowered')), 'powered', 'powered NAND underpowered = powered');
+			                  
+			equal(ui.gateList[2].getOutput(state.indexOf('unknown'), state.indexOf('idle')), 'powered', 'unknown NAND idle = powered');
+			equal(ui.gateList[2].getOutput(state.indexOf('unknown'), state.indexOf('powered')), 'unknown', 'unknown NAND powered = unknown');
+			equal(ui.gateList[2].getOutput(state.indexOf('unknown'), state.indexOf('unknown')), 'unknown', 'unknown NAND unknown = unknown');
+			equal(ui.gateList[2].getOutput(state.indexOf('unknown'), state.indexOf('underpowered')), 'powered', 'unknown NAND underpowered = powered');
+			                  
+			equal(ui.gateList[2].getOutput(state.indexOf('underpowered'), state.indexOf('idle')), 'powered', 'underpowered NAND idle = powered');
+			equal(ui.gateList[2].getOutput(state.indexOf('underpowered'), state.indexOf('powered')), 'powered', 'underpowered NAND powered = powered');
+			equal(ui.gateList[2].getOutput(state.indexOf('underpowered'), state.indexOf('unknown')), 'powered', 'underpowered NAND unknown = powered');
+			equal(ui.gateList[2].getOutput(state.indexOf('underpowered'), state.indexOf('underpowered')), 'powered', 'underpowered NAND underpowered = powered');
+		});
+		
+		test("OR gate output", function() {
+			ui.addGate(3);
+			equal(ui.gateList[3].getOutput(state.indexOf('idle'), state.indexOf('idle')), 'idle', 'idle OR idle = idle');
+			equal(ui.gateList[3].getOutput(state.indexOf('idle'), state.indexOf('powered')), 'powered', 'idle OR powered = powered');
+			equal(ui.gateList[3].getOutput(state.indexOf('idle'), state.indexOf('unknown')), 'unknown', 'idle OR unknown = unknown');
+			equal(ui.gateList[3].getOutput(state.indexOf('idle'), state.indexOf('underpowered')), 'idle', 'idle OR underpowered = idle');
+			                  
+			equal(ui.gateList[3].getOutput(state.indexOf('powered'), state.indexOf('idle')), 'powered', 'powered OR idle = powered');
+			equal(ui.gateList[3].getOutput(state.indexOf('powered'), state.indexOf('powered')), 'powered', 'powered OR powered = powered');
+			equal(ui.gateList[3].getOutput(state.indexOf('powered'), state.indexOf('unknown')), 'powered', 'powered OR unknown = powered');
+			equal(ui.gateList[3].getOutput(state.indexOf('powered'), state.indexOf('underpowered')), 'powered', 'powered OR underpowered = powered');
+			                  
+			equal(ui.gateList[3].getOutput(state.indexOf('unknown'), state.indexOf('idle')), 'unknown', 'unknown OR idle = unknown');
+			equal(ui.gateList[3].getOutput(state.indexOf('unknown'), state.indexOf('powered')), 'powered', 'unknown OR powered = powered');
+			equal(ui.gateList[3].getOutput(state.indexOf('unknown'), state.indexOf('unknown')), 'unknown', 'unknown OR unknown = unknown');
+			equal(ui.gateList[3].getOutput(state.indexOf('unknown'), state.indexOf('underpowered')), 'unknown', 'unknown OR underpowered = unknown');
+			                  
+			equal(ui.gateList[3].getOutput(state.indexOf('underpowered'), state.indexOf('idle')), 'idle', 'underpowered OR idle = idle');
+			equal(ui.gateList[3].getOutput(state.indexOf('underpowered'), state.indexOf('powered')), 'powered', 'underpowered OR powered = powered');
+			equal(ui.gateList[3].getOutput(state.indexOf('underpowered'), state.indexOf('unknown')), 'unknown', 'underpowered OR unknown = unknown');
+			equal(ui.gateList[3].getOutput(state.indexOf('underpowered'), state.indexOf('underpowered')), 'idle', 'underpowered OR underpowered = idle');
+		});
+		
+		test("NOR gate output", function() {
+			ui.addGate(4);
+			equal(ui.gateList[4].getOutput(state.indexOf('idle'), state.indexOf('idle')), 'powered', 'idle NOR idle = powered');
+			equal(ui.gateList[4].getOutput(state.indexOf('idle'), state.indexOf('powered')), 'idle', 'idle NOR powered = idle');
+			equal(ui.gateList[4].getOutput(state.indexOf('idle'), state.indexOf('unknown')), 'unknown', 'idle NOR unknown = unknown');
+			equal(ui.gateList[4].getOutput(state.indexOf('idle'), state.indexOf('underpowered')), 'powered', 'idle NOR underpowered = powered');
+			                  
+			equal(ui.gateList[4].getOutput(state.indexOf('powered'), state.indexOf('idle')), 'idle', 'powered NOR idle = idle');
+			equal(ui.gateList[4].getOutput(state.indexOf('powered'), state.indexOf('powered')), 'idle', 'powered NOR powered = idle');
+			equal(ui.gateList[4].getOutput(state.indexOf('powered'), state.indexOf('unknown')), 'idle', 'powered NOR unknown = idle');
+			equal(ui.gateList[4].getOutput(state.indexOf('powered'), state.indexOf('underpowered')), 'idle', 'powered NOR underpowered = idle');
+			                  
+			equal(ui.gateList[4].getOutput(state.indexOf('unknown'), state.indexOf('idle')), 'unknown', 'unknown NOR idle = unknown');
+			equal(ui.gateList[4].getOutput(state.indexOf('unknown'), state.indexOf('powered')), 'idle', 'unknown NOR powered = idle');
+			equal(ui.gateList[4].getOutput(state.indexOf('unknown'), state.indexOf('unknown')), 'unknown', 'unknown NOR unknown = unknown');
+			equal(ui.gateList[4].getOutput(state.indexOf('unknown'), state.indexOf('underpowered')), 'unknown', 'unknown NOR underpowered = unknown');
+			                  
+			equal(ui.gateList[4].getOutput(state.indexOf('underpowered'), state.indexOf('idle')), 'powered', 'underpowered NOR idle = powered');
+			equal(ui.gateList[4].getOutput(state.indexOf('underpowered'), state.indexOf('powered')), 'idle', 'underpowered NOR powered = idle');
+			equal(ui.gateList[4].getOutput(state.indexOf('underpowered'), state.indexOf('unknown')), 'unknown', 'underpowered NOR unknown = unknown');
+			equal(ui.gateList[4].getOutput(state.indexOf('underpowered'), state.indexOf('underpowered')), 'powered', 'underpowered NOR underpowered = powered');
+		});
+		
+		test("XOR gate output", function() {
+			ui.addGate(5);
+			equal(ui.gateList[5].getOutput(state.indexOf('idle'), state.indexOf('idle')), 'idle', 'idle XOR idle = idle');
+			equal(ui.gateList[5].getOutput(state.indexOf('idle'), state.indexOf('powered')), 'powered', 'idle XOR powered = powered');
+			equal(ui.gateList[5].getOutput(state.indexOf('idle'), state.indexOf('unknown')), 'unknown', 'idle XOR unknown = unknown');
+			equal(ui.gateList[5].getOutput(state.indexOf('idle'), state.indexOf('underpowered')), 'idle', 'idle XOR underpowered = idle');
+			                  
+			equal(ui.gateList[5].getOutput(state.indexOf('powered'), state.indexOf('idle')), 'powered', 'powered XOR idle = powered');
+			equal(ui.gateList[5].getOutput(state.indexOf('powered'), state.indexOf('powered')), 'idle', 'powered XOR powered = idle');
+			equal(ui.gateList[5].getOutput(state.indexOf('powered'), state.indexOf('unknown')), 'unknown', 'powered XOR unknown = unknown');
+			equal(ui.gateList[5].getOutput(state.indexOf('powered'), state.indexOf('underpowered')), 'powered', 'powered XOR underpowered = powered');
+			                  
+			equal(ui.gateList[5].getOutput(state.indexOf('unknown'), state.indexOf('idle')), 'unknown', 'unknown XOR idle = unknown');
+			equal(ui.gateList[5].getOutput(state.indexOf('unknown'), state.indexOf('powered')), 'unknown', 'unknown XOR powered = unknown');
+			equal(ui.gateList[5].getOutput(state.indexOf('unknown'), state.indexOf('unknown')), 'unknown', 'unknown XOR unknown = unknown');
+			equal(ui.gateList[5].getOutput(state.indexOf('unknown'), state.indexOf('underpowered')), 'unknown', 'unknown XOR underpowered = unknown');
+			                  
+			equal(ui.gateList[5].getOutput(state.indexOf('underpowered'), state.indexOf('idle')), 'idle', 'underpowered XOR idle = idle');
+			equal(ui.gateList[5].getOutput(state.indexOf('underpowered'), state.indexOf('powered')), 'powered', 'underpowered XOR powered = powered');
+			equal(ui.gateList[5].getOutput(state.indexOf('underpowered'), state.indexOf('unknown')), 'unknown', 'underpowered XOR unknown = unknown');
+			equal(ui.gateList[5].getOutput(state.indexOf('underpowered'), state.indexOf('underpowered')), 'idle', 'underpowered XOR underpowered = idle');
+		});
+		
+		test("XNOR gate output", function() {
+			ui.addGate(6);
+			equal(ui.gateList[6].getOutput(state.indexOf('idle'), state.indexOf('idle')), 'powered', 'idle XNOR idle = powered');
+			equal(ui.gateList[6].getOutput(state.indexOf('idle'), state.indexOf('powered')), 'idle', 'idle XNOR powered = idle');
+			equal(ui.gateList[6].getOutput(state.indexOf('idle'), state.indexOf('unknown')), 'unknown', 'idle XNOR unknown = unknown');
+			equal(ui.gateList[6].getOutput(state.indexOf('idle'), state.indexOf('underpowered')), 'powered', 'idle XNOR underpowered = powered');
+			                  
+			equal(ui.gateList[6].getOutput(state.indexOf('powered'), state.indexOf('idle')), 'idle', 'powered XNOR idle = idle');
+			equal(ui.gateList[6].getOutput(state.indexOf('powered'), state.indexOf('powered')), 'powered', 'powered XNOR powered = powered');
+			equal(ui.gateList[6].getOutput(state.indexOf('powered'), state.indexOf('unknown')), 'unknown', 'powered XNOR unknown = unknown');
+			equal(ui.gateList[6].getOutput(state.indexOf('powered'), state.indexOf('underpowered')), 'idle', 'powered XNOR underpowered = idle');
+			                  
+			equal(ui.gateList[6].getOutput(state.indexOf('unknown'), state.indexOf('idle')), 'unknown', 'unknown XNOR idle = unknown');
+			equal(ui.gateList[6].getOutput(state.indexOf('unknown'), state.indexOf('powered')), 'unknown', 'unknown XNOR powered = unknown');
+			equal(ui.gateList[6].getOutput(state.indexOf('unknown'), state.indexOf('unknown')), 'unknown', 'unknown XNOR unknown = unknown');
+			equal(ui.gateList[6].getOutput(state.indexOf('unknown'), state.indexOf('underpowered')), 'unknown', 'unknown XNOR underpowered = unknown');
+			                  
+			equal(ui.gateList[6].getOutput(state.indexOf('underpowered'), state.indexOf('idle')), 'powered', 'underpowered XNOR idle = powered');
+			equal(ui.gateList[6].getOutput(state.indexOf('underpowered'), state.indexOf('powered')), 'idle', 'underpowered XNOR powered = idle');
+			equal(ui.gateList[6].getOutput(state.indexOf('underpowered'), state.indexOf('unknown')), 'unknown', 'underpowered XNOR unknown = unknown');
+			equal(ui.gateList[6].getOutput(state.indexOf('underpowered'), state.indexOf('underpowered')), 'powered', 'underpowered XNOR underpowered = powered');
+		});
+		
+		
+	</script>
+</body>
+</html>

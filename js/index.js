@@ -2,7 +2,10 @@ $(function(){
 	
 	// The gate menu needs to be sticky after the intro
 	var initialSize = parseInt($('#gate-menu').css('height'));
-	var stick = getStickInformations();
+	var stick;
+	if(initialSize===parseInt(initialSize)) {
+		stick = getStickInformations();
+	}
 	function getStickInformations() {
 		var object = {};
 		object.position = $('#getting-started').position().top;
