@@ -10,7 +10,8 @@ module.exports = function(grunt) {
 					'js/build/index.min.js': ['js/build/index.min.js'],
 					'js/build/build-your-own.min.js': ['js/build/build-your-own.min.js'],
 					'js/build/math-to-graphical.min.js': ['js/build/math-to-graphical.min.js'],
-					'js/build/quiz.min.js': ['js/build/quiz.min.js']
+					'js/build/quiz.min.js': ['js/build/quiz.min.js'],
+					'js/build/unit-testing.min.js': ['js/build/unit-testing.min.js']
 				}
 			}
 		},
@@ -98,7 +99,7 @@ module.exports = function(grunt) {
 		watch: {
 			js: {
 				files: ['js/class/*.js', 'js/*.js'],
-				tasks: ['concat'],
+				tasks: ['concat', 'uglify'],
 				options: {
 					livereload: true,
 				}
@@ -113,6 +114,6 @@ module.exports = function(grunt) {
 	grunt.loadNpmTasks('grunt-contrib-watch');
 
 	// Default task(s).
-	grunt.registerTask('default', ['concat']);
+	grunt.registerTask('default', ['concat', 'uglify']);
 
 };
