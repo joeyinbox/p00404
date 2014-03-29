@@ -6,7 +6,7 @@
  *
  * Modification history
  * Version	Modifier	Date		Change				Reason
- * 0.2.0	Joey		03-21-2014	First release		Requirements
+ * 0.2.0	Joey		03-20-2014	First release		Requirements
  */
 function Pointer(canvas) {
 	this.x = 0;
@@ -192,7 +192,7 @@ Pointer.prototype.isHovering = function(object) {
  *
  * Modification history
  * Version	Modifier	Date		Change			Reason
- * 0.3.4	Usman		03-23-2014	First release	Requirements
+ * 0.3.4	Usman		03-22-2014	First release	Requirements
  */
 Pointer.prototype.setBusyWith = function(object) {
 	this.busy = object;
@@ -237,7 +237,7 @@ Pointer.prototype.isBusy = function() {
  *
  * Modification history
  * Version	Modifier	Date		Change			Reason
- * 0.3.4	Chris		03-23-2014	First release	Requirements
+ * 0.3.4	Chris		03-22-2014	First release	Requirements
  */
 Pointer.prototype.setContextualMenuSource = function(object) {
 	this.contextualMenuSource = object;

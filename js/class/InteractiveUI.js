@@ -126,7 +126,7 @@ InteractiveUI.prototype.addGate = function(type) {
  * Version	Modifier	Date		Change				Reason
  * 0.1.3	Chris		03-19-2014	First release		Requirements
  * 0.2.1	Joey		03-20-2014	Add wires support	Requirements
- * 0.4.0	Usman		03-23-2014	Add state update	Requirements
+ * 0.4.0	Usman		03-22-2014	Add state update	Requirements
  * 0.5.0	Chris		03-23-2014	Add links support	Requirements
  */
 InteractiveUI.prototype.refresh = function() {
@@ -187,10 +187,10 @@ InteractiveUI.prototype.displayMenu = function(options) {
  * Version	Modifier	Date		Change					Reason
  * 0.3.1	Chris		03-21-2014	First release			Requirements
  * 0.3.2	Usman		03-21-2014	Add none option			Requirements
- * 0.4.0	Joey		03-23-2014	Add state toggling		Requirements
+ * 0.4.0	Joey		03-22-2014	Add state toggling		Requirements
  * 0.5.0	Chris		03-23-2014	Link link option		Requirements
  * 0.5.2	Chris		03-23-2014	Link unlink option		Requirements
- * 0.7.2	Chris		03-23-2014	Refresh truth table		Requirements
+ * 0.7.2	Chris		03-27-2014	Refresh truth table		Requirements
  */
 InteractiveUI.prototype.selectOption = function(option) {
 	switch(this.optionId[option]) {

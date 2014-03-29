@@ -72,7 +72,7 @@ DualInputGate.prototype.drawWires = function() {
  * Modification history
  * Version	Modifier	Date		Change							Reason
  * 0.3.2	Joey		03-21-2014	First release					Requirements
- * 0.4.0	Usman		03-23-2014	Call parent update				Requirements
+ * 0.4.0	Usman		03-22-2014	Call parent update				Requirements
  * 0.7.5	Joey		03-27-2014	Add presentation mode support	Requirements
  */
 DualInputGate.prototype.update = function() {

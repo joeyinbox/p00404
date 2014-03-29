@@ -93,7 +93,7 @@ LogicGate.prototype.getPosition = function() {
  *
  * Modification history
  * Version	Modifier	Date		Change						Reason
- * 0.1.0	Joey		03-20-2014	First release				Requirements
+ * 0.1.1	Joey		03-19-2014	First release				Requirements
  * 0.7.0	Chris		03-26-2014	Truth table function call	Requirements
  */
 LogicGate.prototype.update = function() {

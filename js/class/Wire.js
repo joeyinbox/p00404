@@ -8,7 +8,7 @@
  * Modification history
  * Version	Modifier	Date		Change								Reason
  * 0.2.0	Joey		03-20-2014	First release						Requirements
- * 0.2.5	Joey		03-22-2014	Add unknown state					Issue #1 raised
+ * 0.2.5	Joey		03-21-2014	Add unknown state					Issue #1 raised
  * 0.7.0	Joey		03-27-2014	Add depth and presentation mode		Refinement
  */
 function Wire(ui, gate) {
@@ -61,7 +61,7 @@ Wire.prototype.drawWire = function() {
  *
  * Modification history
  * Version	Modifier	Date		Change			Reason
- * 0.7.3	Joey		03-20-2014	First release	Requirements
+ * 0.7.3	Joey		03-27-2014	First release	Requirements
  */
 Wire.prototype.setSize = function(height, width, depth) {
 	this.height = height;
