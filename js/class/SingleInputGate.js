@@ -70,7 +70,7 @@ SingleInputGate.prototype.drawWires = function() {
  * Version	Modifier	Date		Change							Reason
  * 0.3.2	Joey		03-21-2014	First release					Requirements
  * 0.4.0	Usman		03-23-2014	Call parent update				Requirements
- * 0.7.x	Joey		03-27-2014	Add presentation mode support	Requirements
+ * 0.7.5	Joey		03-27-2014	Add presentation mode support	Requirements
  */
 SingleInputGate.prototype.update = function() {
 	// Assert if the pointer is interacting with the current gate
@@ -116,7 +116,7 @@ SingleInputGate.prototype.updateOutputState = function() {
  *
  * Modification history
  * Version	Modifier	Date		Change			Reason
- * 0.7.x	Joey		03-27-2014	First release	Requirements
+ * 0.7.5	Usman		03-27-2014	First release	Requirements
  */
 SingleInputGate.prototype.switchToPresentationMode = function() {
 	// Change the size of the gate
@@ -141,11 +141,10 @@ SingleInputGate.prototype.switchToPresentationMode = function() {
  * Modification history
  * Version	Modifier	Date		Change				Reason
  * 0.7.0	Chris		03-26-2014	First release		Requirements
- * 0.7.x	Chris		03-26-2014	Add table header	Requirements
+ * 0.7.3	Chris		03-26-2014	Add table header	Requirements
  */
 SingleInputGate.prototype.truthTable = function() {
 	var table = '<table>';
-	
 	table += '<tr><th>Input 1</th><th>Output</th></tr>';
 	
 	table += '<tr'+((this.input.state===this.input.wireStateId.indexOf('idle') || this.input.state===this.input.wireStateId.indexOf('underpowered'))?' class="current"':'')+'>';

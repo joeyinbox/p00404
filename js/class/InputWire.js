@@ -261,7 +261,7 @@ InputWire.prototype.pointerInteraction = function() {
  *
  * Modification history
  * Version	Modifier	Date		Change				Reason
- * 0.7;x	Joey		03-27-2014	First release		Requirements
+ * 0.7.4	Joey		03-27-2014	First release		Requirements
  */
 InputWire.prototype.pointerPresentationInteraction = function() {
 	// Get available options for this wire

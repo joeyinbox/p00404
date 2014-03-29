@@ -61,7 +61,7 @@ Wire.prototype.drawWire = function() {
  *
  * Modification history
  * Version	Modifier	Date		Change			Reason
- * 0.2.1	Joey		03-20-2014	First release	Requirements
+ * 0.7.3	Joey		03-20-2014	First release	Requirements
  */
 Wire.prototype.setSize = function(height, width, depth) {
 	this.height = height;

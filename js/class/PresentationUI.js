@@ -6,19 +6,20 @@
  * @return	void
  *
  * Modification history
- * Version	Modifier	Date		Change									Reason
- * 0.1.0	Joey		03-19-2014	First release							Requirements
- * 0.1.1	Joey		03-19-2014	GateType and Load all resources			Requirements
- * 0.1.2	Usman		03-19-2014	Add the gateList to store gates			Requirements
- * 0.1.3	Chris		03-19-2014	Refresh ui timer						Requirements
- * 0.1.4	Usman		03-20-2014	Window resize event to adapt canvas		Design specifications
- * 0.2.0	Usman		03-20-2014	Add wire states colors					Requirements
- * 0.2.3	Joey		03-21-2014	Add the shifted position				UX refinement
- * 0.3.0	Chris		03-21-2014	OptionId array declaration				Requirements
- * 0.3.1	Joey		03-21-2014	Create pointer reference				Refinement of ui class
- * 0.3.1	Chris		03-21-2014	Add contextual menu event listeners		Requirements
- * 0.3.2	Chris		03-21-2014	Add currentAction related attributes	Requirements
- * 0.3.3	Usman		03-22-2014	Add unknown and underpowered colors		Ethnological refinement
+ * Version	Modifier	Date		Change													Reason
+ * 0.1.0	Joey		03-19-2014	First release of UserInterface class					Requirements
+ * 0.1.1	Joey		03-19-2014	GateType and Load all resources							Requirements
+ * 0.1.2	Usman		03-19-2014	Add the gateList to store gates							Requirements
+ * 0.1.3	Chris		03-19-2014	Refresh ui timer										Requirements
+ * 0.1.4	Usman		03-20-2014	Window resize event to adapt canvas						Design specifications
+ * 0.2.0	Usman		03-20-2014	Add wire states colors									Requirements
+ * 0.2.3	Joey		03-21-2014	Add the shifted position								UX refinement
+ * 0.3.0	Chris		03-21-2014	OptionId array declaration								Requirements
+ * 0.3.1	Joey		03-21-2014	Create pointer reference								Refinement of ui class
+ * 0.3.1	Chris		03-21-2014	Add contextual menu event listeners						Requirements
+ * 0.3.2	Chris		03-21-2014	Add currentAction related attributes					Requirements
+ * 0.3.3	Usman		03-22-2014	Add unknown and underpowered colors						Ethnological refinement
+ * 0.7.1	Joey		03-27-2014	First release inherited from UserInterface class		Refinement
  */
 function PresentationUI(canvasId, gateType) {
 	// Call the parent class constructor
@@ -92,11 +93,12 @@ PresentationUI.prototype.addGate = function(type) {
  * @return	void
  *
  * Modification history
- * Version	Modifier	Date		Change				Reason
- * 0.1.3	Chris		03-19-2014	First release		Requirements
- * 0.2.1	Joey		03-20-2014	Add wires support	Requirements
- * 0.4.0	Usman		03-23-2014	Add state update	Requirements
- * 0.5.0	Chris		03-23-2014	Add links support	Requirements
+ * Version	Modifier	Date		Change						Reason
+ * 0.1.3	Chris		03-19-2014	First release				Requirements
+ * 0.2.1	Joey		03-20-2014	Add wires support			Requirements
+ * 0.4.0	Usman		03-23-2014	Add state update			Requirements
+ * 0.5.0	Chris		03-23-2014	Add links support			Requirements
+ * 0.7.2	Joey		03-23-2014	Remove links support		Requirements
  */
 PresentationUI.prototype.refresh = function() {
 	// Update all components state
@@ -124,7 +126,7 @@ PresentationUI.prototype.refresh = function() {
  * Modification history
  * Version	Modifier	Date		Change								Reason
  * 0.3.1	Chris		03-21-2014	First release						Requirements
- * 0.7.x	Joey		03-27-2014	Add offset for presentation mode	Requirements
+ * 0.7.5	Usman		03-27-2014	Add offset for presentation mode	Requirements
  */
 PresentationUI.prototype.displayMenu = function(options) {
 	// Notify the pointer that a contextual menu is about to be displayed
@@ -152,7 +154,7 @@ PresentationUI.prototype.displayMenu = function(options) {
  *
  * Modification history
  * Version	Modifier	Date		Change				Reason
- * 0.7.x	Joey		03-27-2014	First release		Requirements
+ * 0.7.2	Joey		03-27-2014	First release		Requirements
  */
 PresentationUI.prototype.selectOption = function(option) {
 	if(this.pointer.contextualMenuSource!==null) {
@@ -172,7 +174,7 @@ PresentationUI.prototype.selectOption = function(option) {
  *
  * Modification history
  * Version	Modifier	Date		Change				Reason
- * 0.7.x	Joey		03-27-2014	First release		Requirements
+ * 0.7.6	Joey		03-27-2014	First release		Requirements
  */
 PresentationUI.prototype.ready = function() {
 	this.addGate(this.gateToAdd);

@@ -8,7 +8,7 @@
  * Modification history
  * Version	Modifier	Date		Change										Reason
  * 0.2.0	Joey		03-20-2014	First release								Requirements
- * 0.3		Joey		03-23-2014	Add updateCount to detect unknown state		Issue #1 raised
+ * 0.5.5	Joey		03-23-2014	Add updateCount to detect unknown state		Issue #1 raised
  */
 function OutputWire(ui, gate) {
 	// Call the parent class constructor

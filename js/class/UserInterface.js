@@ -19,8 +19,8 @@
  * 0.3.1	Chris		03-21-2014	Add contextual menu event listeners									Requirements
  * 0.3.2	Chris		03-21-2014	Add currentAction related attributes								Requirements
  * 0.3.3	Usman		03-22-2014	Add unknown and underpowered colors									Ethnological refinement
- * 0.7.x	Joey		03-27-2014	Fork the class to divide it between interactive and presentation	Refinement
- * 0.7.x	Joey		03-27-2014	Store original resource size to avoid reloading it					Refinement
+ * 0.7.1	Joey		03-27-2014	Fork the class to divide it between interactive and presentation	Refinement
+ * 0.7.2	Joey		03-27-2014	Store original resource size to avoid reloading it					Refinement
  */
 function UserInterface() {
 	this.gateList = [];
@@ -111,8 +111,9 @@ UserInterface.prototype.preloadImage = function(url) {
  * @return	void
  *
  * Modification history
- * Version	Modifier	Date		Change			Reason
- * 0.1.1	Joey		03-19-2014	First release	Requirements
+ * Version	Modifier	Date		Change					Reason
+ * 0.1.1	Joey		03-19-2014	First release			Requirements
+ * 0.7.6	Chris		03-27-2014	Display error message	UX refinement
  */
 UserInterface.prototype.loadingError = function() {
 	if(!this.error) {
@@ -129,8 +130,9 @@ UserInterface.prototype.loadingError = function() {
  * @return	void
  *
  * Modification history
- * Version	Modifier	Date		Change			Reason
- * 0.1.1	Joey		03-19-2014	First release	Requirements
+ * Version	Modifier	Date		Change				Reason
+ * 0.1.1	Joey		03-19-2014	First release		Requirements
+ * 0.7.6	Joey		03-27-2014	Call ready method	UX refinement
  */
 UserInterface.prototype.resourceLoaded = function() {
 	// Increments the counter and check if every resource have been loaded
@@ -200,7 +202,7 @@ UserInterface.prototype.getResource = function(type) {
  * Modification history
  * Version	Modifier	Date		Change									Reason
  * 0.1.1	Joey		03-19-2014	First release							Requirements
- * 0.7.x	Joey		03-27-2014	Retrieve informations in class array	Requirements
+ * 0.7.2	Chris		03-27-2014	Retrieve informations in class array	Requirements
  */
 UserInterface.prototype.getResourceSize = function(type) {
 	// Check if the type is known
@@ -234,8 +236,8 @@ UserInterface.prototype.hideMenu = function() {
  *
  * Modification history
  * Version	Modifier	Date		Change					Reason
- * 0.7.x	Joey		03-27-2014	First release			Requirements
- * 0.7.x	Joey		03-27-2014	Add element effects		Design refinements
+ * 0.7.6	Joey		03-27-2014	First release			Requirements
+ * 0.7.6	Joey		03-27-2014	Add element effects		Design refinements
  */
 UserInterface.prototype.ready = function() {
 	$('#menu').animate({'margin-left': 0}, 500);

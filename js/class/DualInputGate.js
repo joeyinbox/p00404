@@ -73,7 +73,7 @@ DualInputGate.prototype.drawWires = function() {
  * Version	Modifier	Date		Change							Reason
  * 0.3.2	Joey		03-21-2014	First release					Requirements
  * 0.4.0	Usman		03-23-2014	Call parent update				Requirements
- * 0.7.x	Joey		03-27-2014	Add presentation mode support	Requirements
+ * 0.7.5	Joey		03-27-2014	Add presentation mode support	Requirements
  */
 DualInputGate.prototype.update = function() {
 	// Assert if the pointer is interacting with the current gate
@@ -129,7 +129,7 @@ DualInputGate.prototype.updateOutputState = function() {
  *
  * Modification history
  * Version	Modifier	Date		Change			Reason
- * 0.7.x	Joey		03-27-2014	First release	Requirements
+ * 0.7.5	Usman		03-27-2014	First release	Requirements
  */
 DualInputGate.prototype.switchToPresentationMode = function() {
 	// Change the size of the gate
@@ -154,8 +154,8 @@ DualInputGate.prototype.switchToPresentationMode = function() {
  *
  * Modification history
  * Version	Modifier	Date		Change						Reason
- * 0.7.0	Joey		26-20-2014	First release				Requirements
- * 0.7.0 	Chris		26-20-2014	Underpowered comparison 	Requirements
+ * 0.7.0	Joey		03-26-2014	First release				Requirements
+ * 0.7.0 	Chris		03-26-2014	Underpowered comparison 	Requirements
  */
 DualInputGate.prototype.truthTable = function() {
 	var table = '<table>';

@@ -9,7 +9,7 @@
  *
  * Modification history
  * Version	Modifier	Date		Change			Reason
- * 0.1.0	Chris		19-03-2014	First release	Requirements
+ * 0.1.0	Chris		03-19-2014	First release	Requirements
  */
 function LogicGate(ui, type, x, y) {
 	if(ui===undefined) {
@@ -43,7 +43,7 @@ function LogicGate(ui, type, x, y) {
  *
  * Modification history
  * Version	Modifier	Date		Change			Reason
- * 0.1.0	Chris		19-03-2014	First release	Requirements
+ * 0.1.0	Chris		03-19-2014	First release	Requirements
  */
 LogicGate.prototype.drawGate = function() {
 	this.ui.context.drawImage(this.ui.getResource(this.gateType), this.x, this.y, this.width, this.height);
@@ -59,7 +59,7 @@ LogicGate.prototype.drawGate = function() {
  *
  * Modification history
  * Version	Modifier	Date		Change			Reason
- * 0.1.0	Chris		19-03-2014	First release	Requirements
+ * 0.1.0	Chris		03-19-2014	First release	Requirements
  */
 LogicGate.prototype.setPosition = function(x, y) {
 	this.x = x;
@@ -75,7 +75,7 @@ LogicGate.prototype.setPosition = function(x, y) {
  *
  * Modification history
  * Version	Modifier	Date		Change			Reason
- * 0.1.0	Chris		19-03-2014	First release	Requirements
+ * 0.1.0	Chris		03-19-2014	First release	Requirements
  */
 LogicGate.prototype.getPosition = function() {
 	return {
@@ -93,8 +93,8 @@ LogicGate.prototype.getPosition = function() {
  *
  * Modification history
  * Version	Modifier	Date		Change						Reason
- * 0.1.0	Joey		20-03-2014	First release				Requirements
- * 0.7.0	Chris		26-03-2014	Truth table function call	Requirements
+ * 0.1.0	Joey		03-20-2014	First release				Requirements
+ * 0.7.0	Chris		03-26-2014	Truth table function call	Requirements
  */
 LogicGate.prototype.update = function() {
 	// Assert if the pointer is interacting with the current gate

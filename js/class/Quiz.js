@@ -8,14 +8,14 @@
  * Modification history
  * Version	Modifier	Date		Change											Reason
  * 0.6.0	Joey		03-24-2014	First release									Requirements
- * 0.6.1	Joey		03-24-2014	Gather DOM elements	related to stage 1			Requirements
+ * 0.6.1	Chris		03-24-2014	Gather DOM elements	related to stage 1			Requirements
  * 0.6.1	Joey		03-24-2014	Start event listener 							Requirements
- * 0.6.2	Joey		03-24-2014	Create question pool							Requirements
- * 0.6.3	Joey		03-24-2014	Select and submit answer event listeners		Requirements
- * 0.6.3	Joey		03-24-2014	Gather more DOM elements related to stage 2		Requirements
+ * 0.6.2	Chris		03-24-2014	Create question pool							Requirements
+ * 0.6.3	Usman		03-24-2014	Select and submit answer event listeners		Requirements
+ * 0.6.3	Usman		03-24-2014	Gather more DOM elements related to stage 2		Requirements
  * 0.6.4	Joey		03-24-2014	Shuffle questions								Requirements
- * 0.6.5	Joey		03-24-2014	Restart event listener							Requirements
- * 0.6.5	Joey		03-24-2014	Gather more DOM elements related to stage 3		Requirements
+ * 0.6.5	Chris		03-24-2014	Restart event listener							Requirements
+ * 0.6.5	Chris		03-24-2014	Gather more DOM elements related to stage 3		Requirements
  * 0.6.6	Joey		03-24-2014	Abort event listener							Requirements
  */
 function Quiz() {
@@ -101,8 +101,8 @@ function Quiz() {
  * Modification history
  * Version	Modifier	Date		Change				Reason
  * 0.6.2	Joey		03-24-2014	First release		Requirements
- * 0.6.4	Joey		03-24-2014	Add more questions	Requirements
- * 0.7.x	Usman		03-27-2014	Add more questions	Requirements
+ * 0.6.4	Usman		03-24-2014	Add more questions	Requirements
+ * 0.7.5	Usman		03-27-2014	Add more questions	Requirements
  */
 Quiz.prototype.createQuestions = function() {
 	var question = new Question();
@@ -307,7 +307,7 @@ Quiz.prototype.displayQuestion = function(question) {
  *
  * Modification history
  * Version	Modifier	Date		Change			Reason
- * 0.6.3	Joey		03-24-2014	First release	Requirements
+ * 0.6.3	Chris		03-24-2014	First release	Requirements
  */
 Quiz.prototype.updateStats = function() {
 	// Manipulate the dom to insert the progress informations
@@ -385,7 +385,7 @@ Quiz.prototype.nextQuestion = function() {
  *
  * Modification history
  * Version	Modifier	Date		Change								Reason
- * 0.6.5	Joey		03-24-2014	First release						Requirements
+ * 0.6.5	Usman		03-24-2014	First release						Requirements
  */
 Quiz.prototype.hasNextQuestion = function() {
 	return this.questionDoneCount<this.questionList.length && this.questionDoneCount<this.maxQuestion;
@@ -400,7 +400,7 @@ Quiz.prototype.hasNextQuestion = function() {
  *
  * Modification history
  * Version	Modifier	Date		Change								Reason
- * 0.6.5	Joey		03-24-2014	First release						Requirements
+ * 0.6.5	Chris		03-24-2014	First release						Requirements
  */
 Quiz.prototype.getRemainingCount = function() {
 	return this.maxQuestion>this.questionList.length?this.questionList.length-this.questionDoneCount:this.maxQuestion-this.questionDoneCount;
@@ -577,7 +577,7 @@ Quiz.prototype.showResult = function(success, choice) {
  *
  * Modification history
  * Version	Modifier	Date		Change								Reason
- * 0.6.5	Joey		03-24-2014	First release						Requirements
+ * 0.6.5	Usman		03-24-2014	First release						Requirements
  */
 Quiz.prototype.resetQuiz = function() {
 	this.score = 0;

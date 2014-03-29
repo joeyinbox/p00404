@@ -38,8 +38,9 @@ Question.prototype.addAnswer = function(text) {
  * @return	void
  *
  * Modification history
- * Version	Modifier	Date		Change				Reason
- * 0.6.0	Joey		03-24-2014	First release		Requirements
+ * Version	Modifier	Date		Change									Reason
+ * 0.6.0	Joey		03-24-2014	First release							Requirements
+ * 0.6.6	Joey		03-24-2014	Add the correct answer to the list		Requirements
  */
 Question.prototype.setCorrectAnswer = function(text) {
 	this.addAnswer(text);

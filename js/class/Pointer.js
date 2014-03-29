@@ -41,7 +41,7 @@ function Pointer(canvas) {
  *
  * Modification history
  * Version	Modifier	Date		Change			Reason
- * 0.1.0	Name		mm-dd-yyyy	First release	Requirements
+ * 0.3.0	Joey		03-21-2014	First release	Requirements
  */
 Pointer.prototype.onStart = function(e) {
 	// Override the device default behavior and set the pressed flag that will be used within gates' update method
@@ -60,7 +60,7 @@ Pointer.prototype.onStart = function(e) {
  *
  * Modification history
  * Version	Modifier	Date		Change			Reason
- * 0.1.0	Name		mm-dd-yyyy	First release	Requirements
+ * 0.3.0	Joey		03-21-2014	First release	Requirements
  */
 Pointer.prototype.onMove = function(e) {
 	// Override the device default behavior
@@ -92,7 +92,7 @@ Pointer.prototype.onMove = function(e) {
  *
  * Modification history
  * Version	Modifier	Date		Change			Reason
- * 0.1.0	Name		mm-dd-yyyy	First release	Requirements
+ * 0.3.0	Joey		03-21-2014	First release	Requirements
  */
 Pointer.prototype.onEnd = function(e) {
 	// Override the device default behavior
@@ -141,7 +141,7 @@ Pointer.prototype.getPosition = function() {
  *
  * Modification history
  * Version	Modifier	Date		Change			Reason
- * 0.1.0	Name		mm-dd-yyyy	First release	Requirements
+ * 0.3.3	Chris		03-22-2014	First release	Requirements
  */
 Pointer.prototype.getDistance = function() {
 	// Get the difference
@@ -166,7 +166,7 @@ Pointer.prototype.getDistance = function() {
  *
  * Modification history
  * Version	Modifier	Date		Change			Reason
- * 0.1.0	Name		mm-dd-yyyy	First release	Requirements
+ * 0.3.1	Chris		03-21-2014	First release	Requirements
  */
 Pointer.prototype.isHovering = function(object) {
 	var position = object.getPosition();
@@ -192,7 +192,7 @@ Pointer.prototype.isHovering = function(object) {
  *
  * Modification history
  * Version	Modifier	Date		Change			Reason
- * 0.1.0	Name		mm-dd-yyyy	First release	Requirements
+ * 0.3.4	Usman		03-23-2014	First release	Requirements
  */
 Pointer.prototype.setBusyWith = function(object) {
 	this.busy = object;
@@ -207,7 +207,7 @@ Pointer.prototype.setBusyWith = function(object) {
  *
  * Modification history
  * Version	Modifier	Date		Change			Reason
- * 0.1.0	Name		mm-dd-yyyy	First release	Requirements
+ * 0.3.1	Chris		03-21-2014	First release	Requirements
  */
 Pointer.prototype.isBusyWith = function(object) {
 	return (object===this.busy);
@@ -222,7 +222,7 @@ Pointer.prototype.isBusyWith = function(object) {
  *
  * Modification history
  * Version	Modifier	Date		Change			Reason
- * 0.1.0	Name		mm-dd-yyyy	First release	Requirements
+ * 0.3.3	Usman		03-22-2014	First release	Requirements
  */
 Pointer.prototype.isBusy = function() {
 	return (this.busy!==null);
@@ -237,7 +237,7 @@ Pointer.prototype.isBusy = function() {
  *
  * Modification history
  * Version	Modifier	Date		Change			Reason
- * 0.1.0	Name		mm-dd-yyyy	First release	Requirements
+ * 0.3.4	Chris		03-23-2014	First release	Requirements
  */
 Pointer.prototype.setContextualMenuSource = function(object) {
 	this.contextualMenuSource = object;
