@@ -19,7 +19,7 @@
  * 0.3.1	Chris		03-21-2014	Add contextual menu event listeners						Requirements
  * 0.3.2	Chris		03-21-2014	Add currentAction related attributes					Requirements
  * 0.3.3	Usman		03-22-2014	Add unknown and underpowered colors						Ethnological refinement
- * 0.7.1	Joey		03-27-2014	First release inherited from UserInterface class		Refinement
+ * 0.7.1	Joey		03-27-2014	First release inherited from UserInterface class		QA Refinement
  */
 function PresentationUI(canvasId, gateType) {
 	// Call the parent class constructor
@@ -73,7 +73,7 @@ PresentationUI.prototype.constructor = PresentationUI;
  * Modification history
  * Version	Modifier	Date		Change						Reason
  * 0.1.2	Usman		03-19-2014	First release				Requirements
- * 0.1.3	Joey		03-19-2014	Add the shifted position	Requirements
+ * 0.1.3	Joey		03-19-2014	Add the shifted position	QA Refinement
  */
 PresentationUI.prototype.addGate = function(type) {
 	// Checks if the type is known

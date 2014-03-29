@@ -6,7 +6,7 @@
  *
  * Modification history
  * Version	Modifier	Date		Change				Reason
- * 0.2.0	Joey		03-20-2014	First release		Requirements
+ * 0.2.0	Joey		03-20-2014	First release		QA Refinement
  */
 function Pointer(canvas) {
 	this.x = 0;

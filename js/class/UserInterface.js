@@ -19,7 +19,7 @@
  * 0.3.1	Chris		03-21-2014	Add contextual menu event listeners									Requirements
  * 0.3.2	Chris		03-21-2014	Add currentAction related attributes								Requirements
  * 0.3.3	Usman		03-22-2014	Add unknown and underpowered colors									Ethnological refinement
- * 0.7.1	Joey		03-27-2014	Fork the class to divide it between interactive and presentation	Refinement
+ * 0.7.1	Joey		03-27-2014	Fork the class to divide it between interactive and presentation	QA Refinement
  * 0.7.2	Joey		03-27-2014	Store original resource size to avoid reloading it					Refinement
  */
 function UserInterface() {
