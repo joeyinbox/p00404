@@ -132,8 +132,7 @@ OutputWire.prototype.unlink = function(input) {
 	if(input.constructor.name==="InputWire" && index!==-1) {
 		// The target wire is an input
 		this.linkedTo[index].linkedTo = null;
-		this.linkedTo[index].state = this.wireStateId.idle;
-		this.linkedTo[index].belongsTo.updateOutputState();
+		this.linkedTo[index].setState('idle');
 		this.linkedTo.splice(index, 1);
 		
 		// Notify the gate to eventually update its state

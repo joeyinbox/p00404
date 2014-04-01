@@ -100,11 +100,8 @@ InputWire.prototype.unlink = function() {
 		this.linkedTo.unlink(this);
 		this.linkedTo = null;
 		
-		// Notify the gate to eventually update its state
-		this.belongsTo.updateOutputState();
-		
 		// Set back to idle
-		this.state = this.wireStateId.indexOf('idle');
+		this.setState('idle');
 	}
 };
 
