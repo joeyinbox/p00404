@@ -131,6 +131,17 @@ body.home #intro p, body.home #intro div {
 	width: 600px;
 	margin: 0 auto;
 }
+body.disclaimer #intro .overlay div {
+	position: absolute;
+	width: 720px;
+	margin-left: -360px;
+	margin-top: -150px;
+	max-height: 250px;
+	left: 50%;
+}
+body.disclaimer #intro p, body.disclaimer #intro div {
+	width: 700px;
+}
 body.home #intro h1, body.home #intro p {
 	-webkit-font-smoothing: antialiased;	
 	font-family: 'HelveticaNeue-Light', 'HelveticaNeue', arial;
